@@ -3,7 +3,9 @@
 body {
   background: #fafafa;
   color: #333333;
-  margin-top: 5rem; }
+  margin-top: 5rem;
+  height: 100%;
+  width: 100%; }
 
 h1, h2, h3, h4, h5, h6 {
   color: #444444; }
@@ -80,5 +82,9 @@ a.article-title:hover {
     .page-footer a:hover {
       color: #F4F1DE;
       text-decoration: none; }
+
+#main-container {
+  min-height: calc(100% - 168px);
+  min-height: 60vw; }
 
 /*# sourceMappingURL=main.css.map */

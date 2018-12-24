@@ -1,9 +1,15 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
-# Create your views here.
+from django.contrib import messages
 
 
 def register(request):
     """ view to display the registration page """
-    form = UserCreationForm()   # blank form 
+    # form = UserCreationForm()   # blank form 
+    form = UserCreationForm(request.POST or None)
+    if form.is_valid():
+        username = form.cleaned_data.get("username")
+        messages.success(request, "Account '{}' was successfuly created!".format(username))
+        form.save()
+        return redirect("blog-home")
     return render(request,'users/register.html', {'form': form})
