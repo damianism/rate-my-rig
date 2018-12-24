@@ -3,9 +3,6 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 from .helper_funcs import *
 
-# Field.null    - If True, Django will store empty values as NULL in the database. Default is False.
-# Field.blank   - If True, the field is allowed to be blank. Default is False.
-
 
 class Post(models.Model):
     """ Create model for a typical post """
@@ -29,14 +26,9 @@ class Post(models.Model):
     author            = models.ForeignKey(User, on_delete=models.CASCADE)     #  if the user was deleted - delete all his/her post
                                                                               #  if the post of deleted - user will remain intact
 
-    @property
-    def get_status(self):
-        return CPU_CHOICES[self.cpu][1]
-        
     # # take look at "product_list.html" - this thing is FUKCING amazing!
     # def get_absolute_url(self):
     #     # return "../product/dynamic/{}".format(self.id)            # -- HARD-CODED!
-        
     #     # reverse("app_name:view_name", kwargs={"myid": self.id}) - "app_name" is defined in the app's urls.py
     #     return reverse("products:detailed_view", kwargs={"myid": self.id})   # -- DYNAMIC!  path('p/dynamic/<int:myid>', dynamic_lookup_view, name="detailed_view"), would still work!
     
