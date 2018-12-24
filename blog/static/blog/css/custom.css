@@ -32,8 +32,11 @@ ul {
   background: #ffffff;
   padding: 10px 20px;
   border: 1px solid #dddddd;
-  border-radius: 3px;
+  border-radius: 8px;
   margin-bottom: 20px;
+  -webkit-box-shadow: 3px 3px 7px -1px rgba(0,0,0,0.58);
+  -moz-box-shadow: 3px 3px 7px -1px rgba(0,0,0,0.58);
+  box-shadow: 3px 3px 7px -1px rgba(0,0,0,0.58);
 }
 
 .article-title {

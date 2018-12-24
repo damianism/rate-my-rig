@@ -15,11 +15,11 @@
 
 </head>
 <body>
-    
+    <!-- NAVIGATION -->
     <header class="site-header">
       <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
         <div class="container">
-          <a class="navbar-brand mr-4" href="{% url 'blog-home' %}">Django Blog</a>
+          <a class="navbar-brand mr-4" href="{% url 'blog-home' %}">RateMyRig</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
           </button>
@@ -38,24 +38,79 @@
       </nav>
     </header>
     
+    <!-- MAIN CONTENT -->
     <main role="main" class="container">
+      
       <div class="row">
+        
+        <!-- FILTERS COLUMN -->
+        <div class="col-md-4">
+          <div class="content-section">
+            <h3>Filters</h3>
+            <!--<p class='text-muted'>You can put any information here you'd like.-->
+            <!--  <ul class="list-group">-->
+            <!--    <li class="list-group-item list-group-item-light">Latest Posts</li>-->
+            <!--    <li class="list-group-item list-group-item-light">Announcements</li>-->
+            <!--    <li class="list-group-item list-group-item-light">Calendars</li>-->
+            <!--    <li class="list-group-item list-group-item-light">etc</li>-->
+            <!--  </ul>-->
+            <!--</p>-->
+            <p class='text-muted'>You can put any information here you'd like. </p>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect01">Brand</label>
+              </div>
+              <select class="custom-select" id="inputGroupSelect01">
+                <option selected>Choose...</option>
+                <option value="1">AMD</option>
+                <option value="2">INTEL</option>
+              </select>
+            </div>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect01">Generation</label>
+              </div>
+              <select class="custom-select" id="inputGroupSelect01">
+                <option selected>Choose...</option>
+                <option value="1">8th coffeelake</option>
+                <option value="2">7th haswell</option>
+              </select>
+            </div>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect01">CPU</label>
+              </div>
+              <select class="custom-select" id="inputGroupSelect01">
+                <option selected>Choose...</option>
+                <option value="1">i7</option>
+                <option value="2">i5</option>
+                <option value="3">i9</option>
+              </select>
+            </div>
+            
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect01">GPU</label>
+              </div>
+              <select class="custom-select" id="inputGroupSelect01">
+                <option selected>Choose...</option>
+                <option value="1">GTX 2080</option>
+                <option value="2">GTX 2070</option>
+                <option value="3">GTX 2060</option>
+                <option value="4">GTX 1080</option>
+                <option value="5">GTX 1070</option>
+                <option value="6">GTX 1060</option>
+              </select>
+            </div>
+            
+          </div>
+        </div>
+        
+        <!-- POSTS COLUMN -->
         <div class="col-md-8">
           {% block content %}{% endblock %}
         </div>
-        <div class="col-md-4">
-          <div class="content-section">
-            <h3>Our Sidebar</h3>
-            <p class='text-muted'>You can put any information here you'd like.
-              <ul class="list-group">
-                <li class="list-group-item list-group-item-light">Latest Posts</li>
-                <li class="list-group-item list-group-item-light">Announcements</li>
-                <li class="list-group-item list-group-item-light">Calendars</li>
-                <li class="list-group-item list-group-item-light">etc</li>
-              </ul>
-            </p>
-          </div>
-        </div>
+        
       </div>
     </main>
 
