@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # own apps
-    'blog.apps.BlogConfig'
+    'blog.apps.BlogConfig',
+    'posts.apps.PostsConfig',
     # third party apps
     
 ]
