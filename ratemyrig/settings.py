@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     # own apps
     'blog.apps.BlogConfig',
     'posts.apps.PostsConfig',
+    'users.apps.UsersConfig',
     # third party apps
     
 ]
