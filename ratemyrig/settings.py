@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'posts.apps.PostsConfig',
     'users.apps.UsersConfig',
     # third party apps
-    
+    'crispy_forms',
+
 ]
 
 MIDDLEWARE = [
@@ -132,3 +133,8 @@ STATIC_URL = '/static/'
 
 # top level direcotry for base.html CSS and SASS
 STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"), )
+
+
+# CRISPP_FORM - by default crispy_forms defaults to bootstrap 2
+#               since that's wayy too old , we're change it to bootstrap 4
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
