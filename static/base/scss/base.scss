@@ -12,8 +12,9 @@ ul {
   margin: 0;
 }
 
-.bg-steel {
-  background-color: #5f788a;
+// Navigation
+.bg-orange {
+  background-color: map-get($color, maroon);
 }
 
 .site-header .navbar-nav .nav-link {

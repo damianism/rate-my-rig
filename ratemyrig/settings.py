@@ -127,3 +127,6 @@ MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# top level direcotry for base.html CSS and SASS
+STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"), )
