@@ -1,6 +1,6 @@
 {% extends 'base/base_home.html' %}
 
-{% block title %}Home Page{% endblock %}
+{% block title %}Detail View{% endblock %}
 {% block content %}
 
     <article class="media content-section">
@@ -10,18 +10,17 @@
           <small class="text-muted">Posted on {{ object.date_posted|date:"d F Y" }}</small>
           <div>by <a class="mr-2" href="#">{{ object.author }}</a></div>
           {% if object.author == user %}
-          <div>
-            <a href="{% url 'post-update' object.id %}" class="btn btn-sm btn-secondary mt-1 mb-1">Update</a>
-            <a href="{% url 'post-delete' object.id %}" class="btn btn-sm btn-danger mt-1 mb-1">Delete</a>
-          </div>
-          
+            <div>
+              <a href="{% url 'post-update' object.id %}" class="btn btn-sm btn-secondary mt-1 mb-1">Update</a>
+              <a href="{% url 'post-delete' object.id %}" class="btn btn-sm btn-danger mt-1 mb-1">Delete</a>
+            </div>
           {% endif %}
         </div>
         <h2>{{ object.title }}</h2>
         <p class="article-content">
-                  {{ object.cpu }}, {{ object.gpu }}, {{ object.ram }}
-                  {{ object.description }}
-                  </p>
+          {{ object.cpu }}, {{ object.gpu }}, {{ object.ram }}
+          {{ object.description }}
+        </p>
       </div>
     </article>
 
