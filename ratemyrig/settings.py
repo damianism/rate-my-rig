@@ -144,3 +144,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 # after loggin in - it will automatically redirects to "accounts/profile"
 # this will overwrite that feature and we get to redirect to a given url!
 LOGIN_REDIRECT_URL='blog-home'
+
+# link to show if the user tries to access links that are only 
+# accessible when they are authenticated(loggged in)
+LOGIN_URL='user-login'
