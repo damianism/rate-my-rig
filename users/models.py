@@ -14,7 +14,7 @@ class Profile(models.Model):
     #        means that if the user was deleted, delete his/her profile with it
     #        BUT, if the post was deleted, leave user as is
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    image = models.ImageField(default='default_profile_pic.jpg',upload_to='profile_pics')
+    image = models.ImageField(default='defaults/default_profile_pic.png',upload_to='profile_pics')
     
     def __str__(self):
         return "{}'s Profile".format(self.user.username)
