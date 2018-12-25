@@ -3,7 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages 
 from .forms import UserRegisterForm, UserUpdateFrom, ProfileUpdateFrom
 from django.contrib.auth.decorators import login_required
-
+from django.contrib.auth.models import User
 
 # All types of messages
 # messages.debug, messages.info, messages.success, messages.warning, messages.error
@@ -50,11 +50,25 @@ def profile(request):
     # request is the equivalent of session in Flask
 
     if request.method == "POST":
-        user_form = UserUpdateFrom(request.POST, instance=request.user)
-        user_profile_form = ProfileUpdateFrom(request.POST, request.FILES, instance=request.user.profile)
+        user_form = UserUpdateFrom(request.POST, instance=request.user) # request.POST being the data pushed with the post
+        user_profile_form = ProfileUpdateFrom(request.POST, request.FILES, instance=request.user.profile)   # request.FILES being the files(image in this case) pushed with the post
+        user_db = User.objects.get(id=request.user.id)      # get the current user data in the database
+
+        # save both forms if they are validated successfully
         if user_form.is_valid() and user_profile_form.is_valid():
+            
+            if request.user.username != user_db.username:
+                messages.success(request, "Your 'username' was successfully updated.")
+            if request.user.email != user_db.email:
+                messages.success(request, "Your 'email' was successfully updated.")
+            if request.user.profile.image.url != user_db.profile.image.url:
+                messages.success(request, "Your 'image' was successfully updated.")
+            
+            # save into db
             user_form.save()
             user_profile_form.save()
+
+            return redirect("user-profile")   # redirecting back to "user-profile" to avoid post-get direct pattern
     else:
         user_form = UserUpdateFrom(instance=request.user)
         user_profile_form = ProfileUpdateFrom(instance=request.user.profile)        
