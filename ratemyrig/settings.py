@@ -138,3 +138,9 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"), )
 # CRISPP_FORM - by default crispy_forms defaults to bootstrap 2
 #               since that's wayy too old , we're change it to bootstrap 4
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+
+# NOTE! when using built in login class base view by django
+# after loggin in - it will automatically redirects to "accounts/profile"
+# this will overwrite that feature and we get to redirect to a given url!
+LOGIN_REDIRECT_URL='blog-home'

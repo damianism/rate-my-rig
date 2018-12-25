@@ -37,8 +37,13 @@
             </div>
             <!-- Navbar Right Side -->
             <div class="navbar-nav">
-              <a class="nav-item nav-link" href="#">Login</a>
-              <a class="nav-item nav-link" href="{% url 'user-register' %}">Register</a>
+              {% if user.is_authenticated %}
+                <a class="nav-item nav-link disabled" href="#" >Welcome {{ user.username }}</a>
+                <a class="nav-item nav-link" href="{% url 'user-logout' %}">Logout</a>
+              {% else %}
+                <a class="nav-item nav-link" href="{% url 'user-login' %}">Login</a>
+                <a class="nav-item nav-link" href="{% url 'user-register' %}">Register</a>
+              {% endif %}
             </div>
           </div>
           
@@ -104,6 +109,18 @@
             </div>
             
           </div>
+          <div class="content-section">
+            <h3>Search</h3>
+            <div class="card-body">
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search for...">
+                <span class="input-group-btn">
+                  <button class="btn btn-secondary" type="button">Go!</button>
+                </span>
+              </div>
+            </div>
+          </div>
+          
         </div>
         
         <!-- POSTS COLUMN -->
