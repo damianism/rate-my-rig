@@ -20,8 +20,7 @@ ul {
   color: #ffc107; }
 
 .site-header .navbar-nav .nav-link:hover {
-  color: #F4F1DE;
-  font-weight: bold; }
+  color: #F4F1DE; }
 
 .site-header .navbar-nav .nav-link.active {
   font-weight: 500; }
