@@ -89,10 +89,11 @@ def profile(request):
 
 
 def users_detail_view(request, username):
+    """ function base view to display user details full screeen """
     
+    # get user object using username
     obj = get_object_or_404(User, username=username)
 
-    print("obj = ", obj.username)
     context = {
         "object": obj
     }
