@@ -58,6 +58,10 @@ def profile(request):
         # save both forms if they are validated successfully
         if user_form.is_valid() and user_profile_form.is_valid():
             
+            if request.user.first_name != user_db.first_name:
+                messages.success(request, "Your 'name' was successfully updated.")
+            if request.user.last_name != user_db.last_name:
+                messages.success(request, "Your 'surname' was successfully updated.")
             if request.user.username != user_db.username:
                 messages.success(request, "Your 'username' was successfully updated.")
             if request.user.email != user_db.email:
