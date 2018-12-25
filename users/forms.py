@@ -10,7 +10,8 @@ class UserRegisterForm(UserCreationForm):
 
     # Fields to add/edit
     email = forms.EmailField()
-    
+    first_name = forms.CharField(label='Name')
+    last_name = forms.CharField(label='Surname')
     class Meta:
         
         # model = User - simply means that the model that's going to be affected is the "User" model
@@ -18,6 +19,8 @@ class UserRegisterForm(UserCreationForm):
         
         # fields - taking the desired fields to show on the form in ORDER!
         fields = [
+            'first_name',
+            'last_name',
             'username',
             'email',
             'password1',
