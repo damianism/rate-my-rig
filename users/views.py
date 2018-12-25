@@ -5,8 +5,9 @@ from .forms import UserRegisterForm, UserUpdateFrom, ProfileUpdateFrom
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 
-# All types of messages
-# messages.debug, messages.info, messages.success, messages.warning, messages.error
+
+# All types of messages -  messages.debug, messages.info, messages.success, messages.warning, messages.error
+
 
 def register_original(request):
     """ view function that uses django's "UserCreationForm" class to
@@ -40,7 +41,7 @@ def register(request):
 
 @login_required
 def profile(request):
-    """ view to display user's profile  """
+    """ view to display currenly logged in user's profile  """
     
     # cant pass in User in here (instance=User) becuase User the entire OBJECT MODEL
     # if we do "<django.db.models.query_utils.DeferredAttribute object at 0x7f08da4159e8>" will be displayed in the form fields

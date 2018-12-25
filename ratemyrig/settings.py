@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     # third party apps
     'crispy_forms',
+    'django_resized',
 
 ]
 
@@ -134,12 +135,6 @@ STATIC_URL = '/static/'
 # top level direcotry for base.html CSS and SASS
 STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"), )
 
-
-# CRISPP_FORM - by default crispy_forms defaults to bootstrap 2
-#               since that's wayy too old , we're change it to bootstrap 4
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
-
-
 # NOTE! when using built in login class base view by django
 # after loggin in - it will automatically redirects to "accounts/profile"
 # this will overwrite that feature and we get to redirect to a given url!
@@ -158,3 +153,12 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')    # BASE_DIR - is the project's ba
 # MEDIA_URL - is the public url of MEDIA_ROOT  
 # that's how we access the media through the browser
 MEDIA_URL = '/media/' 
+
+# ----------------------- THIRD PARTY APP SETTINGS ---------------------------
+# CRISPP_FORM - by default crispy_forms defaults to bootstrap 2
+#               since that's wayy too old , we're change it to bootstrap 4
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+# django_resized settings to force the format of the resized image 
+DJANGORESIZED_DEFAULT_FORCE_FORMAT = 'PNG'
+DJANGORESIZED_DEFAULT_FORMAT_EXTENSIONS = {'PNG': ".png"}
