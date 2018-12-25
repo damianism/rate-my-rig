@@ -1,8 +1,10 @@
 from django.urls import path
 from .views import register, profile
-
 # class based authentication views
 from django.contrib.auth import views as auth_views
+
+
+
 
 urlpatterns = [
     path('login/', auth_views.LoginView.as_view(template_name='users/login.html') , name='user-login' ),
@@ -10,7 +12,6 @@ urlpatterns = [
     path('register/',register, name='user-register' ),
     path('profile/', profile , name='user-profile' ),
 ]
-
 
 """ 
 auth_views NOTES:

@@ -123,7 +123,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-# to fix messages module 
+# to get messages module to work with cloud 9 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
 # Static files (CSS, JavaScript, Images)
@@ -145,6 +145,16 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 # this will overwrite that feature and we get to redirect to a given url!
 LOGIN_REDIRECT_URL='blog-home'
 
-# link to show if the user tries to access links that are only 
+# link to use if the user tries to access links that are only
 # accessible when they are authenticated(loggged in)
+# e.g user/profile will now return a 404 error instead of a blank page(no user data to show
+# since there isnt a user logged in)
 LOGIN_URL='user-login'
+
+# MEDIA_ROOT - is the directory where we want django to store the media! such as profile pics
+# also note that the media isnt being stored in the database for performance purposes
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')    # BASE_DIR - is the project's base directory, and "media" is being added at the end
+
+# MEDIA_URL - is the public url of MEDIA_ROOT  
+# that's how we access the media through the browser
+MEDIA_URL = '/media/' 

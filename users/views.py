@@ -19,4 +19,5 @@ def register(request):
 
 @login_required
 def profile(request):
+    """ view to display user's profile  """
     return render(request, "users/profile.html")
