@@ -12,6 +12,7 @@ from django.contrib.auth.models import User
 def register_original(request):
     """ view function that uses django's "UserCreationForm" class to
     display the register template """
+
     
     form = UserCreationForm(request.POST or None)
     if form.is_valid():
@@ -27,7 +28,12 @@ def register_original(request):
 def register(request):
     """ view function that uses the custom "UserRegisterForm" class (Email field added)
     to display the registration page """
-
+    
+    # restrict user from accessing register template if user is already authenticated
+    if request.user.is_authenticated:
+        messages.info(request, "You are already registered!")
+        return redirect('blog-home')
+    
     form = UserRegisterForm(request.POST or None)
     
     if form.is_valid():
