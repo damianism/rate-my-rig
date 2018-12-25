@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages 
 from .forms import UserRegisterForm, UserUpdateFrom, ProfileUpdateFrom
@@ -85,4 +85,15 @@ def profile(request):
     }
     
     return render(request, "users/profile.html", context)
+
+
+
+def users_detail_view(request, username):
     
+    obj = get_object_or_404(User, username=username)
+
+    print("obj = ", obj.username)
+    context = {
+        "object": obj
+    }
+    return render(request, "users/user_detail.html", context)

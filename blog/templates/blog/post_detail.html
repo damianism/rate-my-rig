@@ -8,7 +8,7 @@
       <div class="media-body">
         <div class="article-metadata d-flex justify-content-between">
           <small class="text-muted">Posted on {{ object.date_posted|date:"d F Y" }}</small>
-          <div>by <a class="mr-2" href="#">{{ object.author }}</a></div>
+          <div>by <a class="mr-2" href="{% url 'user-view' object.author.username %}">{{ object.author }}</a></div>
           {% if object.author == user %}
             <div>
               <a href="{% url 'post-update' object.id %}" class="btn btn-sm btn-secondary mt-1 mb-1">Update</a>
@@ -18,8 +18,14 @@
         </div>
         <h2>{{ object.title }}</h2>
         <p class="article-content">
-          {{ object.cpu }}, {{ object.gpu }}, {{ object.ram }}
-          {{ object.description }}
+          <p>CPU: {{ object.cpu }}</p>
+          <p>GPU: {{ object.gpu }}</p>
+          <p>RAM: {{ object.ram }}</p>
+          <p>Motherboard: {{ object.mainboard }}</p>
+          <p>PSU: {{ object.psu }}</p>
+          <p>Primary storage: {{ object.primary_storage }}</p>
+          {% if object.secondary_storage %}<p>Secondary storage: {{ object.secondary_storage }}</p>{% endif %}
+          <p>Description: {{ object.description }}</p>
         </p>
       </div>
     </article>
