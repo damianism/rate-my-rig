@@ -45,3 +45,21 @@ class PostDetailView(DetailView):
     # <app>/<model>_<viewtype>.html     - e.g. blog/post_detail.html
     # context by default will be object
     model = Post
+    
+    
+
+class PostCreateView(CreateView):
+    """ class base view to display all the posts """
+    
+    # <app>/<model>_<viewtype>.html     - e.g. blog/post_detail.html
+    # context by default will be object
+    model = Post
+    fields = ['title', 'description']
+    # success_url = '/'   # optional to redirect to another url upon post! - by defualt it redirects to detail-post
+    
+    # the form requires a user to be passed in 
+    def form_valid(self, form):
+        form.instance.author = self.request.user  # passing in an instance of the use 
+        
+        # overwrite the parent class
+        return super().form_valid(form)

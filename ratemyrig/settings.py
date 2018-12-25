@@ -146,6 +146,8 @@ LOGIN_REDIRECT_URL='blog-home'
 # since there isnt a user logged in)
 LOGIN_URL='user-login'
 
+
+
 # MEDIA_ROOT - is the directory where we want django to store the media! such as profile pics
 # also note that the media isnt being stored in the database for performance purposes
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')    # BASE_DIR - is the project's base directory, and "media" is being added at the end

@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
+from django.urls import reverse
 from .helper_funcs import *
 
 
@@ -26,11 +27,11 @@ class Post(models.Model):
     author            = models.ForeignKey(User, on_delete=models.CASCADE)     #  if the user was deleted - delete all his/her post
                                                                               #  if the post of deleted - user will remain intact
 
-    # # take look at "product_list.html" - this thing is FUKCING amazing!
-    # def get_absolute_url(self):
-    #     # return "../product/dynamic/{}".format(self.id)            # -- HARD-CODED!
-    #     # reverse("app_name:view_name", kwargs={"myid": self.id}) - "app_name" is defined in the app's urls.py
-    #     return reverse("products:detailed_view", kwargs={"myid": self.id})   # -- DYNAMIC!  path('p/dynamic/<int:myid>', dynamic_lookup_view, name="detailed_view"), would still work!
+    # difference between redirect() and reverse()
+    # redirect:  redirects you to a specific route
+    # reverse:   returns the full url as string to a specific route 
+    def get_absolute_url(self):
+        return reverse("post-detail", kwargs={"pk": self.pk}) 
     
     
     def __str__(self):
