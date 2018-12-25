@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import Post
-from django.contrib.auth.mixins import LoginRequiredMixin   
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import (
     ListView, 
     DetailView, 
@@ -69,8 +69,9 @@ class PostCreateView(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
         
         
-        
-class PostUpdateView(LoginRequiredMixin, UpdateView):
+# UserPassesTestMixin passed into the function to restrict user from updating/editting 
+# posts made by other users
+class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     """ class base view to display all the posts """
     
     # <app>/<model>_<viewtype>.html     - e.g. blog/post_detail.html
@@ -85,3 +86,11 @@ class PostUpdateView(LoginRequiredMixin, UpdateView):
         
         # overwrite the parent class
         return super().form_valid(form)
+    
+    def test_func(self):
+        post = self.get_object()    # a method to get post object
+        
+        # returns True if they're the same, False if they're not the same 
+        return (self.request.user == post.author)
+
+        
