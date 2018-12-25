@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-
+from .models import Profile
 
 
 class UserRegisterForm(UserCreationForm):
@@ -23,3 +23,28 @@ class UserRegisterForm(UserCreationForm):
             'password1',
             'password2'
             ]
+            
+            
+class UserUpdateFrom(forms.ModelForm):
+    """ Form to change username and email from user profile template """
+    
+    email = forms.EmailField()
+    
+    class Meta:
+        model = User  
+        fields = [
+            'username',
+            'email'
+            ]
+            
+                  
+                        
+class ProfileUpdateFrom(forms.ModelForm):
+    """ Form to change profile pic from user profile template """
+    class Meta:
+        model = Profile # already contains the image field!
+        fields = [
+            'image',
+            ]
+            
+            
