@@ -10,7 +10,7 @@
               <small class="text-muted">Posted on {{ instance.date_posted|date:"d F Y" }}</small>
               <div>by <a class="mr-2" href="#">{{ instance.author }}</a></div>
             </div>
-            <h2><a class="article-title" href="#">{{ instance.title }}</a></h2>
+            <h2><a class="article-title" href="{% url 'post-detail' instance.id %}">{{ instance.title }}</a></h2>
             <p class="article-content">
                       {{ instance.cpu }}, {{ instance.gpu }}, {{ instance.ram }}
                       {{ instance.short_info }}

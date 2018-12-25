@@ -1,0 +1,21 @@
+{% extends 'base/base_home.html' %}
+
+{% block title %}Home Page{% endblock %}
+{% block content %}
+
+    <article class="media content-section">
+      <img class="rounded-circle article-img" src="{{ object.author.profile.image.url }}">
+      <div class="media-body">
+        <div class="article-metadata d-flex justify-content-between">
+          <small class="text-muted">Posted on {{ object.date_posted|date:"d F Y" }}</small>
+          <div>by <a class="mr-2" href="#">{{ object.author }}</a></div>
+        </div>
+        <h2>{{ object.title }}</h2>
+        <p class="article-content">
+                  {{ object.cpu }}, {{ object.gpu }}, {{ object.ram }}
+                  {{ object.description }}
+                  </p>
+      </div>
+    </article>
+
+{% endblock content %}
