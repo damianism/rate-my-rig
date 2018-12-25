@@ -5,7 +5,8 @@ from django.views.generic import (
     ListView, 
     DetailView, 
     CreateView,
-    UpdateView
+    UpdateView,
+    DeleteView
 )
 
 
@@ -74,7 +75,7 @@ class PostCreateView(LoginRequiredMixin, CreateView):
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     """ class base view to display all the posts """
     
-    # <app>/<model>_<viewtype>.html     - e.g. blog/post_detail.html
+    # uses the same template as create
     # context by default will be object
     model = Post
     fields = ['title', 'description']
@@ -93,4 +94,21 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         # returns True if they're the same, False if they're not the same 
         return (self.request.user == post.author)
 
+
+
+class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    """ class base view to display all the posts """
+    
+    # post_confirm_delete.html will be used!
+    # context by default will be object
+    model = Post
+    success_url = '/'
+    
+    
+    def test_func(self):
+        post = self.get_object()    # a method to get post object
+        
+        # returns True if they're the same, False if they're not the same 
+        return (self.request.user == post.author)
+        
         
