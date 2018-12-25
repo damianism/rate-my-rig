@@ -22,7 +22,7 @@ class Post(models.Model):
     secondary_storage = models.CharField(max_length=120, blank=True)
     mainboard         = models.CharField(max_length=120, blank=True)
     description       = models.TextField(blank=True)
-    short_info        = models.TextField(blank=True)
+    short_info        = models.CharField(max_length=200, blank=True)
     date_posted       = models.DateTimeField(default=timezone.now)
     author            = models.ForeignKey(User, on_delete=models.CASCADE)     #  if the user was deleted - delete all his/her post
                                                                               #  if the post of deleted - user will remain intact

@@ -59,8 +59,19 @@ class PostCreateView(LoginRequiredMixin, CreateView):
     # <app>/<model>_<viewtype>.html     - e.g. blog/post_detail.html
     # context by default will be object
     model = Post
-    fields = ['title', 'description']
     # success_url = '/'   # optional to redirect to another url upon post! - by defualt it redirects to detail-post
+    fields = [
+        'title', 
+        'cpu',
+        'gpu',
+        'ram',
+        'psu',
+        'primary_storage',
+        'secondary_storage',
+        'mainboard',
+        'description',
+        'short_info'
+    ]
     
     # the form requires a user to be passed in 
     def form_valid(self, form):
@@ -78,7 +89,18 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     # uses the same template as create
     # context by default will be object
     model = Post
-    fields = ['title', 'description']
+    fields = [
+        'title', 
+        'cpu',
+        'gpu',
+        'ram',
+        'psu',
+        'primary_storage',
+        'secondary_storage',
+        'mainboard',
+        'description',
+        'short_info'
+    ]
     #
     
     # the form requires a user to be passed in 

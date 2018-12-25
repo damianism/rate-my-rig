@@ -26,5 +26,6 @@ urlpatterns = [
     path('user/', include('users.urls')),
 ]
 
+# this approach only works locally, WONT work on deployment
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
