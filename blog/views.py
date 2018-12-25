@@ -1,9 +1,11 @@
 from django.shortcuts import render
 from .models import Post
+from django.contrib.auth.mixins import LoginRequiredMixin   
 from django.views.generic import (
     ListView, 
     DetailView, 
-    CreateView
+    CreateView,
+    UpdateView
 )
 
 
@@ -47,8 +49,10 @@ class PostDetailView(DetailView):
     model = Post
     
     
-
-class PostCreateView(CreateView):
+# the login_required decorator CANNOT be used with class based views
+# instead, LoginRequiredMixin (imported above) needs to be passed into the class in far left
+# now the user has to be logged in, in order to create a post
+class PostCreateView(LoginRequiredMixin, CreateView):
     """ class base view to display all the posts """
     
     # <app>/<model>_<viewtype>.html     - e.g. blog/post_detail.html
@@ -56,6 +60,24 @@ class PostCreateView(CreateView):
     model = Post
     fields = ['title', 'description']
     # success_url = '/'   # optional to redirect to another url upon post! - by defualt it redirects to detail-post
+    
+    # the form requires a user to be passed in 
+    def form_valid(self, form):
+        form.instance.author = self.request.user  # passing in an instance of the use 
+        
+        # overwrite the parent class
+        return super().form_valid(form)
+        
+        
+        
+class PostUpdateView(LoginRequiredMixin, UpdateView):
+    """ class base view to display all the posts """
+    
+    # <app>/<model>_<viewtype>.html     - e.g. blog/post_detail.html
+    # context by default will be object
+    model = Post
+    fields = ['title', 'description']
+    #
     
     # the form requires a user to be passed in 
     def form_valid(self, form):
