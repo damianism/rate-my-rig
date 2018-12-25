@@ -8,12 +8,14 @@
       <div class="media-body">
         <div class="article-metadata d-flex justify-content-between">
           <small class="text-muted">Posted on {{ object.date_posted|date:"d F Y" }}</small>
-          <div>by <a class="mr-2" href="{% url 'user-view' object.author.username %}">{{ object.author }}</a></div>
           {% if object.author == user %}
+            <div>by <a class="mr-2" href="{% url 'user-profile' %}">{{ object.author }}</a></div>
             <div>
               <a href="{% url 'post-update' object.id %}" class="btn btn-sm btn-secondary mt-1 mb-1">Update</a>
               <a href="{% url 'post-delete' object.id %}" class="btn btn-sm btn-danger mt-1 mb-1">Delete</a>
             </div>
+          {% else %}
+            <div>by <a class="mr-2" href="{% url 'user-view' object.author.username %}">{{ object.author }}</a></div>
           {% endif %}
         </div>
         <h2>{{ object.title }}</h2>
