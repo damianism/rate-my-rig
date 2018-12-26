@@ -2,8 +2,8 @@
 
 {% block title %}Home Page{% endblock %}
 
-{% include "base/pagination.html" %}  
 {% block home_content %}
+{% include "base/pagination.html" %}  
     {% for instance in object_list %}
       <article class="media content-section">
         <img class="rounded-circle article-img" src="{{ instance.author.profile.image.url }}">
