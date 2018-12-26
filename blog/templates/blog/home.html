@@ -1,7 +1,7 @@
-{% extends 'base/base_home.html' %}
+{% extends 'base/base.html' %}
 
 {% block title %}Home Page{% endblock %}
-{% block content %}
+{% block home_content %}
     {% for instance in object_list %}
         <article class="media content-section">
           <img class="rounded-circle article-img" src="{{ instance.author.profile.image.url }}">
@@ -22,4 +22,4 @@
           </div>
         </article>
     {% endfor %}
-{% endblock content %}
+{% endblock home_content %}

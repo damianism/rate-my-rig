@@ -1,21 +1,24 @@
 {% extends 'base/base.html' %}
 
 {% block content %}
-    <article class="media content-section">
-      <img class="rounded-circle article-img" src="{{ object.profile.image.url }}">
-      <div class="media-body">
-
-        <h3>Name: {{ object.first_name }} {{ object.last_name }}</h3>
-        <h3>Username: {{ object.username }}</h3>
+    <div class="content-section">
+        <div class="media">
+            <img class="rounded-circle account-img" src="{{ object.profile.image.url }}">
+            <div class="media-body">
+                <h2 class="account-heading">{{ object.username }}</h2>
+                <p class="text-secondary">
+                    email: {{ object.email }}<br> 
+                    name: {{ object.first_name|title }}{{ object.last_name|center:"15"|title }}
+                </p>
+            </div>
+        </div>    
         <h3>Posts:</h3>
-        {% for post in object.post_set.all %}
-           <p>
-           {{ forloop.counter}}) <a href="{% url 'post-detail' post.id %}">{{ post }}</a>
-           </p>
-        {% endfor %}
-
-    </article>
-
-
-
+        <ol>
+            {% for post in object.post_set.all %}
+               <li>
+                   <a href="{% url 'post-detail' post.id %}">{{ post }}</a>
+               </li>
+            {% endfor %}
+        </ol>
+    </div>
 {% endblock content %}
