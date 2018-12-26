@@ -17,7 +17,7 @@
             <h2><a class="article-title" href="{% url 'post-detail' instance.id %}">{{ instance.title }}</a></h2>
             <p class="article-content">
                       {{ instance.cpu }}, {{ instance.gpu }}, {{ instance.ram }}
-                      {{ instance.short_info }}
+                      {{ instance.description|slice:":120" }}
                       </p>
           </div>
         </article>

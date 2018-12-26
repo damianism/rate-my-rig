@@ -10,8 +10,8 @@ class UserRegisterForm(UserCreationForm):
 
     # Fields to add/edit
     email = forms.EmailField()
-    first_name = forms.CharField()
-    last_name = forms.CharField()
+    first_name = forms.CharField(max_length=15)
+    last_name = forms.CharField(max_length=30)
     class Meta:
         
         # model = User - simply means that the model that's going to be affected is the "User" model

@@ -18,11 +18,10 @@ class Post(models.Model):
     ram = models.CharField(max_length=30, choices=RAM_CHOICES, default='8GB')
     psu = models.CharField(max_length=30, choices=PSU_CHOICES,default='750W')
 
-    primary_storage   = models.CharField(max_length=120, blank=True)
+    primary_storage   = models.CharField(max_length=120)
     secondary_storage = models.CharField(max_length=120, blank=True)
-    mainboard         = models.CharField(max_length=120, blank=True)
+    mainboard         = models.CharField(max_length=120)
     description       = models.TextField(blank=True)
-    short_info        = models.CharField(max_length=200, blank=True)
     date_posted       = models.DateTimeField(default=timezone.now)
     author            = models.ForeignKey(User, on_delete=models.CASCADE)     #  if the user was deleted - delete all his/her post
                                                                               #  if the post of deleted - user will remain intact
