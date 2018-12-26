@@ -1,25 +1,30 @@
 {% extends 'base/base.html' %}
 
 {% block title %}Home Page{% endblock %}
+
+{% include "base/pagination.html" %}  
 {% block home_content %}
     {% for instance in object_list %}
-        <article class="media content-section">
-          <img class="rounded-circle article-img" src="{{ instance.author.profile.image.url }}">
-          <div class="media-body">
-            <div class="article-metadata d-flex justify-content-between">
-              <small class="text-muted">Posted on {{ instance.date_posted|date:"d F Y" }}</small>
-              {% if instance.author == user %}
-                <div>by <a class="mr-2" href="{% url 'user-profile' %}" target="_blank">{{ instance.author }}</a></div>
-              {% else %}
-                <div>by <a class="mr-2" href="{% url 'user-view' instance.author.username %}" target="_blank">{{ instance.author }}</a></div>
-              {% endif %}
-            </div>
-            <h2><a class="article-title" href="{% url 'post-detail' instance.id %}">{{ instance.title }}</a></h2>
-            <p class="article-content">
-                      {{ instance.cpu }}, {{ instance.gpu }}, {{ instance.ram }}
-                      {{ instance.description|slice:":120" }}
-                      </p>
+      <article class="media content-section">
+        <img class="rounded-circle article-img" src="{{ instance.author.profile.image.url }}">
+        <div class="media-body">
+          <div class="article-metadata d-flex justify-content-between">
+            <small class="text-muted">Posted on {{ instance.date_posted|date:"d F Y" }}</small>
+            {% if instance.author == user %}
+              <div>by <a class="mr-2" href="{% url 'user-profile' %}" target="_blank">{{ instance.author }}</a></div>
+            {% else %}
+              <div>by <a class="mr-2" href="{% url 'user-view' instance.author.username %}" target="_blank">{{ instance.author }}</a></div>
+            {% endif %}
           </div>
-        </article>
+          <h2><a class="article-title" href="{% url 'post-detail' instance.id %}">{{ instance.title }}</a></h2>
+          <p class="article-content">
+                    {{ instance.cpu }}, {{ instance.gpu }}, {{ instance.ram }}
+                    {{ instance.description|slice:":120" }}
+                    </p>
+        </div>
+      </article>
     {% endfor %}
+{% include "base/pagination.html" %}  
+    
+    
 {% endblock home_content %}
