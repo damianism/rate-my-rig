@@ -1,63 +1,25 @@
+{% load crispy_forms_tags %}
 
-          <div class="content-section">
-            <h3>Filters</h3>
-            <p class='text-muted'>Apply personalised filter. </p>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <label class="input-group-text" for="inputGroupSelect01">Brand</label>
-              </div>
-              <select class="custom-select" id="inputGroupSelect01">
-                <option selected>Choose...</option>
-                <option value="1">AMD</option>
-                <option value="2">INTEL</option>
-              </select>
-            </div>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <label class="input-group-text" for="inputGroupSelect01">Generation</label>
-              </div>
-              <select class="custom-select" id="inputGroupSelect01">
-                <option selected>Choose...</option>
-                <option value="1">8th coffeelake</option>
-                <option value="2">7th haswell</option>
-              </select>
-            </div>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <label class="input-group-text" for="inputGroupSelect01">CPU</label>
-              </div>
-              <select class="custom-select" id="inputGroupSelect01">
-                <option selected>Choose...</option>
-                <option value="1">i7</option>
-                <option value="2">i5</option>
-                <option value="3">i9</option>
-              </select>
-            </div>
-            
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <label class="input-group-text" for="inputGroupSelect01">GPU</label>
-              </div>
-              <select class="custom-select" id="inputGroupSelect01">
-                <option selected>Choose...</option>
-                <option value="1">GTX 2080</option>
-                <option value="2">GTX 2070</option>
-                <option value="3">GTX 2060</option>
-                <option value="4">GTX 1080</option>
-                <option value="5">GTX 1070</option>
-                <option value="6">GTX 1060</option>
-              </select>
-            </div>
-            
-          </div>
-          <div class="content-section">
-            <h3>Search</h3>
-            <div class="card-body">
-              <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search for...">
-                <span class="input-group-btn">
-                  <button class="btn btn-secondary" type="button">Go!</button>
-                </span>
-              </div>
-            </div>
-          </div>
+<div class="content-section">
+  <h3>Filter</h3>
+  <div class="card-body">
+    <div class="input-group">
+      <form action="" method="get">
+        {{ filter.form|crispy }}
+        <input class="btn btn-secondary" type="submit" />
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="content-section">
+  <h3>Search</h3>
+  <div class="card-body">
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Search for...">
+      <span class="input-group-btn">
+          <button class="btn btn-secondary" type="button">Go!</button>
+      </span>
+    </div>
+  </div>
+</div>

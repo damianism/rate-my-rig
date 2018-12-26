@@ -1,3 +1,5 @@
+from django_filters.views import FilterView
+from .filters import PostFilter
 from django.shortcuts import render
 from .models import Post
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
@@ -42,6 +44,30 @@ class PostListView(ListView):
     ordering = ['-date_posted']         # change the order  - ['-date_posted'] to reverse the order
     paginate_by = 10                    # paginate the posts by an integer
     
+
+
+
+class FilterPostListView(ListView):
+    """ class base view to display all the posts """
+    
+    # where it looks for the template and what template
+    # <app>/<model>_<viewtype>.html     - e.g. blog/post_list.html
+    
+    model = Post    # based on what class
+    template_name = 'blog/home.html'    # to replace the default template (blog/posts_list.html) use "template_name"
+    # context_object_name = 'posts'     # to replace the default context name (object_list) use "context_object_name"
+    ordering = ['-date_posted']         # change the order  - ['-date_posted'] to reverse the order
+    paginate_by = 10                    # paginate the posts by an integer
+
+    def get_context_data(self, **kwrgs):
+        context = super().get_context_data(**kwrgs)
+        context['filter'] = PostFilter(self.request.GET, queryset=self.get_queryset())
+        return context
+
+
+
+
+
 
 class PostDetailView(DetailView):
     """ class base view to display all the posts """

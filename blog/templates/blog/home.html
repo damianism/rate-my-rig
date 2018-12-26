@@ -3,8 +3,8 @@
 {% block title %}Home Page{% endblock %}
 
 {% block home_content %}
-{% include "base/pagination.html" %}  
-    {% for instance in object_list %}
+{% include "base/pagination.html" %}
+     {% for instance in filter.qs %}
       <article class="media content-section">
         <img class="rounded-circle article-img" src="{{ instance.author.profile.image.url }}">
         <div class="media-body">
@@ -23,6 +23,8 @@
                     </p>
         </div>
       </article>
+      {% empty %}
+        <p class="alert alert-info text-center">Sorry, no matches found</p>
     {% endfor %}
 {% include "base/pagination.html" %}  
     
