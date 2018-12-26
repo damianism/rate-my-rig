@@ -1,7 +1,7 @@
 from django_filters.views import FilterView
 from .filters import PostFilter
 from django.shortcuts import render
-from .models import Post
+from .models import Post, Comment
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import (
     ListView, 
@@ -76,6 +76,13 @@ class PostDetailView(DetailView):
     # <app>/<model>_<viewtype>.html     - e.g. blog/post_detail.html
     # context by default will be object
     model = Post
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['comments'] = Comment.objects.all()
+        return context
+    
+    
     
     
 # the login_required decorator CANNOT be used with class based views

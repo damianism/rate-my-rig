@@ -37,6 +37,13 @@ class Post(models.Model):
         return self.title
     
 
+class Comment(models.Model):
+    """ create model for a comments  """
+    user = models.ForeignKey(User, related_name='comments', on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, related_name='comments', on_delete=models.CASCADE)
+    text = models.CharField(max_length=500)
+    time = models.DateTimeField(auto_now_add=True)
+
     
 """ 
 IMPORTANT NOTES:
