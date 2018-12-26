@@ -32,17 +32,17 @@ def about(request):
 
 # CLASS BASED VIEWS
 
-class PostListView(ListView):
-    """ class base view to display all the posts """
+# class PostListView(ListView):
+#     """ class base view to display all the posts """
     
-    # where it looks for the template and what template
-    # <app>/<model>_<viewtype>.html     - e.g. blog/post_list.html
+#     # where it looks for the template and what template
+#     # <app>/<model>_<viewtype>.html     - e.g. blog/post_list.html
     
-    model = Post    # based on what class
-    template_name = 'blog/home.html'    # to replace the default template (blog/posts_list.html) use "template_name"
-    # context_object_name = 'posts'     # to replace the default context name (object_list) use "context_object_name"
-    ordering = ['-date_posted']         # change the order  - ['-date_posted'] to reverse the order
-    paginate_by = 10                    # paginate the posts by an integer
+#     model = Post    # based on what class
+#     template_name = 'blog/home.html'    # to replace the default template (blog/posts_list.html) use "template_name"
+#     # context_object_name = 'posts'     # to replace the default context name (object_list) use "context_object_name"
+#     ordering = ['-date_posted']         # change the order  - ['-date_posted'] to reverse the order
+#     paginate_by = 10                    # paginate the posts by an integer
     
 
 
@@ -56,9 +56,10 @@ class FilterPostListView(ListView):
     model = Post    # based on what class
     template_name = 'blog/home.html'    # to replace the default template (blog/posts_list.html) use "template_name"
     # context_object_name = 'posts'     # to replace the default context name (object_list) use "context_object_name"
-    ordering = ['-date_posted']         # change the order  - ['-date_posted'] to reverse the order
+    # ordering = ['-date_posted']         # change the order  - ['-date_posted'] to reverse the order
     paginate_by = 10                    # paginate the posts by an integer
 
+    
     def get_context_data(self, **kwrgs):
         context = super().get_context_data(**kwrgs)
         context['filter'] = PostFilter(self.request.GET, queryset=self.get_queryset())
