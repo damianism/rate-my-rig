@@ -3,7 +3,14 @@
 {% block title %}Home Page{% endblock %}
 
 {% block home_content %}
-{% include "base/pagination.html" %}
+  <div class="d-flex justify-content-between">
+    <div>
+      <a class="btn btn-sm btn-success" href="{% url 'post-create' %}">New Post</a>
+    </div>   
+    <div>
+      {% include "base/pagination.html" %}
+    </div>
+  </div>
      {% for instance in filter.qs %}
       <article class="media content-section">
         <img class="rounded-circle article-img" src="{{ instance.author.profile.image.url }}">
@@ -26,7 +33,8 @@
       {% empty %}
         <p class="alert alert-info text-center">Sorry, no matches found</p>
     {% endfor %}
-{% include "base/pagination.html" %}  
-    
+  <div class="d-flex justify-content-end">
+    {% include "base/pagination.html" %}  
+  </div>  
     
 {% endblock home_content %}
