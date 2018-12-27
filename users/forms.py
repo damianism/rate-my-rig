@@ -33,7 +33,7 @@ class UserRegisterForm(UserCreationForm):
         # get the field from the cleaned_data dictionary first!
         email = self.cleaned_data.get("email")
         if User.objects.filter(email=email).exists():
-            raise forms.ValidationError("This is not a valid Email - User already registered")
+            raise forms.ValidationError("A user with that email address already exists.")
 
             
 class UserUpdateFrom(forms.ModelForm):
