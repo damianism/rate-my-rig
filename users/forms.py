@@ -27,6 +27,14 @@ class UserRegisterForm(UserCreationForm):
             'password2'
             ]
             
+    # to validate individual fields - custom validations
+    # validation methods are used which written as -->   def clean_<field>(self):
+    def clean_email(self):
+        # get the field from the cleaned_data dictionary first!
+        email = self.cleaned_data.get("email")
+        if User.objects.filter(email=email).exists():
+            raise forms.ValidationError("This is not a valid Email - User already registered")
+
             
 class UserUpdateFrom(forms.ModelForm):
     """ Form to change username and email from user profile template """
