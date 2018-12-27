@@ -1,8 +1,10 @@
 from django_filters.views import FilterView
 from .filters import PostFilter
-from django.shortcuts import render
-from .models import Post, Comment
+from django.shortcuts import render, reverse
+from .models import Post
+from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from comments.forms import CommentForm
 from django.views.generic import (
     ListView, 
     DetailView, 
@@ -66,25 +68,15 @@ class FilterPostListView(ListView):
         return context
 
 
-
-
-
-
 class PostDetailView(DetailView):
     """ class base view to display all the posts """
     
     # <app>/<model>_<viewtype>.html     - e.g. blog/post_detail.html
     # context by default will be object
     model = Post
-    
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['comments'] = Comment.objects.all()
-        return context
-    
-    
-    
-    
+
+        
+        
 # the login_required decorator CANNOT be used with class based views
 # instead, LoginRequiredMixin (imported above) needs to be passed into the class in far left
 # now the user has to be logged in, in order to create a post
