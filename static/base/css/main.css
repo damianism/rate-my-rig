@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Special+Elite");
 @import url("https://fonts.googleapis.com/css?family=Kosugi");
 body {
-  background: #fafafa;
+  background: #ffc107;
   color: #333333;
   margin-top: 5rem;
   height: 100%;
@@ -85,5 +85,14 @@ a.article-title:hover {
 #main-container {
   min-height: calc(100% - 168px);
   min-height: 60vw; }
+
+.btn-pag {
+  background-color: #800000;
+  border-color: #800000;
+  color: #ffc107;
+  font-weight: bold; }
+  .btn-pag:hover {
+    background-color: black;
+    color: #ffc107; }
 
 /*# sourceMappingURL=main.css.map */

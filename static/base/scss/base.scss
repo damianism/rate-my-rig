@@ -1,5 +1,6 @@
 body {
-  background: #fafafa;
+  // background: #fafafa;
+  background: map-get($color, mustard);
   color: #333333;
   margin-top: 5rem;
   height: 100%;
@@ -109,4 +110,17 @@ a.article-title:hover {
     min-height: calc(100% - 168px);
     min-height: 60vw;
 
+}
+
+
+
+.btn-pag {
+  background-color: map-get($color, maroon);
+  border-color: map-get($color, maroon);
+  color: map-get($color, mustard);
+  font-weight: bold;
+  &:hover {
+    background-color: black;
+    color: map-get($color, mustard);
+  }
 }
