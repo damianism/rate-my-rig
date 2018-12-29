@@ -1,10 +1,12 @@
 from django_filters.views import FilterView
 from .filters import PostFilter
 from django.shortcuts import render, reverse, redirect, get_object_or_404
+from django.utils import timezone
 from .models import Post
 from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from comments.forms import CommentForm
+from .forms import BlogPostForm
 from django.views.generic import (
     ListView, 
     DetailView, 
@@ -50,7 +52,13 @@ def about(request):
 
 
 class FilterPostListView(ListView):
-    """ class base view to display all the posts """
+    """ class-base view to display all the posts based on what's being filtered
+        via the installed third party library called "django_filters"
+        
+        Based on model "Post"
+        Renders to the "blog/home.html" template.
+        Pagination active by 10
+    """
     
     # where it looks for the template and what template
     # <app>/<model>_<viewtype>.html     - e.g. blog/post_list.html
@@ -69,7 +77,11 @@ class FilterPostListView(ListView):
 
 
 class PostDetailView(DetailView):
-    """ class base view to display all the posts """
+    """ class-based view to display a single post in detail 
+        
+        Based on model "Post"
+        Renders to the "post_detail.html" template
+    """
     
     # <app>/<model>_<viewtype>.html     - e.g. blog/post_detail.html
     # context by default will be object
@@ -172,5 +184,42 @@ NOTE!
     so the following class-based views will be converted to function-based view in the 
     order listed below!
     
-        - 
+        1) "PostDetailView" class-based view was replaced by 
+                            function-based view "post_detail_view" 
+        2) "PostCreateView" & "PostUpdateView" class-based views were replaced by 
+                            function-based view "create_or_edit_post" 
+
 """
+
+def post_detail_view(request):
+    """ Function-based view to display a single post in detail """
+    pass
+    
+def post_detail_view(request, pk):
+    """ Function-based view to display a single post in detail 
+        
+    - Renders to the "post_detail.html" template based on instance of Post ID
+    - Returns 404 error if post not found - incorrect ID
+    
+    """
+    
+    # get object
+    post = get_object_or_404(Post, pk=pk)
+    post.views += 1   # increment view
+    post.save()       # save post
+    
+    context = {
+        "object": post
+    }
+    
+    return render(request, "blog/post_detail.html", context)
+    
+    
+def create_or_edit_post(request, pk=None):
+    """ Function-based view to:
+        - create a new post
+        - edit an existing post
+        
+        based on post being null or not
+    """
+    pass
