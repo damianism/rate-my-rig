@@ -144,6 +144,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'), )
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
+
 # NOTE! when using built in login class base view by django
 # after loggin in - it will automatically redirects to "accounts/profile"
 # this will overwrite that feature and we get to redirect to a given url!
