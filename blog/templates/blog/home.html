@@ -11,7 +11,8 @@
       {% include "base/pagination.html" %}
     </div>
   </div>
-     {% for instance in filter.qs %}
+     <!--{# {% for instance in filter.qs %} #}-->
+     {% for instance in object_list %}
       <article class="media content-section">
         <img class="rounded-circle article-img" src="{{ instance.author.profile.image.url }}">
         <div class="media-body">

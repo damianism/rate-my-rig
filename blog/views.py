@@ -49,8 +49,6 @@ def about(request):
 #     paginate_by = 10                    # paginate the posts by an integer
     
 
-
-
 class FilterPostListView(ListView):
     """ class-base view to display all the posts based on what's being filtered
         via the installed third party library called "django_filters"
@@ -67,12 +65,24 @@ class FilterPostListView(ListView):
     template_name = 'blog/home.html'    # to replace the default template (blog/posts_list.html) use "template_name"
     # context_object_name = 'posts'     # to replace the default context name (object_list) use "context_object_name"
     ordering = ['-date_posted']         # change the order  - ['-date_posted'] to reverse the order
-    paginate_by = 10                    # paginate the posts by an integer
+    context_object_name = 'object_list'       # Default: object_list
+    paginate_by = 5                    # paginate the posts by an integer
+    filterset_class = PostFilter
 
-    
+    def get_queryset(self):
+        # Get the queryset however you usually would.  For example:
+        queryset = super().get_queryset()
+        # Then use the query parameters and the queryset to
+        # instantiate a filterset and save it as an attribute
+        # on the view instance for later.
+        self.filterset = self.filterset_class(self.request.GET, queryset=queryset)
+        # Return the filtered queryset
+        return self.filterset.qs.distinct()
+
+
     def get_context_data(self, **kwrgs):
         context = super().get_context_data(**kwrgs)
-        context['filter'] = PostFilter(self.request.GET, queryset=self.get_queryset())
+        context['filter'] = self.filterset # PostFilter(self.request.GET, queryset=self.get_queryset())
         return context
 
 
