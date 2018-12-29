@@ -29,7 +29,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [os.environ.get('C9_HOSTNAME')]
+ALLOWED_HOSTS = [os.environ.get('C9_HOSTNAME'), 'rate-my-rig.herokuapp.com']
 
 
 # Application definition
@@ -84,7 +84,7 @@ WSGI_APPLICATION = 'ratemyrig.wsgi.application'
 
 
 # Database
-https://docs.djangoproject.com/en/2.0/ref/settings/#databases
+# https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 if os.path.exists("env.py"):
     DATABASES = {
         'default': {
