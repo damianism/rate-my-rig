@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
+import dj_database_url
 if os.path.exists("env.py"):
     import env
 
@@ -83,14 +84,16 @@ WSGI_APPLICATION = 'ratemyrig.wsgi.application'
 
 
 # Database
-# https://docs.djangoproject.com/en/2.0/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+https://docs.djangoproject.com/en/2.0/ref/settings/#databases
+if os.path.exists("env.py"):
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
     }
-}
+else:
+    DATABASES = {'default': dj_database_url.parse('postgres://tghhtpmwotqhvm:099a755414075a88dd266581321c39393ff399ef9fe23d9e88cd84fecd9259d4@ec2-54-247-125-116.eu-west-1.compute.amazonaws.com:5432/d1dnai7s91p4dl')}
 
 
 # Password validation
