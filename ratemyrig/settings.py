@@ -29,7 +29,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [os.environ.get('C9_HOSTNAME'), 'rate-my-rig.herokuapp.com']
+ALLOWED_HOSTS = [os.environ.get('C9_HOSTNAME'), os.environ.get('HOSTNAME')]
 
 
 # Application definition
@@ -83,8 +83,8 @@ TEMPLATES = [
 WSGI_APPLICATION = 'ratemyrig.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/2.0/ref/settings/#databases
+# # Database
+# # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 if os.path.exists("env.py"):
     DATABASES = {
         'default': {
@@ -93,7 +93,7 @@ if os.path.exists("env.py"):
         }
     }
 else:
-    DATABASES = {'default': dj_database_url.parse('postgres://tghhtpmwotqhvm:099a755414075a88dd266581321c39393ff399ef9fe23d9e88cd84fecd9259d4@ec2-54-247-125-116.eu-west-1.compute.amazonaws.com:5432/d1dnai7s91p4dl')}
+    DATABASES = {'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))}
 
 
 # Password validation
