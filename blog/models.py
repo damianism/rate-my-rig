@@ -3,7 +3,8 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 from django.urls import reverse
 from .helper_funcs import *
-
+# third party package to resize images
+from django_resized import ResizedImageField
 
 class Post(models.Model):
     """ Create model for a typical post """
@@ -23,6 +24,8 @@ class Post(models.Model):
     mainboard         = models.CharField(max_length=120)
     description       = models.TextField(blank=True)
     date_posted       = models.DateTimeField(default=timezone.now)
+    views             = models.IntegerField(default=0)
+    image             = ResizedImageField(upload_to='posts_pics', size=[500, 500], blank=True)
     author            = models.ForeignKey(User, on_delete=models.CASCADE)     #  if the user was deleted - delete all his/her post
                                                                               #  if the post of deleted - user will remain intact
 

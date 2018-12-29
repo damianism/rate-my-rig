@@ -96,7 +96,8 @@ class PostCreateView(LoginRequiredMixin, CreateView):
         'primary_storage',
         'secondary_storage',
         'mainboard',
-        'description'
+        'description',
+        'image'
     ]
     
     # the form requires a user to be passed in 
@@ -124,7 +125,8 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         'primary_storage',
         'secondary_storage',
         'mainboard',
-        'description'
+        'description',
+        'image'
     ]
     #
     
