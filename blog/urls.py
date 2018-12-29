@@ -1,9 +1,7 @@
 from django.urls import path
 from . import views
-# from django.views.generic import RedirectView
 
 from .views import (
-    # PostListView, 
     PostCreateView,
     PostUpdateView,
     PostDeleteView,
@@ -11,8 +9,6 @@ from .views import (
 )
 
 urlpatterns = [
-    # path('',views.home, name='blog-home'),
-    # path('', FilterPostListView.as_view() , name='blog-home'),
     path('', FilterPostListView.as_view() , name='blog-home'),
     path('post/<int:pk>/', views.post_detail_view, name='post-detail'),
     path('post/<int:pk>/update', PostUpdateView.as_view() , name='post-update'),
