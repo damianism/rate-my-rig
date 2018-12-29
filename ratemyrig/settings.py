@@ -62,6 +62,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'ratemyrig.urls'
@@ -88,16 +89,16 @@ WSGI_APPLICATION = 'ratemyrig.wsgi.application'
 
 # # Database
 # # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
-if development:
+if 'DATABASE_URL' in os.environ:
+    DATABASES = {'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))}
+else:
+    print("Postgres URL not found, using sqlite3 instead")
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         }
     }
-else:
-    DATABASES = {'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))}
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
@@ -141,6 +142,8 @@ STATIC_URL = '/static/'
 
 # top level direcotry for base.html CSS and SASS
 STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"), )
+STATICROOT = os.path.join(BASE_DIR, "staticfiles")
+
 
 # NOTE! when using built in login class base view by django
 # after loggin in - it will automatically redirects to "accounts/profile"
