@@ -13,8 +13,10 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 import os
 import dj_database_url
 if os.path.exists("env.py"):
+    development = True
     import env
-
+else:
+    development = False
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -27,7 +29,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = development
 
 ALLOWED_HOSTS = [os.environ.get('C9_HOSTNAME'), os.environ.get('HOSTNAME')]
 
@@ -85,7 +87,7 @@ WSGI_APPLICATION = 'ratemyrig.wsgi.application'
 
 # # Database
 # # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
-if os.path.exists("env.py"):
+if development:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
