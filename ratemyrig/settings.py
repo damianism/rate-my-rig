@@ -142,7 +142,7 @@ STATIC_URL = '/static/'
 
 # top level direcotry for base.html CSS and SASS
 STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"), )
-STATICROOT = os.path.join(BASE_DIR, "staticfiles")
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 
 # NOTE! when using built in login class base view by django
