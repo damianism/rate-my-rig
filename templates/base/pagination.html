@@ -1,21 +1,20 @@
+{% load my_tags %}
+
 {% if is_paginated %}
-  <ul class="pagination">
-    {% if page_obj.has_previous %}
-      <li><a href="?page={{ page_obj.previous_page_number }}" class="mx-1 my-1">&laquo;</a></li>
-    {% else %}
-      <li class="disabled mx-1 my-1"><span>&laquo;</span></li>
+  {% if page_obj.has_previous %}
+    <a href="?{% param_replace page=1 %}" class="mx-1">First</a>
+    {% if page_obj.previous_page_number != 1 %}
+      <a href="?{% param_replace page=page_obj.previous_page_number %}" class="mx-1">Previous</a>
     {% endif %}
-    {% for i in paginator.page_range %}
-      {% if page_obj.number == i %}
-        <li class="active mx-1 my-1"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
-      {% else %}
-        <li><a href="?page={{ i }}" class="mx-1 my-1">{{ i }}</a></li>
-      {% endif %}
-    {% endfor %}
-    {% if page_obj.has_next %}
-      <li><a href="?page={{ page_obj.next_page_number }}" class="mx-1 my-1">&raquo;</a></li>
-    {% else %}
-      <li class="disabled mx-1 my-1"><span>&raquo;</span></li>
+  {% endif %}
+
+  Page {{ page_obj.number }} of {{ paginator.num_pages }}
+
+  {% if page_obj.has_next %}
+    {% if page_obj.next_page_number != paginator.num_pages %}
+      <a href="?{% param_replace page=page_obj.next_page_number %}" class="mx-1">Next</a>
     {% endif %}
-  </ul>
+    <a href="?{% param_replace page=paginator.num_pages %}" class="mx-1">Last</a>
+  {% endif %}
+
 {% endif %}
