@@ -138,12 +138,11 @@ MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
-STATIC_URL = '/static/'
 
 # top level direcotry for base.html CSS and SASS
+STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"), )
-STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # NOTE! when using built in login class base view by django
 # after loggin in - it will automatically redirects to "accounts/profile"
