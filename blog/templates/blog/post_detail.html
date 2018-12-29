@@ -22,7 +22,9 @@
         <p class="article-content">
 
           <p>views: {{ object.views }}</p>
-          {# <img src="{{ object.image.url }}"></img> #}
+          {% if object.image %}
+            <img src="{{ object.image.url }}"></img>
+          {% endif %}
           <p>CPU: {{ object.cpu }}</p>
           <p>GPU: {{ object.gpu }}</p>
           <p>RAM: {{ object.ram }}</p>

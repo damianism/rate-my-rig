@@ -1,6 +1,6 @@
 from django_filters.views import FilterView
 from .filters import PostFilter
-from django.shortcuts import render, reverse
+from django.shortcuts import render, reverse, redirect, get_object_or_404
 from .models import Post
 from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
@@ -159,4 +159,18 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         # returns True if they're the same, False if they're not the same 
         return (self.request.user == post.author)
         
-        
+
+
+
+"""
+NOTE!
+    some of the classbased views have to be replaced due to the fact that modifying 
+    such views turned out to be alot more complex than initially assumed! there's not 
+    enough clear examples online and the documentations only do the bear minimum to 
+    explain everything
+    
+    so the following class-based views will be converted to function-based view in the 
+    order listed below!
+    
+        - 
+"""
