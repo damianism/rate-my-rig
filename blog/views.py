@@ -237,32 +237,3 @@ def post_detail_view(request, pk):
     
     return render(request, "blog/post_detail.html", context)
     
-    
-# def create_or_edit_post(request, pk=None):
-#     """ Function-based view to:
-#         - create a new post
-#         - edit an existing post
-        
-#         based on post being null or not
-#     """
-    
-#     # get object
-#     post = get_object_or_404(Post, pk=pk) if pk else None
-    
-#     if request.method == "POST":
-#         # form posted with post(object) as either None or an existing post(object) 
-#         # is post == None:  instance will be None so a new post will be created
-#         # if an instance if passed in then it will edit
-#         form = BlogPostForm(request.POST, request.FILES, instance=post )
-#         if form.is_valid():
-#             form.save()
-#             return redirect('post-detail')
-#     else:
-#         form = BlogPostForm(instance=post)
-    
-#     context = {
-#         "form":form
-#     }
-    
-#     return render(request, "blog/post_form.html", context)
-        

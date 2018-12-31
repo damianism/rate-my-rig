@@ -28,7 +28,16 @@
           <p class="article-content">
                     {{ instance.cpu }}, {{ instance.gpu }}, {{ instance.ram }}
                     {{ instance.description|slice:":120" }}
-                    </p>
+          </p>
+          
+          <!--{# <form method="POST" action="{% url 'add_to_cart' instance.id  %}"> #}-->
+          <form method="POST">
+            {% csrf_token%}
+            <fieldset class="from-group d-flex justify-content-end">
+              <button class="btn btn-sm btn-success" type="submit">Add to cart</button>
+            </fieldset>
+          </form>
+          
         </div>
       </article>
       {% empty %}
