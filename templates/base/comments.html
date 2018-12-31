@@ -18,7 +18,7 @@
 {% else %}
     <p><a href="{% url 'user-login' %}">Login</a> to comment</p>
 {% endif %}
-
+<p>{{ comments.count }} Comment{{ comments|pluralize }}</p>
 {% for comment in comments %}
   <div class="media mb-4">
     <img class="d-flex mr-3 rounded-circle" src="{{ comment.author.profile.image.url }}" height="50" width="50" alt="">
