@@ -1,7 +1,6 @@
 {% load crispy_forms_tags %}
 
 {% if user.is_authenticated %}
-   Comments Form 
   <div class="card my-4">
     <h5 class="card-header">Leave a Comment:</h5>
     <div class="card-body">
@@ -11,7 +10,7 @@
             {{ form|crispy }}
         </fieldset>
         <fieldset class="from-group">
-            <button class="btn btn-outline-info" type="submit">Post comment</button>
+            <button class="btn btn-outline-info" type="submit">Post Comment</button>
         </fieldset>
       </form>
     </div>
@@ -19,8 +18,8 @@
 {% else %}
     <p><a href="{% url 'user-login' %}">Login</a> to comment</p>
 {% endif %}
- Single Comment 
-{% for comment in object.comment_set.all %}
+
+{% for comment in comments %}
   <div class="media mb-4">
     <img class="d-flex mr-3 rounded-circle" src="{{ comment.author.profile.image.url }}" height="50" width="50" alt="">
     <div class="media-body">
@@ -30,4 +29,6 @@
       
     </div>
   </div>
+  {% empty %}
+  <p class="alert alert-info text-center">No comments</p>
 {% endfor %}

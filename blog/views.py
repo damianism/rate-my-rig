@@ -6,6 +6,7 @@ from .models import Post
 from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from comments.forms import CommentForm
+from comments.models import Comment
 from .forms import BlogPostForm
 from django.views.generic import (
     ListView, 
@@ -214,8 +215,25 @@ def post_detail_view(request, pk):
     post.views += 1   # increment view
     post.save()       # save post
     
+    # isnt actually needed as i could simply use "object.comment_set.all" to loop over
+    # however, the older comments were listed first - so we pass in an ordered comments list
+    comments = Comment.objects.filter(post=post).order_by('-id')
+    
+    if request.method == "POST":
+        form = CommentForm(request.POST or None)
+        if form.is_valid():
+            comment = form.cleaned_data.get('comment')
+            Comment.objects.create(author=request.user, post=post, comment=comment)
+            
+            return redirect("post-detail", pk=pk)   # redirecting back to "user-profile" to avoid post-get direct pattern
+    else:
+        form = CommentForm()
+    
+    
     context = {
-        "object": post
+        "object": post,
+        "comments": comments,
+        "form": form
     }
     
     return render(request, "blog/post_detail.html", context)
