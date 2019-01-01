@@ -20,7 +20,7 @@
           {% if user.is_authenticated %}
             <li class="nav-item">
               <a class="nav-link" href="{% url 'view-cart' %}">
-                <i class="fas fa-shopping-cart mx-1"></i>Cart
+                <i class="fas fa-shopping-cart mx-1"></i>
                 {% if build_count > 0 %}
                   <label class="badge badge-warning">{{ build_count }}</label>
                 {% endif %}
