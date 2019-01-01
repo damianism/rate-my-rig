@@ -22,7 +22,7 @@
         <p class="article-content">
 
           <p>views: {{ object.views }}</p>
-          {% if object.image %}
+          {% if object.image != "defaults/default_rig_pic.png"  %}
             <img src="{{ object.image.url }}"></img>
           {% endif %}
           <p>CPU: {{ object.cpu }}</p>

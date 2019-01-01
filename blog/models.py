@@ -25,7 +25,7 @@ class Post(models.Model):
     description       = models.TextField(blank=True)
     date_posted       = models.DateTimeField(default=timezone.now)
     views             = models.IntegerField(default=0)
-    image             = ResizedImageField(upload_to='posts_pics', size=[500, 500], blank=True)
+    image             = ResizedImageField(default='defaults/default_rig_pic.png', upload_to='posts_pics', size=[500, 500], blank=True)
     author            = models.ForeignKey(User, on_delete=models.CASCADE)     #  if the user was deleted - delete all his/her post
                                                                               #  if the post of deleted - user will remain intact
 
