@@ -224,6 +224,7 @@ def post_detail_view(request, pk):
         if form.is_valid():
             comment = form.cleaned_data.get('comment')
             Comment.objects.create(author=request.user, post=post, comment=comment)
+            # form.save()
             return redirect("post-detail", pk=pk)   # redirecting back to "user-profile" to avoid post-get direct pattern
     else:
         form = CommentForm()
