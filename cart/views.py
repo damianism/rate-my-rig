@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, reverse
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages 
 
 @login_required
 def view_cart(request):
@@ -18,8 +19,13 @@ def add_to_cart(request, pk):
     """
     pk = str(pk)
     # get quantity out of the form
-    quantity = int( request.POST.get("quantity") )
-    
+    try:
+        quantity = int( request.POST.get("quantity") )
+    except TypeError:
+        # preventing TypeError on cloud9 and Server Error (500) on heroku
+        messages.info(request, "You may now add to cart.")
+        return redirect( 'blog-home' )
+        
     # get cart out of session if exists
     cart = request.session.get("cart", {} )
 
