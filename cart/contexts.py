@@ -1,10 +1,14 @@
 from django.shortcuts import get_object_or_404
 from blog.models import Post
 
+
 def cart_contents(request):
     """ 
     Ensures that the cart is available globally anywhere within the website
     """
+    jdebug = 0
+    if jdebug > 0: print( "cart_contents() " )
+
     
     # NOTE:
     # posts are reffered to as "build" since they hold configuration data
@@ -28,5 +32,7 @@ def cart_contents(request):
         "total": total,
         "build_count": build_count
     }
+    
+    if jdebug > 0:  print("cart_contents() context =", context)
     
     return context

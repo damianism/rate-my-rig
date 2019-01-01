@@ -18,6 +18,7 @@
         <!-- Navbar Right Side -->
         <ul class="navbar-nav">
           {% if user.is_authenticated %}
+            <li class="nav-item"><a class="nav-link" href="{% url 'view-cart' %}">Cart</a></li>
             <li class="nav-item dropdown">
               <a class="nav-item nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Welcome {{ user.first_name|title }}
