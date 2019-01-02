@@ -28,7 +28,7 @@ urlpatterns = [
     path('user/', include('users.urls')),
     path('cart/', include('cart.urls')),
     path('checkout/', include('checkout.urls')),
-    path('', include('sendemail.urls')),
+    path('contact/', include('sendemail.urls')),
     # path('media/', include('users.urls')),
     re_path(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
 ]
