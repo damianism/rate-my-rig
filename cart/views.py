@@ -41,8 +41,12 @@ def add_to_cart(request, pk):
 
     request.session["cart"] = cart
     
-    # return redirect( reverse('blog-home') )
-    return redirect( 'blog-home' )
+    messages.success(request, "Item(s) added to cart.")
+    previous_loc = request.META.get('HTTP_REFERER')
+    if "post" in previous_loc:
+        return redirect( 'post-detail', pk=pk )
+    else:
+        return redirect( 'blog-home' )
     
     
 @login_required  
