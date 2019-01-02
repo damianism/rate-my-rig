@@ -42,6 +42,10 @@ def add_to_cart(request, pk):
     request.session["cart"] = cart
     
     messages.success(request, "Item(s) added to cart.")
+    
+    # redirect back to original page 
+    #   - if item added from post_detail template, redirect back to post_detail template
+    #   - if item added from home template, redirect back to home template
     previous_loc = request.META.get('HTTP_REFERER')
     if "post" in previous_loc:
         return redirect( 'post-detail', pk=pk )
