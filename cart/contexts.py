@@ -19,10 +19,10 @@ def cart_contents(request):
     cart_items = []
     total = 0
     build_count = 0
-    base_price = 100.0  # charge for each configuration to be built
+    # base_price = 100.0  # charge for each configuration to be built
     for pk, quantity in cart.items():
         build = get_object_or_404(Post, pk=pk)
-        total += quantity * base_price
+        total += quantity * build.price  # base_price
         build_count += quantity
         build_context = {"pk":pk, "quantity": quantity, "build": build}
         cart_items.append(build_context)

@@ -3,13 +3,14 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 from django.urls import reverse
 from .helper_funcs import *
+from decimal import Decimal
 # third party package to resize images
 from django_resized import ResizedImageField
 
 class Post(models.Model):
     """ Create model for a typical post """
     
-    title             = models.CharField(max_length=120)
+    title             = models.CharField(max_length=60)
     
     # get choices
     RAM_CHOICES, PSU_CHOICES, CPU_CHOICES, GPU_CHOICES = get_choices()
@@ -26,6 +27,7 @@ class Post(models.Model):
     date_posted       = models.DateTimeField(default=timezone.now)
     views             = models.IntegerField(default=0)
     image             = ResizedImageField(default='defaults/default_rig_pic.png', upload_to='posts_pics', size=[500, 500], blank=True)
+    price = models.DecimalField(max_digits=5, decimal_places=2, default=Decimal(100.00))
     author            = models.ForeignKey(User, on_delete=models.CASCADE)     #  if the user was deleted - delete all his/her post
                                                                               #  if the post of deleted - user will remain intact
 
