@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'comments.apps.CommentsConfig',
     'cart.apps.CartConfig',
     'checkout.apps.CheckoutConfig',
+    'sendemail.apps.SendemailConfig',
     # third party apps
     'crispy_forms',
     'django_resized',
