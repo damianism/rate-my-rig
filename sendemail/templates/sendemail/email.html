@@ -5,38 +5,26 @@
 
 {% block content %}
 <div class="container-fluid">
-
-            <div class="row">
-
-
-    <!--Form with header-->
-    <div class="card card-contact">
-    
-        <div class="card-body">
-            <!--Header-->
-            <div class="form-header blue accent-1">
-                <h3><i class="far fa-envelope"></i> Write to me</h3>
-            </div>
-            <p>
-                Please use the form below to contact me if you have any queries in regards to your possible build or anything else.
-            </p>
-    <br>
-    <form method="post">
-        {% csrf_token %}
-        {{ form|crispy }}
-        <div class="form-actions">
-          <button type="reset" class="btn btn-reset"><span>reset</span></button>
-          <button type="submit" class="btn btn-submit"><span>submit</span></button>
-          
-        </div>
-    </form>
-
-</div>
-                   </div>
-
+    <div class="row">
+        <!--Form with header-->
+        <div class="card card-contact">
+            <div class="card-body">
+                <!--Header-->
+                <div class="form-header blue accent-1">
+                    <h3><i class="far fa-envelope"></i> Write to me</h3>
                 </div>
-                <!--Form with header-->
-
+                <p>Please use the form below to contact me if you have any queries in regards to your possible build or anything else.</p>
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <div class="form-actions d-flex justify-content-center">
+                        <button type="reset" class="btn btn-reset"><span>reset</span></button>
+                        <button type="submit" class="btn btn-submit"><span>submit</span></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--Form with header-->
 </div>
-
 {% endblock %}
