@@ -152,7 +152,7 @@ a.article-title:hover {
     font-family: 'Roboto Mono', monospace;
 }
 
-.btn-reset, .btn-submit, .btn-filter {
+.btn-reset, .btn-submit, .btn-filter, .btn-comment {
     width: 10rem;
 
     text-align: center;
@@ -184,7 +184,7 @@ a.article-title:hover {
 
 }
 
-.btn-submit span:after {
+.btn-submit span:after, .btn-filter span:after, .btn-comment span:after {
     content: '\00bb';
     /* glyph for two side ways arrows*/
     position: absolute;
@@ -192,14 +192,7 @@ a.article-title:hover {
     top: 0;
     right: -20px;
 }
-.btn-filter span:after {
-    content: '\00bb';
-    /* glyph for two side ways arrows*/
-    position: absolute;
-    opacity: 0;
-    top: 0;
-    right: -20px;
-}
+
 
 .btn:hover {
     background-color: map-get($color, black2);
