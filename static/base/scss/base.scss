@@ -5,6 +5,7 @@ body {
   margin-top: 5rem;
   height: 100%;
   width: 100%;
+  font-family: 'Roboto', sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -26,7 +27,8 @@ ul {
 }
 
 .site-header .navbar-nav .nav-link:hover {
-  color: map-get($color, beige);
+  // color: map-get($color, beige);
+  color: map-get($color, red);
 }
 
 .site-header .navbar-nav .nav-link.active {
@@ -122,5 +124,105 @@ a.article-title:hover {
   &:hover {
     background-color: black;
     color: map-get($color, mustard);
+  }
+}
+
+// ##################################  sendemail  ##################################################
+.card-contact {
+    margin: 1.25rem auto;
+    margin-bottom: 2rem;
+    width: 90%;
+}
+
+
+
+.btn {
+    border-radius: 4px;
+    background-color: map-get($color, maroon);
+    border: none;
+    // color: #FFFFFF;
+    color: map-get($color, mustard);
+    font-weight: bold;
+    transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -webkit-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    cursor: pointer;
+    margin: 5px;
+    font-family: 'Roboto Mono', monospace;
+}
+
+.btn-reset, .btn-submit, .btn-filter {
+    width: 10rem;
+
+    text-align: center;
+    line-height: 15px;
+    font-size: 1.0rem;
+    padding: 10px;
+}
+
+
+.btn span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+.btn-cart {
+  font-size: 0.8rem;
+  
+}
+
+.btn-reset span:after {
+    content: '\00d7';
+    /* glyph for X cross*/
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+
+}
+
+.btn-submit span:after {
+    content: '\00bb';
+    /* glyph for two side ways arrows*/
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+}
+.btn-filter span:after {
+    content: '\00bb';
+    /* glyph for two side ways arrows*/
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+}
+
+.btn:hover {
+    background-color: map-get($color, black2);
+    color: map-get($color, red);
+}
+
+.btn:hover span {
+    padding-right: 25px;
+}
+
+.btn:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+
+
+.md-textarea {
+    height: 380px;
+}
+
+
+footer a {
+  &:hover {
+    color: map-get($color, red) !important;
   }
 }

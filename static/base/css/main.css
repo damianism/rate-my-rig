@@ -1,11 +1,12 @@
-@import url("https://fonts.googleapis.com/css?family=Special+Elite");
-@import url("https://fonts.googleapis.com/css?family=Kosugi");
+@import url("https://fonts.googleapis.com/css?family=Roboto+Mono");
+@import url("https://fonts.googleapis.com/css?family=Roboto");
 body {
   background: #ffc107;
   color: #333333;
   margin-top: 5rem;
   height: 100%;
-  width: 100%; }
+  width: 100%;
+  font-family: 'Roboto', sans-serif; }
 
 h1, h2, h3, h4, h5, h6 {
   color: #444444; }
@@ -20,7 +21,7 @@ ul {
   color: #ffc107; }
 
 .site-header .navbar-nav .nav-link:hover {
-  color: #F4F1DE; }
+  color: #ff0000; }
 
 .site-header .navbar-nav .nav-link.active {
   font-weight: 500; }
@@ -94,5 +95,81 @@ a.article-title:hover {
   .btn-pag:hover {
     background-color: black;
     color: #ffc107; }
+
+.card-contact {
+  margin: 1.25rem auto;
+  margin-bottom: 2rem;
+  width: 90%; }
+
+.btn {
+  border-radius: 4px;
+  background-color: #800000;
+  border: none;
+  color: #ffc107;
+  font-weight: bold;
+  transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -webkit-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  cursor: pointer;
+  margin: 5px;
+  font-family: 'Roboto Mono', monospace; }
+
+.btn-reset, .btn-submit, .btn-filter {
+  width: 10rem;
+  text-align: center;
+  line-height: 15px;
+  font-size: 1.0rem;
+  padding: 10px; }
+
+.btn span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s; }
+
+.btn-cart {
+  font-size: 0.8rem; }
+
+.btn-reset span:after {
+  content: '\00d7';
+  /* glyph for X cross*/
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px; }
+
+.btn-submit span:after {
+  content: '\00bb';
+  /* glyph for two side ways arrows*/
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px; }
+
+.btn-filter span:after {
+  content: '\00bb';
+  /* glyph for two side ways arrows*/
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px; }
+
+.btn:hover {
+  background-color: #191919;
+  color: #ff0000; }
+
+.btn:hover span {
+  padding-right: 25px; }
+
+.btn:hover span:after {
+  opacity: 1;
+  right: 0; }
+
+.md-textarea {
+  height: 380px; }
+
+footer a:hover {
+  color: #ff0000 !important; }
 
 /*# sourceMappingURL=main.css.map */

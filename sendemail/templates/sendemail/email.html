@@ -1,8 +1,42 @@
+{% extends 'base/base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Contact Us{% endblock %}
 <h1>Contact Us</h1>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <div class="form-actions">
-      <button type="submit">Send</button>
-    </div>
-</form>
+
+{% block content %}
+<div class="container-fluid">
+
+            <div class="row">
+
+
+    <!--Form with header-->
+    <div class="card card-contact">
+    
+        <div class="card-body">
+            <!--Header-->
+            <div class="form-header blue accent-1">
+                <h3><i class="far fa-envelope"></i> Write to me</h3>
+            </div>
+            <p>
+                Please use the form below to contact me if you have any queries in regards to your possible build or anything else.
+            </p>
+    <br>
+    <form method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <div class="form-actions">
+          <button type="reset" class="btn btn-reset"><span>reset</span></button>
+          <button type="submit" class="btn btn-submit"><span>submit</span></button>
+          
+        </div>
+    </form>
+
+</div>
+                   </div>
+
+                </div>
+                <!--Form with header-->
+
+</div>
+
+{% endblock %}

@@ -13,6 +13,7 @@ def emailView(request):
     else:
         form = ContactForm(request.POST)
         if form.is_valid():
+            name = form.cleaned_data['name']
             subject = form.cleaned_data['subject']
             from_email = form.cleaned_data['from_email']
             message = form.cleaned_data['message']
@@ -25,4 +26,4 @@ def emailView(request):
 
 def successView(request):
     return HttpResponse('Success! Thank you for your message.')
-# Create your views here.
+
