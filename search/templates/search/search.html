@@ -1,5 +1,5 @@
 {% extends 'base/base.html' %}
-{% load my_tags %}
+
 
 {% block title %}Search{% endblock %}
 
@@ -7,28 +7,11 @@
   <!-- SEARCH -->
   {% include "base/search_form.html" %}
   <!-- SEARCH -->
-  <div class="d-flex justify-content-between">
-      <div class="pagination">
-        <span class="step-links">
-            {% if object_list.has_previous %}
-                <a href="?{% param_replace page=1 %}">&laquo; first</a>
-                <a href="?{% param_replace page=object_list.previous_page_number %}">previous</a>
-                <!--<a href="?page={{ object_list.previous_page_number }}">previous</a>-->
-            {% endif %}
-    
-            <span class="current">
-                Page {{ object_list.number }} of {{ object_list.paginator.num_pages }}.
-            </span>
-    
-            {% if object_list.has_next %}
-                <a href="?{% param_replace page=object_list.next_page_number %}">next</a>
-                <a href="?{% param_replace page=object_list.paginator.num_pages %}">last &raquo;</a>
-                <!--<a href="?page={{ object_list.paginator.num_pages }}">last &raquo;</a>-->
-            {% endif %}
-        </span>
-    </div>
+  <!-- FUNCTION-BASED PAGINATION -->
+  <div class="d-flex justify-content-center">
+    {% include "base/pagination_function_based.html" %}
   </div>
-     <!--{# {% for instance in filter.qs %} #}-->
+  <!-- FUNCTION-BASED PAGINATION -->
      {% for instance in object_list %}
       <article class="media content-section">
         <img class="rounded-circle article-img" src="{{ instance.author.profile.image.url }}">
@@ -60,8 +43,6 @@
       {% empty %}
         <p class="alert alert-info text-center">Sorry, no matches found</p>
     {% endfor %}
-  <div class="d-flex justify-content-end">
-    {% include "base/pagination.html" %}  
-  </div>  
+
     
 {% endblock %}

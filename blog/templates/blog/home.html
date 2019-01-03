@@ -8,7 +8,7 @@
       <a class="btn btn-sm btn-success" href="{% url 'post-create' %}">New Post</a>
     </div>   
     <div>
-      {% include "base/pagination.html" %}
+      {% include "base/pagination_class_based.html" %}
     </div>
   </div>
      <!--{# {% for instance in filter.qs %} #}-->
@@ -44,7 +44,7 @@
         <p class="alert alert-info text-center">Sorry, no matches found</p>
     {% endfor %}
   <div class="d-flex justify-content-end">
-    {% include "base/pagination.html" %}  
+    {% include "base/pagination_class_based.html" %}  
   </div>  
     
 {% endblock home_content %}
