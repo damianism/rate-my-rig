@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages 
+from django.http import HttpResponseRedirect
 
 @login_required
 def view_cart(request):
@@ -17,7 +18,7 @@ def add_to_cart(request, pk):
     """ 
     Add a quantity of the specified product to the cart
     """
-    pk = str(pk)
+    # pk = str(pk)
     # get quantity out of the form
     try:
         quantity = int( request.POST.get("quantity") )
@@ -47,10 +48,13 @@ def add_to_cart(request, pk):
     #   - if item added from post_detail template, redirect back to post_detail template
     #   - if item added from home template, redirect back to home template
     previous_loc = request.META.get('HTTP_REFERER')
-    if "post" in previous_loc:
-        return redirect( 'post-detail', pk=pk )
-    else:
-        return redirect( 'blog-home' )
+    print("previous_loc = ", previous_loc)
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+    # NOTE! ASK ABOUT THIS! REMOVE IF US OF "HttpResponseRedirect" IS OK!
+    # if "post" in previous_loc:
+    #     return redirect( 'post-detail', pk=pk )
+    # else:
+    #     return redirect( 'blog-home' )
     
     
 @login_required  
@@ -71,3 +75,6 @@ def adjust_cart(request, pk):
     request.session["cart"] = cart
     
     return redirect( reverse('view-cart') )
+    
+
+    
