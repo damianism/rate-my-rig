@@ -1,4 +1,5 @@
 {% extends 'base/base.html' %}
+{% load my_tags %}
 
 {% block title %}Search{% endblock %}
 
@@ -7,7 +8,25 @@
   {% include "base/search_form.html" %}
   <!-- SEARCH -->
   <div class="d-flex justify-content-between">
-      {% include "base/pagination.html" %}
+      <div class="pagination">
+        <span class="step-links">
+            {% if object_list.has_previous %}
+                <a href="?{% param_replace page=1 %}">&laquo; first</a>
+                <a href="?{% param_replace page=object_list.previous_page_number %}">previous</a>
+                <!--<a href="?page={{ object_list.previous_page_number }}">previous</a>-->
+            {% endif %}
+    
+            <span class="current">
+                Page {{ object_list.number }} of {{ object_list.paginator.num_pages }}.
+            </span>
+    
+            {% if object_list.has_next %}
+                <a href="?{% param_replace page=object_list.next_page_number %}">next</a>
+                <a href="?{% param_replace page=object_list.paginator.num_pages %}">last &raquo;</a>
+                <!--<a href="?page={{ object_list.paginator.num_pages }}">last &raquo;</a>-->
+            {% endif %}
+        </span>
+    </div>
   </div>
      <!--{# {% for instance in filter.qs %} #}-->
      {% for instance in object_list %}
