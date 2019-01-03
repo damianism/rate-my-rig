@@ -25,24 +25,26 @@
     <!-- NAVIGATION -->
     
     <!-- MAIN CONTENT -->
-    <main role="main" class="container" id="main-container">
     {% if request.path == "/blog/" %}
-      <div class="row">
-        <!-- FILTERS COLUMN -->
-        <div class="col-md-3">
-          {% include "base/filter.html" %}
+      <main role="main" class="container" id="main-container-blog">
+        <div class="row">
+          <!-- FILTERS COLUMN -->
+          <div class="col-md-3">
+            {% include "base/filter.html" %}
+          </div>
+          <!-- POSTS COLUMN -->
+          <div class="col-md-9">
+            {% include "base/messages.html" %}
+            {% block home_content %}{% endblock %}
+          </div>
         </div>
-        <!-- POSTS COLUMN -->
-        <div class="col-md-9">
-          {% include "base/messages.html" %}
-          {% block home_content %}{% endblock %}
-        </div>
-      </div>
+      </main>
     {% else %}
-          {% include "base/messages.html" %}
-          {% block content %}{% endblock %}
+      <main role="main" class="container" id="main-container">
+        {% include "base/messages.html" %}
+        {% block content %}{% endblock %}
+      </main>
     {% endif %}
-    </main>
 
     <!-- Footer -->
     {% include "base/footer.html" %}
