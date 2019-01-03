@@ -27,6 +27,7 @@ urlpatterns = [
     path('', include('home.urls')),
     path('home/', RedirectView.as_view( pattern_name='home', permanent=False)),
     path('builds/', RedirectView.as_view( pattern_name='blog-home', permanent=False)),
+    path('blog/search/', RedirectView.as_view( pattern_name='search', permanent=False)),
     path('blog/', include('blog.urls')),
     path('user/', include('users.urls')),
     path('cart/', include('cart.urls')),

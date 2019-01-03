@@ -1,8 +1,8 @@
 from django.urls import path
-from .views import do_search, pre_search
+from .views import do_search, search_view
 
 
 urlpatterns = [
-    path('pre', pre_search, name="pre-search"),
-    path('', do_search, name="search"),
+    path('', search_view, name="search"),
+    path('results/', do_search, name="search-results"),
 ]

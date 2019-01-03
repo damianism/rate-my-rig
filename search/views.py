@@ -33,13 +33,13 @@ def do_search(request):
     }
     
     request.session['type'] = search_type
-    return render(request, "search/search.html", context )
+    return render(request, "search/search_results.html", context )
     
     
     
-def pre_search(request):
+def search_view(request):
 
     context = {
         "selections": ["title", "gpu", "cpu", "ram", "psu", "mainboard" ]
     }
-    return render(request, "search/pre_search.html", context)
+    return render(request, "search/search.html", context)
