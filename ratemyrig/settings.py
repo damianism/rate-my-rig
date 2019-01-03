@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'cart.apps.CartConfig',
     'checkout.apps.CheckoutConfig',
     'sendemail.apps.SendemailConfig',
+    'search.apps.SearchConfig',
     # third party apps
     'crispy_forms',
     'django_resized',

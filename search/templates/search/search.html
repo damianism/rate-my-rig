@@ -1,0 +1,48 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Search{% endblock %}
+
+{% block content %}
+  <!-- SEARCH -->
+  {% include "base/search_form.html" %}
+  <!-- SEARCH -->
+  <div class="d-flex justify-content-between">
+      {% include "base/pagination.html" %}
+  </div>
+     <!--{# {% for instance in filter.qs %} #}-->
+     {% for instance in object_list %}
+      <article class="media content-section">
+        <img class="rounded-circle article-img" src="{{ instance.author.profile.image.url }}">
+        <div class="media-body">
+          <div class="article-metadata d-flex justify-content-between">
+            <small class="text-muted">Posted on {{ instance.date_posted|date:"d F Y" }}</small>
+            {% if instance.author == user %}
+              <div>by <a class="mr-2" href="{% url 'user-profile' %}" target="_blank">{{ instance.author }}</a></div>
+            {% else %}
+              <div>by <a class="mr-2" href="{% url 'user-view' instance.author.username %}" target="_blank">{{ instance.author }}</a></div>
+            {% endif %}
+          </div>
+          <h2><a class="article-title" href="{% url 'post-detail' instance.id %}">{{ instance.title }}</a></h2>
+          <p class="article-content">
+                    {{ instance.cpu }}, {{ instance.gpu }}, {{ instance.ram }}
+                    {{ instance.description|slice:":120" }}
+          </p>
+          
+            <form method="POST" action="{% url 'add-to-cart' instance.id  %}">
+            {% csrf_token%}
+            <fieldset class="from-group d-flex justify-content-end">
+              <input name="quantity" class="form-control mx-1" type="number" min="1" max="5" value="1" style="width: 4rem;">
+              <button class="btn btn-sm btn-success btn-cart" type="submit">Add to cart</button>
+            </fieldset>
+          </form>
+          
+        </div>
+      </article>
+      {% empty %}
+        <p class="alert alert-info text-center">Sorry, no matches found</p>
+    {% endfor %}
+  <div class="d-flex justify-content-end">
+    {% include "base/pagination.html" %}  
+  </div>  
+    
+{% endblock %}

@@ -1,0 +1,20 @@
+<form class="form-inline" action="{% url 'search' %}" method="get">
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect01">Options</label>
+            </div>
+            <select class="custom-select" id="inputGroupSelect01" name="type">
+                {% for option in selections %}
+                    {% if type == option %}
+                        <option value="{{option}}" selected>{{ option|upper }}</option>
+                    {% else %}
+                        <option value="{{option}}">{{ option|upper }}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+        </div>
+        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name="q">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">search</button>
+
+</form>

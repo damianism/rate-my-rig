@@ -12,8 +12,13 @@
       <div class="collapse navbar-collapse" id="navbarToggle">
         <!-- Navbar Left Side -->
         <ul class="navbar-nav mr-auto">
+          <!--<form class="form-inline my-2 my-lg-0" action="{% url 'pre-search' %}" method="get">-->
+          <!--  <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name="q">-->
+          <!--  <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>-->
+          <!--</form>-->
+          <li class="nav-item"><a class="nav-link" href="{% url 'pre-search' %}"><i class="fas fa-search"></i></a></li>
           <li class="nav-item"><a class="nav-link" href="{% url 'contact-email' %}">Contact</a></li>
-          <li class="nav-item"><a class="nav-link" href="{% url 'blog-about' %}">About</a></li>
+          <!--<li class="nav-item"><a class="nav-link" href="{% url 'blog-about' %}">About</a></li>-->
         </ul>
         <!-- Navbar Right Side -->
         <ul class="navbar-nav">
@@ -41,6 +46,7 @@
             <li class="nav-item"><a class="nav-link" href="{% url 'user-register' %}">Register</a></li>
           {% endif %}
         </ul>
+
       </div>
       
     </div>
