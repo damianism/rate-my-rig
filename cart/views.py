@@ -26,6 +26,7 @@ def add_to_cart(request, pk):
         # preventing TypeError on cloud9 and Server Error (500) on heroku
         messages.info(request, "You may now add to cart.")
         return redirect( 'blog-home' )
+        # DOESNT WORK!! return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
         
     # get cart out of session if exists
     cart = request.session.get("cart", {} )

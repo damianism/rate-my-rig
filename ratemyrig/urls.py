@@ -18,13 +18,16 @@ from django.urls import path, include, re_path
 # handle media files in developement - from django documentation
 from django.conf import settings
 from django.conf.urls.static import static
-# new 
+from django.views.generic.base import RedirectView
 from django.views.static import serve
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('blog.urls')),
+    path('', include('home.urls')),
+    path('home/', RedirectView.as_view( pattern_name='home', permanent=False)),
+    path('builds/', RedirectView.as_view( pattern_name='blog-home', permanent=False)),
+    path('blog/', include('blog.urls')),
     path('user/', include('users.urls')),
     path('cart/', include('cart.urls')),
     path('checkout/', include('checkout.urls')),

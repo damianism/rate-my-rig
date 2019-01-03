@@ -2,7 +2,7 @@
 <header class="site-header">
   <nav class="navbar navbar-expand-md navbar-dark bg-orange fixed-top">
     <div class="container">
-      <a class="navbar-brand mr-4" href="{% url 'blog-home' %}">RateMyRig</a>
+      <a class="navbar-brand mr-4" href="{% url 'blog-home' %}">BuildMeARig</a>
       
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -12,13 +12,11 @@
       <div class="collapse navbar-collapse" id="navbarToggle">
         <!-- Navbar Left Side -->
         <ul class="navbar-nav mr-auto">
-          <!--<form class="form-inline my-2 my-lg-0" action="{% url 'pre-search' %}" method="get">-->
-          <!--  <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name="q">-->
-          <!--  <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>-->
-          <!--</form>-->
-          <li class="nav-item"><a class="nav-link" href="{% url 'pre-search' %}"><i class="fas fa-search"></i></a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="{% url 'contact-email' %}">Contact</a></li>
-          <!--<li class="nav-item"><a class="nav-link" href="{% url 'blog-about' %}">About</a></li>-->
+          <li class="nav-item"><a class="nav-link" href="{% url 'blog-home' %}">Blog</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'pre-search' %}"><i class="fas fa-search"></i></a></li>
+          
         </ul>
         <!-- Navbar Right Side -->
         <ul class="navbar-nav">
