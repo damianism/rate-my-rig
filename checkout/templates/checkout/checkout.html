@@ -2,6 +2,14 @@
 {% load crispy_forms_tags %}
 {% load static from staticfiles %}
 
+{% block link %}
+<style>
+  #main-container {
+    justify-content: flex-start;
+  }
+</style>
+{% endblock %}
+
 {% block head_js %}
 <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 <script type="text/javascript">
