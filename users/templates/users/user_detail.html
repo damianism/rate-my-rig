@@ -9,24 +9,34 @@
 {% endblock %}
 
 {% block content %}
-    <div class="content-section">
-        <div class="media">
-            <img class="rounded-circle account-img" src="{{ object.profile.image.url }}">
-            <div class="media-body">
-                <h2 class="account-heading">{{ object.username }}</h2>
-                <p class="text-secondary">
-                    email: {{ object.email }}<br> 
-                    name: {{ object.first_name|title }}{{ object.last_name|center:"15"|title }}
-                </p>
-            </div>
-        </div>    
-        <h3>Posts:</h3>
-        <ol>
-            {% for post in object.post_set.all %}
-               <li>
-                   <a href="{% url 'post-detail' post.id %}">{{ post }}</a>
-               </li>
-            {% endfor %}
-        </ol>
+<div class="card">
+        
+    <!--CARD-HEADER-->
+    <div class="card-header">
+      <h1 class="card-title text-center">{{ object.username }}</h1>
+      <div class="user-info d-flex justify-content-between">
+        <img class="rounded-circle article-img" src="{{ object.profile.image.url }}">
+        <div class="card-header-user-info">
+          <small class="text-muted">email: {{ object.email }}</small>
+          <small class="text-muted">name: {{ object.first_name|title }}{{ object.last_name|center:"15"|title }}</small>
+        </div>
+      </div>
     </div>
+      
+    <!--CONTENT TITLE-->
+    <div class="card-body">
+        <h4 class="card-title text-left">{{ object.username }}'s Posts</h4>
+        <p class="card-text"></p>
+    </div>
+      
+    <!--CONTENT-->
+    <ul class="list-group list-group-flush">
+        {% for post in object.post_set.all %}
+            <li class="list-group-item"><a href="{% url 'post-detail' post.id %}">{{ forloop.counter }}) &nbsp;&nbsp;{{ post }}</a></li>
+        {% empty %}
+            <li class="list-group-item">{{ object.username }} hasn't posted anything yet.</li>
+        {% endfor %}
+    </ul>
+
+</div>
 {% endblock content %}
