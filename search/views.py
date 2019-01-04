@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from blog.models import Post
 from django.core.paginator import Paginator
 
@@ -12,8 +12,12 @@ def do_search(request):
     if search_type is None:
         search_type = type_session
     
-    
-    print(">>>>>>>>>>>>>>>>>search_type", search_type)
+    # searching with blank will still work. However, it will cause errors with 
+    # the pagination
+    if request.GET['q'] == "":
+        return redirect('search')
+        
+
     # DOING A FOR LOOP HERE DIDNT WORK! IT DOESNT SEEM TO LIKE IT!
     if search_type == "title":   posts = Post.objects.filter(title__icontains=request.GET['q'])
     elif search_type == "gpu":   posts = Post.objects.filter(gpu__icontains=request.GET['q'])

@@ -240,3 +240,71 @@ footer a {
     color: map-get($color, red) !important;
   }
 }
+
+
+// ################################## search template ########################
+
+
+
+
+
+
+
+.search-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1rem;
+  
+  .select-search {
+    border:  0px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  
+  .bar-search {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border:  0px;
+    height: 38px;
+    width: 40%;
+  }
+  
+  .btn-search {
+    border-top-right-radius: .25rem;
+    border-bottom-right-radius: .25rem;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border:  0px;
+    height: 38px;
+    margin-top: 0px !important;
+  }
+  
+  // media query for small narrow screens eg iphonex,xs, galaxy s5
+  @include mQ("maxW", 412px) {
+          flex-direction: column;
+          .bar-search {
+              width: 100%;
+              border-top-left-radius: 0.25rem;
+              border-bottom-left-radius: 0.25rem;
+              border-top-right-radius: 0.25rem;
+              border-bottom-right-radius: 0.25rem;
+              margin-bottom: 1rem;
+          }
+          .select-search {
+              border-top-left-radius: 0.25rem;
+              border-bottom-left-radius: 0.25rem;
+              border-top-right-radius: 0.25rem;
+              border-bottom-right-radius: 0.25rem;
+          }
+          .btn-search {
+              border-top-right-radius: .25rem;
+              border-bottom-right-radius: .25rem;
+              border-top-left-radius: .25rem;
+              border-bottom-left-radius: .25rem;
+              border:  0px;
+            }
+    }
+  }
