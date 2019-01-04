@@ -1,5 +1,14 @@
 {% extends 'base/base.html' %}
 {% load crispy_forms_tags %}
+
+{% block link %}
+<style>
+  #main-container {
+    justify-content: flex-start;
+  }
+</style>
+{% endblock %}
+
 {% block title %}{{ user.username }}'s Profile{% endblock %} 
 
 {% block content %}

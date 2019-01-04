@@ -98,6 +98,9 @@ a.article-title:hover {
   justify-content: center;
   flex-direction: column; }
 
+.main-container-flex-start {
+  justify-content: flex-start !important; }
+
 .btn-pag {
   background-color: #800000;
   border-color: #800000;

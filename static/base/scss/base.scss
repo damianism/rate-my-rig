@@ -136,6 +136,11 @@ a.article-title:hover {
   flex-direction: column;
 }
 
+.main-container-flex-start {
+  justify-content: flex-start !important;
+
+}
+
 
 .btn-pag {
   background-color: map-get($color, maroon);
