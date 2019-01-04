@@ -1,12 +1,18 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto+Mono");
 @import url("https://fonts.googleapis.com/css?family=Roboto");
-body, html {
-  background: #ffc107;
+html {
+  height: 100%;
+  margin-top: 2.2rem; }
+
+body {
+  background: linear-gradient(to left top, #ff9e07, #ffa504, #ffab03, #ffb202, #ffb803, #ffb803, #ffb803, #ffb803, #ffb202, #ffab03, #ffa504, #ff9e07);
   color: #333333;
   margin-top: 2.2rem;
   height: 100%;
   width: 100%;
-  font-family: 'Roboto', sans-serif; }
+  font-family: 'Roboto', sans-serif;
+  background-repeat: no-repeat;
+  background-attachment: fixed; }
 
 h1, h2, h3, h4, h5, h6 {
   color: #444444; }
@@ -84,10 +90,10 @@ a.article-title:hover {
       text-decoration: none; }
 
 #main-container-blog {
-  min-height: calc(100% - 168px); }
+  min-height: calc(100% - 70.4px); }
 
 #main-container {
-  min-height: calc(100% - 168px);
+  min-height: calc(100% - 70.4px);
   display: flex;
   justify-content: center;
   flex-direction: column; }
