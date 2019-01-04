@@ -16,14 +16,13 @@
   <div class="mt-2">
     {% include "base/search_form.html" %}
   </div>
-  <!-- SEARCH -->
-  
+
   <!-- FUNCTION-BASED PAGINATION -->
   <div class="d-flex justify-content-center mb-2">
     {% include "base/pagination_function_based.html" %}
   </div>
   
-  <!-- FUNCTION-BASED PAGINATION -->
+  <!-- RESULTS-->
      {% for instance in object_list %}
       <article class="media content-section">
         <img class="rounded-circle article-img" src="{{ instance.author.profile.image.url }}">

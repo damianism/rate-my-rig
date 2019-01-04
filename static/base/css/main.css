@@ -234,7 +234,7 @@ footer a:hover {
 .card-user-options {
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: end; }
   .card-user-options input.form-control.mr-1 {
     height: 30px;
@@ -248,7 +248,8 @@ footer a:hover {
   @media screen and (max-width: 450px) {
     .card-user-options {
       flex-flow: column;
-      align-items: stretch; }
+      align-items: stretch;
+      justify-content: space-between; }
       .card-user-options .add-to-cart-box {
         align-items: baseline; }
       .card-user-options .btn {

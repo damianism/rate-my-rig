@@ -12,9 +12,10 @@
 {% block content %}
 
   <div class="card">
+    
+    <!--CARD-HEADER-->
     <div class="card-header">
       <h5 class="card-title text-center">{{ object.title|title }}</h5>
-      
       <div class="user-info d-flex justify-content-between">
         <img class="rounded-circle article-img" src="{{ object.author.profile.image.url }}">
         <div class="card-header-user-info">
@@ -27,13 +28,18 @@
           <small class="text-muted">at {{ object.date_posted|date:"P" }}</small>
         </div>
       </div>
-
     </div>
+    
+    <!--CONFIGURATION IMAGE-->
     <img class="card-img-top" src="{{ object.image.url }}" alt="Card image cap">
+    
+    <!--CONFIGURATION TITLE-->
     <div class="card-body">
       <h5 class="card-title text-center">System Configuration</h5>
       <p class="card-text"></p>
     </div>
+    
+    <!--CONFIGURATION-->
     <ul class="list-group list-group-flush">
       <li class="list-group-item">Views: &nbsp;&nbsp;&nbsp;{{ object.views }}</li>
       <li class="list-group-item">CPU: &nbsp;&nbsp;&nbsp;{{ object.cpu }}</li>
@@ -42,17 +48,19 @@
       <li class="list-group-item">PSU: &nbsp;&nbsp;&nbsp;{{ object.psu }}</li>
       <li class="list-group-item">Mainboard: <p class="card-text">{{ object.mainboard }}</p></li>
       <li class="list-group-item">Primary storage: <p class="card-text">{{ object.primary_storage }}</p></li>
-      <li class="list-group-item">
-        {% if object.secondary_storage %}
+      {% if object.secondary_storage %}
+        <li class="list-group-item">
           Secondary storage: <p class="card-text">{{ object.secondary_storage }}</p>
-        {% endif %}
-      </li>
-      <li class="list-group-item">
-        {% if object.description %}
+        </li>
+      {% endif %}
+      {% if object.description %}
+        <li class="list-group-item">
           Description: <p class="card-text">{{ object.description }}</p>
-        {% endif %}
-      </li>
+        </li>
+      {% endif %}
     </ul>
+    
+    <!--USER-BUTTONS-->
     <div class="card-body card-user-options">
       {% if object.author == user %}
         <a href="{% url 'post-update' object.id %}" class="btn btn-sm btn-secondary mt-1 mb-1">Update</a>
@@ -67,10 +75,10 @@
       </form>
     </div>
   </div>
-
-   
-    
-  {% include "base/comments.html" %}
-
+  
+  <!--COMMENTS SECTION-->
+  <div class="mt-2">
+    {% include "base/comments.html" %}
+  </div>
 
 {% endblock content %}
