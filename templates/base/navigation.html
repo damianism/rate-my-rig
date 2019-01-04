@@ -14,21 +14,21 @@
         <ul class="navbar-nav mr-auto">
           <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="{% url 'contact-email' %}">Contact</a></li>
-          <li class="nav-item"><a class="nav-link" href="{% url 'blog-home' %}">Blog</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'blog-home' %}">Builds</a></li>
           <li class="nav-item"><a class="nav-link" href="{% url 'search' %}"><i class="fas fa-search"></i></a></li>
           
         </ul>
         <!-- Navbar Right Side -->
         <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'view-cart' %}">
+              <i class="fas fa-shopping-cart mx-1"></i>
+              {% if build_count > 0 %}
+                <label class="badge badge-warning">{{ build_count }}</label>
+              {% endif %}
+            </a>
+          </li>
           {% if user.is_authenticated %}
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'view-cart' %}">
-                <i class="fas fa-shopping-cart mx-1"></i>
-                {% if build_count > 0 %}
-                  <label class="badge badge-warning">{{ build_count }}</label>
-                {% endif %}
-              </a>
-            </li>
             <li class="nav-item dropdown">
               <a class="nav-item nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Welcome {{ user.first_name|title }}
