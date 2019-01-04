@@ -54,8 +54,7 @@ a.article-title:hover {
 
 .article-img {
   height: 65px;
-  width: 65px;
-  margin-right: 16px; }
+  width: 65px; }
 
 .article-metadata {
   padding-bottom: 1px;
@@ -143,7 +142,8 @@ a.article-title:hover {
   transition: 0.5s; }
 
 .btn-cart {
-  font-size: 0.8rem; }
+  line-height: 1rem;
+  height: 29px; }
 
 .btn-reset span:after {
   content: '\00d7';
@@ -224,5 +224,40 @@ footer a:hover {
         border-top-left-radius: .25rem;
         border-bottom-left-radius: .25rem;
         border: 0px; } }
+
+.card-header-user-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end; }
+
+.card-user-options {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: end; }
+  .card-user-options input.form-control.mr-1 {
+    height: 30px;
+    margin-left: 0px; }
+  .card-user-options .add-to-cart-box {
+    padding: 0 6px;
+    height: 2rem;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center; }
+  @media screen and (max-width: 450px) {
+    .card-user-options {
+      flex-flow: column;
+      align-items: stretch; }
+      .card-user-options .add-to-cart-box {
+        align-items: baseline; }
+      .card-user-options .btn {
+        height: 30px !important; }
+      .card-user-options .btn-cart {
+        font-size: 1rem;
+        width: -webkit-fill-available;
+        margin-right: 0px; }
+      .card-user-options input.form-control.mr-1 {
+        margin-left: 0px; } }
 
 /*# sourceMappingURL=main.css.map */

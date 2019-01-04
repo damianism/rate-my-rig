@@ -10,49 +10,66 @@
 
 {% block title %}Detail View{% endblock %}
 {% block content %}
-    <article class="media content-section">
-      <img class="rounded-circle article-img" src="{{ object.author.profile.image.url }}">
-      <div class="media-body">
-        <div class="article-metadata d-flex justify-content-between">
-          <small class="text-muted">Posted on {{ object.date_posted|date:"d F Y" }}</small>
-          {% if object.author == user %}
-            <div>by <a class="mr-2" href="{% url 'user-profile' %}">{{ object.author }}</a></div>
-            <div>
-              <a href="{% url 'post-update' object.id %}" class="btn btn-sm btn-secondary mt-1 mb-1">Update</a>
-              <a href="{% url 'post-delete' object.id %}" class="btn btn-sm btn-danger mt-1 mb-1">Delete</a>
-            </div>
-          {% else %}
-            <div>by <a class="mr-2" href="{% url 'user-view' object.author.username %}">{{ object.author }}</a></div>
-          {% endif %}
-        </div>
-        <h2>{{ object.title }}</h2>
-        <p class="article-content">
 
-          <p>views: {{ object.views }}</p>
-          {% if object.image != "defaults/default_rig_pic.png"  %}
-            <img src="{{ object.image.url }}"></img>
+  <div class="card">
+    <div class="card-header">
+      <h5 class="card-title text-center">{{ object.title|title }}</h5>
+      
+      <div class="user-info d-flex justify-content-between">
+        <img class="rounded-circle article-img" src="{{ object.author.profile.image.url }}">
+        <div class="card-header-user-info">
+          {% if object.author == user %}
+            <div>by <a class="" href="{% url 'user-profile' %}">{{ object.author }}</a></div>
+          {% else %}
+            <div>by <a class="" href="{% url 'user-view' object.author.username %}">{{ object.author }}</a></div>
           {% endif %}
-          <p>CPU: {{ object.cpu }}</p>
-          <p>GPU: {{ object.gpu }}</p>
-          <p>RAM: {{ object.ram }}</p>
-          <p>Motherboard: {{ object.mainboard }}</p>
-          <p>PSU: {{ object.psu }}</p>
-          <p>Primary storage: {{ object.primary_storage }}</p>
-          {% if object.secondary_storage %}<p>Secondary storage: {{ object.secondary_storage }}</p>{% endif %}
-          <p>Description: {{ object.description }}</p>
-        </p>
+          <small class="text-muted">posted on {{ object.date_posted|date:"d F Y" }}</small>
+          <small class="text-muted">at {{ object.date_posted|date:"P" }}</small>
+        </div>
       </div>
-      
-      <form method="POST" action="{% url 'add-to-cart' object.id %}">
+
+    </div>
+    <img class="card-img-top" src="{{ object.image.url }}" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title text-center">System Configuration</h5>
+      <p class="card-text"></p>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Views: &nbsp;&nbsp;&nbsp;{{ object.views }}</li>
+      <li class="list-group-item">CPU: &nbsp;&nbsp;&nbsp;{{ object.cpu }}</li>
+      <li class="list-group-item">GPU: &nbsp;&nbsp;&nbsp;{{ object.gpu }}</li>
+      <li class="list-group-item">RAM: &nbsp;&nbsp;&nbsp;{{ object.ram }}</li>
+      <li class="list-group-item">PSU: &nbsp;&nbsp;&nbsp;{{ object.psu }}</li>
+      <li class="list-group-item">Mainboard: <p class="card-text">{{ object.mainboard }}</p></li>
+      <li class="list-group-item">Primary storage: <p class="card-text">{{ object.primary_storage }}</p></li>
+      <li class="list-group-item">
+        {% if object.secondary_storage %}
+          Secondary storage: <p class="card-text">{{ object.secondary_storage }}</p>
+        {% endif %}
+      </li>
+      <li class="list-group-item">
+        {% if object.description %}
+          Description: <p class="card-text">{{ object.description }}</p>
+        {% endif %}
+      </li>
+    </ul>
+    <div class="card-body card-user-options">
+      {% if object.author == user %}
+        <a href="{% url 'post-update' object.id %}" class="btn btn-sm btn-secondary mt-1 mb-1">Update</a>
+        <a href="{% url 'post-delete' object.id %}" class="btn btn-sm btn-danger  mt-1 mb-1">Delete</a>
+      {% endif %}
+      <form method="POST" action="{% url 'add-to-cart' object.id %}" >
         {% csrf_token%}
-        <fieldset class="from-group d-flex justify-content-end">
-          <input name="quantity" class="form-control mx-1" type="number" min="1" max="5" value="1" style="width: 4rem;">
-          <button class="btn btn-sm btn-success btn-cart" type="submit">Add to cart</button>
-        </fieldset>
+        <div class="add-to-cart-box">
+          <input name="quantity" class="form-control mr-1" type="number" min="1" max="5" value="1" style="width: 4rem;">
+          <button class="btn btn-sm btn-success btn-cart ml-1 mb-1" type="submit">Add to cart</button>
+        </div>
       </form>
-      
-    </article>
-  
+    </div>
+  </div>
+
+   
+    
   {% include "base/comments.html" %}
 
 
