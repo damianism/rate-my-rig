@@ -13,31 +13,7 @@
 {% block title %}Login Page{% endblock %}
 
 {% block content %}
-    <!--<div class="content-section">-->
-        
-    <!--    <form method="post">-->
-    <!--        {% csrf_token %}-->
-    <!--        <fieldset class="from-group">-->
-    <!--            <legend class="border-bottom mb-4">Login</legend>-->
-    <!--            {{ form|crispy }}-->
-    <!--        </fieldset>-->
-    <!--        <fieldset class="from-group">-->
-    <!--            <button class="btn btn-outline-info" type="submit">Login</button>-->
-    <!--            <small class="text-muted ml-2">-->
-    <!--            <a href="{% url 'password_reset' %}">Forgot Password?</a>-->
-                    
-    <!--            </small>-->
-    <!--        </fieldset>-->
-    <!--    </form>-->
-        
-    <!--    <div class="border-topics pt-3">-->
-    <!--        <small class="text-muted d-flex justify-content-end">-->
-    <!--            Don't Have An Account? <a href="{% url 'user-register' %}" class="ml-2">Register</a>-->
-    <!--        </small>-->
-    <!--    </div>-->
-        
-    <!--</div>-->
-    
+
 <div class="card login-panel">
   
   <!--CARD-HEADER-->
@@ -45,25 +21,24 @@
     <h3 class="card-title text-center">Login</h3>
   </div>  
   
-  <!--CARD-BODY-->
-  <div class="card-body">
-      <form method="get">
-        {{ form|crispy }}
-        <div class="filter-btns d-flex flex-column ">
-          <button class="btn btn-outline-info" type="submit">Login</button>
-                          <small class="text-muted ml-2">
-                <a href="{% url 'password_reset' %}">Forgot Password?</a>
-                    
+    <!--CARD-BODY-->
+    <div class="card-body">
+        <form method="post">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <div class="filter-btns d-flex flex-column ">
+                <button class="btn btn-outline-info" type="submit">Login</button>
+                <small class="text-muted ml-2">
+                    <a href="{% url 'password_reset' %}">Forgot Password?</a>
                 </small>
-        </div>
-      </form>
-      
-              <div class="border-topics pt-3">
+            </div>
+        </form>
+
+        <div class="border-topics pt-3">
             <small class="text-muted d-flex justify-content-end">
                 Don't Have An Account? <a href="{% url 'user-register' %}" class="ml-2">Register</a>
             </small>
         </div>
-      
   </div>
   
 </div>    

@@ -1,11 +1,30 @@
 {% extends 'base/base.html' %}
+
+{% block link %}
+<style>
+  #main-container {
+    align-items: center;
+  }
+</style>
+{% endblock %}
+
 {% block title %}Logout Page{% endblock %}
 
 {% block content %}
-    <h2>You have successfully logged out!</h2>
-    <div class="border-topics pt-3">
-        <small class="text-muted d-flex justify-content-end">
-            <a href="{% url 'user-login' %}" class="ml-2">Log in</a>
-        </small>
+
+<div class="card logout-panel">    
+    <!--CARD-HEADER-->
+    <div class="card-header">
+        <h3 class="card-title text-center">Logout</h3>
+    </div> 
+    
+    <div class="card-body">
+        <h5 class="card-title text-center">You have successfully logged out!</h5>
+        <div class="border-topics pt-3">
+            <small class="text-muted d-flex justify-content-end">
+                <a href="{% url 'user-login' %}" class="ml-2">Log in</a>
+            </small>
+        </div>
     </div>
+</div>
 {% endblock content %}

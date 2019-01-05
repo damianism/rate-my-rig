@@ -19,11 +19,23 @@
     
       <!--CARD-HEADER-->
       <div class="card-header">
+        
         <h3 class="card-title text-center">
           <a href="{% url 'post-detail' instance.id %}">{{ instance.title|title }}</a>
         </h3>
+        
         <div class="user-info d-flex justify-content-between">
-          <img class="rounded-circle article-img" src="{{ instance.author.profile.image.url }}">
+          
+          {% if instance.author == user %}
+            <a class="" href="{% url 'user-profile' %}">
+              <img class="rounded-circle article-img" src="{{ instance.author.profile.image.url }}">
+            </a>
+          {% else %}
+            <a class="" href="{% url 'user-view' instance.author.username %}">
+              <img class="rounded-circle article-img" src="{{ instance.author.profile.image.url }}">
+            </a>
+          {% endif %}
+          
           <div class="card-header-user-info">
             {% if instance.author == user %}
               <div>by <a class="" href="{% url 'user-profile' %}">you</a></div>
@@ -33,7 +45,9 @@
             <small class="text-muted">posted on {{ instance.date_posted|date:"d F Y" }}</small>
             <small class="text-muted">at {{ instance.date_posted|date:"P" }}</small>
           </div>
+          
         </div>
+        
       </div>
 
       <!--CONFIGURATION TITLE-->
