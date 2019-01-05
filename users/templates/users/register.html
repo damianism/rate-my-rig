@@ -1,26 +1,41 @@
 {% extends 'base/base.html' %}
 {% load crispy_forms_tags %}
+
+{% block link %}
+<style>
+  #main-container {
+    align-items: center;
+  }
+</style>
+{% endblock %}
+
 {% block title %}Register Page{% endblock %}
 
 {% block content %}
-    <div class="content-section">
-        
+
+<div class="card register-panel mb-4">
+  
+    <!--CARD-HEADER-->
+    <div class="card-header">
+        <h3 class="card-title text-center">Registration</h3>
+    </div>  
+
+    <!--CARD-BODY-->
+    <div class="card-body">
         <form method="post">
             {% csrf_token %}
-            <fieldset class="from-group">
                 <legend class="border-bottom mb-4">Register Today</legend>
                 {{ form|crispy }}
-            </fieldset>
-            <fieldset class="from-group">
                 <button class="btn btn-outline-info" type="submit">Register</button>
-            </fieldset>
-        </form>
-        
+        </form>     
         <div class="border-topics pt-3">
-            <small class="text-muted d-flex justify-content-end">
+            <small class="text-muted d-flex justify-content-end ">
                 Already Have An Account? <a href="{% url 'user-login' %}" class="ml-2">Sign In</a>
             </small>
         </div>
-        
-    </div>
+    </div>  
+    
+</div>        
+    
+    
 {% endblock content %}
