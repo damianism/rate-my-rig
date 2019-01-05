@@ -174,7 +174,7 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     # post_confirm_delete.html will be used!
     # context by default will be object
     model = Post
-    success_url = '/'
+    success_url = '/blog'
     
     def test_func(self):
         post = self.get_object()    # a method to get post object
