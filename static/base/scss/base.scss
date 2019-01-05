@@ -379,14 +379,14 @@ footer a {
 
 .card {
       
-      background-color: map-get($color, maroon);
+      // background-color: map-get($color, maroon);
       
       .card-header {
         a {
-          
           &:hover {
             text-decoration: none;
-            color: yellow;
+            font-weight: bold;
+            color: map-get($color, red);
           }
         }
       }
