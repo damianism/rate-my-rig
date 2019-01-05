@@ -330,7 +330,7 @@ footer a {
     display: flex;
     flex-flow: row wrap;
     justify-content: flex-end;
-    align-items: end;
+    align-items: baseline;
     
   
     input.form-control.mr-1 {
@@ -376,11 +376,15 @@ footer a {
 
 // ###############################  SEARCH_RESULTS/BLOG ############################
 
+.card.mb-3 {
+  border: 1px solid rgba(0,0,0,.125);
+}
 
 .card {
-      
+
       // background-color: map-get($color, maroon);
-      
+      border: none;
+      border-radius: 0px;
       .card-header {
         a {
           &:hover {
@@ -390,17 +394,21 @@ footer a {
           }
         }
       }
-      // border-radius: 16px;
+      
       .card-title{
           margin-bottom: 0px;
 
       }
   
-  
+      .instance-image-button {
+        background:none!important;
+        color:#007bff;
+        border:none; 
+        padding:0!important;
+        font: inherit;
+        cursor: pointer;
+        font: caption;
+        font-weight: bold;
+      }
   
 }
-
-// .card>.list-group:last-child .list-group-item:last-child {
-//     border-bottom-right-radius: 15px;
-//     border-bottom-left-radius: 15px;
-// }

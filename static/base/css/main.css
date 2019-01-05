@@ -235,7 +235,7 @@ footer a:hover {
   display: flex;
   flex-flow: row wrap;
   justify-content: flex-end;
-  align-items: end; }
+  align-items: baseline; }
   .card-user-options input.form-control.mr-1 {
     height: 30px;
     margin-left: 0px; }
@@ -261,11 +261,26 @@ footer a:hover {
       .card-user-options input.form-control.mr-1 {
         margin-left: 0px; } }
 
-.card .card-header a:hover {
-  text-decoration: none;
-  font-weight: bold;
-  color: #ff0000; }
-.card .card-title {
-  margin-bottom: 0px; }
+.card.mb-3 {
+  border: 1px solid rgba(0, 0, 0, 0.125); }
+
+.card {
+  border: none;
+  border-radius: 0px; }
+  .card .card-header a:hover {
+    text-decoration: none;
+    font-weight: bold;
+    color: #ff0000; }
+  .card .card-title {
+    margin-bottom: 0px; }
+  .card .instance-image-button {
+    background: none !important;
+    color: #007bff;
+    border: none;
+    padding: 0 !important;
+    font: inherit;
+    cursor: pointer;
+    font: caption;
+    font-weight: bold; }
 
 /*# sourceMappingURL=main.css.map */
