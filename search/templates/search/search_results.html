@@ -23,32 +23,92 @@
   </div>
   
   <!-- RESULTS-->
-  {% for instance in object_list %}
-  <article class="media content-section">
+  <!--{% for instance in object_list %}-->
+  <!--<article class="media content-section">-->
     
-    <img class="rounded-circle article-img" src="{{ instance.author.profile.image.url }}">
+  <!--  <img class="rounded-circle article-img" src="{{ instance.author.profile.image.url }}">-->
     
-    <div class="media-body">
-      <div class="article-metadata d-flex justify-content-between">
-        <small class="text-muted">Posted on {{ instance.date_posted|date:"d F Y" }}</small>
-        {% if instance.author == user %}
-          <div>by <a class="mr-2" href="{% url 'user-profile' %}" target="_blank">{{ instance.author }}</a></div>
-        {% else %}
-          <div>by <a class="mr-2" href="{% url 'user-view' instance.author.username %}" target="_blank">{{ instance.author }}</a></div>
-        {% endif %}
-      </div>
-      <h2><a class="article-title" href="{% url 'post-detail' instance.id %}">{{ instance.title }}</a></h2>
-      <p class="article-content">
-        {{ instance.cpu }}, {{ instance.gpu }}, {{ instance.ram }}
-        {{ instance.description|slice:":120" }}
-      </p>
-    </div>
+  <!--  <div class="media-body">-->
+  <!--    <div class="article-metadata d-flex justify-content-between">-->
+  <!--      <small class="text-muted">Posted on {{ instance.date_posted|date:"d F Y" }}</small>-->
+  <!--      {% if instance.author == user %}-->
+  <!--        <div>by <a class="mr-2" href="{% url 'user-profile' %}" target="_blank">{{ instance.author }}</a></div>-->
+  <!--      {% else %}-->
+  <!--        <div>by <a class="mr-2" href="{% url 'user-view' instance.author.username %}" target="_blank">{{ instance.author }}</a></div>-->
+  <!--      {% endif %}-->
+  <!--    </div>-->
+  <!--    <h2><a class="article-title" href="{% url 'post-detail' instance.id %}">{{ instance.title }}</a></h2>-->
+  <!--    <p class="article-content">-->
+  <!--      {{ instance.cpu }}, {{ instance.gpu }}, {{ instance.ram }}-->
+  <!--      {{ instance.description|slice:":120" }}-->
+  <!--    </p>-->
+  <!--  </div>-->
     
-  </article>
+  <!--</article>-->
   
+  <!--{% empty %}-->
+  <!--  <p class="alert alert-info text-center">Sorry, no matches found</p>-->
+  <!--{% endfor %}    -->
+
+ <!--####################################################################    -->
+ 
+  {% for instance in object_list %}  
+    <div class="card mb-3">
+    
+      <!--CARD-HEADER-->
+      <div class="card-header">
+        <h3 class="card-title text-center">
+          <a href="{% url 'post-detail' instance.id %}">{{ instance.title|title }}</a>
+        </h3>
+        <div class="user-info d-flex justify-content-between">
+          <img class="rounded-circle article-img" src="{{ instance.author.profile.image.url }}">
+          <div class="card-header-user-info">
+            {% if instance.author == user %}
+              <div>by <a class="" href="{% url 'user-profile' %}">you</a></div>
+            {% else %}
+              <div>by <a class="" href="{% url 'user-view' instance.author.username %}">{{ instance.author }}</a></div>
+            {% endif %}
+            <small class="text-muted">posted on {{ instance.date_posted|date:"d F Y" }}</small>
+            <small class="text-muted">at {{ instance.date_posted|date:"P" }}</small>
+          </div>
+        </div>
+      </div>
+
+      <!--CONFIGURATION TITLE-->
+      <div class="card-body">
+        <div class="d-flex justify-content-between">
+          <h5 class="card-title text-center">Configuration</h5>
+          Views: &nbsp;&nbsp;&nbsp;{{ instance.views }}
+        </div>
+        <p class="card-text"></p>
+      </div>
+      
+      <!--CONFIGURATION-->
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          CPU: {{ instance.cpu }},  &nbsp;GPU: {{ instance.gpu }},  &nbsp;RAM: {{ instance.ram }}, 
+           &nbsp;PSU: {{ instance.psu }},  &nbsp;Mainboard: {{ instance.mainboard }}
+        </li>
+        {% if instance.description %}
+          <li class="list-group-item">
+            Description: <p class="card-text">{{ instance.description|slice:":120" }}</p>
+          </li>
+        {% endif %}
+      </ul>
+    
+    </div>
+
   {% empty %}
     <p class="alert alert-info text-center">Sorry, no matches found</p>
-        
-  {% endfor %}
+  {% endfor %} 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ <!--####################################################################    -->
+    
 
 {% endblock %}

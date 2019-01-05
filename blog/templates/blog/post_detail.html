@@ -15,7 +15,7 @@
     
       <!--CARD-HEADER-->
       <div class="card-header">
-        <h5 class="card-title text-center">{{ object.title|title }}</h5>
+        <h2 class="card-title text-center">{{ object.title|title }}</h2>
         <div class="user-info d-flex justify-content-between">
           <img class="rounded-circle article-img" src="{{ object.author.profile.image.url }}">
           <div class="card-header-user-info">
@@ -35,13 +35,15 @@
       
       <!--CONFIGURATION TITLE-->
       <div class="card-body">
-        <h5 class="card-title text-center">System Configuration</h5>
+        <div class="d-flex justify-content-between">
+          <h5 class="card-title text-center">Configuration</h5>
+          Views: &nbsp;&nbsp;&nbsp;{{ object.views }}
+        </div>
         <p class="card-text"></p>
       </div>
       
       <!--CONFIGURATION-->
       <ul class="list-group list-group-flush">
-        <li class="list-group-item">Views: &nbsp;&nbsp;&nbsp;{{ object.views }}</li>
         <li class="list-group-item">CPU: &nbsp;&nbsp;&nbsp;{{ object.cpu }}</li>
         <li class="list-group-item">GPU: &nbsp;&nbsp;&nbsp;{{ object.gpu }}</li>
         <li class="list-group-item">RAM: &nbsp;&nbsp;&nbsp;{{ object.ram }}</li>
