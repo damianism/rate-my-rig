@@ -1,16 +1,22 @@
 {% load crispy_forms_tags %}
 
-<div class="content-section">
-  <h3>Filter</h3>
+<div class="card">
+  
+  <!--CARD-HEADER-->
+  <div class="card-header">
+    <h3 class="card-title text-center">Filter</h3>
+  </div>
+  
+  <!--CARD-BODY-->
   <div class="card-body">
     <div class="input-group">
       <form method="get">
         {{ filter.form|crispy }}
-        <!--<input class="btn btn-secondary" type="submit"/>-->
         <a href="{% url 'blog-home' %}" class="btn btn-danger btn-reset"><span>Reset</span></a>
         <button class="btn btn-success btn-filter" type="submit"><span>Filter</span></button>
       </form>
     </div>
   </div>
+  
 </div>
-
+  

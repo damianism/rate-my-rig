@@ -115,7 +115,7 @@ a.article-title:hover {
   width: 90%; }
 
 .btn {
-  border-radius: 4px;
+  border-radius: 0px;
   background-color: #800000;
   border: none;
   color: #ffc107;
@@ -238,7 +238,8 @@ footer a:hover {
   align-items: baseline; }
   .card-user-options input.form-control.mr-1 {
     height: 30px;
-    margin-left: 0px; }
+    margin-left: 0px;
+    border-radius: 0px; }
   .card-user-options .add-to-cart-box {
     padding: 0 6px;
     height: 2rem;
