@@ -129,7 +129,6 @@ a.article-title:hover {
   font-family: 'Roboto Mono', monospace; }
 
 .btn-reset, .btn-submit, .btn-filter, .btn-comment {
-  width: 10rem;
   text-align: center;
   line-height: 15px;
   font-size: 1.0rem;
