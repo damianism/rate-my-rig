@@ -44,13 +44,7 @@
           </div>
         </div>
       </div>
-      
-      <!--CONFIGURATION IMAGE-->
-      {% if instance.image != "defaults/default_rig_pic.png" %}
-      <img class="card-img-top" src="{{ instance.image.url }}" alt="Card image cap">
-      {% endif %}
-      
-      
+
       <!--CONFIGURATION TITLE-->
       <div class="card-body">
         <div class="d-flex justify-content-between">
@@ -59,6 +53,28 @@
         </div>
         <p class="card-text"></p>
       </div>
+      
+      <!--CONFIGURATION IMAGE IF NOT DEFAULT-->
+      {% if instance.image != "defaults/default_rig_pic.png" %}
+      <div class="accordion" id="accordion_image">
+        <div class="card">
+          <div class="" id="headingOne">
+            <h5 class="mb-0  text-center">
+              <button class="instance-image-button my-1" type="button" data-toggle="collapse" data-target="#{{ instance.id }}" aria-expanded="true" aria-controls="collapseOne">
+               <i class="fas fa-angle-left"></i><i class="fas fa-angle-left"></i> view image <i class="fas fa-angle-right"></i><i class="fas fa-angle-right"></i>
+              </button>
+            </h5>
+          </div>
+      
+          <div id="{{ instance.id }}" class="collapse" aria-labelledby="headingOne" data-parent="#accordion_image">
+            <div class="card-body card-body-image">
+             <img class="card-img-top" src="{{ instance.image.url }}" alt="Card image cap">
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+      
       
       <!--CONFIGURATION-->
       <ul class="list-group list-group-flush">
