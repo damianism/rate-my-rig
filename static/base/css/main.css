@@ -128,7 +128,7 @@ a.article-title:hover {
   margin: 5px;
   font-family: 'Roboto Mono', monospace; }
 
-.btn-reset, .btn-submit, .btn-filter, .btn-comment {
+.btn-reset, .btn-submit, .btn-filter, .btn-comment, .btn-checkout {
   text-align: center;
   line-height: 15px;
   font-size: 1.0rem;
@@ -146,6 +146,14 @@ a.article-title:hover {
 
 .btn-reset span:after {
   content: '\00d7';
+  /* glyph for X cross*/
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px; }
+
+.btn-checkout span:after {
+  content: '\00a3';
   /* glyph for X cross*/
   position: absolute;
   opacity: 0;
@@ -224,6 +232,23 @@ footer a:hover {
         border-bottom-left-radius: .25rem;
         border: 0px; } }
 
+input.form-control.mr-1 {
+  height: 30px;
+  margin-left: 0px;
+  border-radius: 0px; }
+
+.cart-input {
+  height: 36px;
+  margin-left: 0px;
+  border-radius: 0px; }
+
+.add-to-cart-box {
+  padding: 0 6px;
+  height: 2rem;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: baseline; }
+
 .card-header-user-info {
   display: flex;
   flex-direction: column;
@@ -235,16 +260,6 @@ footer a:hover {
   flex-flow: row wrap;
   justify-content: flex-end;
   align-items: baseline; }
-  .card-user-options input.form-control.mr-1 {
-    height: 30px;
-    margin-left: 0px;
-    border-radius: 0px; }
-  .card-user-options .add-to-cart-box {
-    padding: 0 6px;
-    height: 2rem;
-    display: flex;
-    flex-flow: row nowrap;
-    align-items: baseline; }
   @media screen and (max-width: 450px) {
     .card-user-options {
       flex-flow: column;
@@ -293,5 +308,32 @@ footer a:hover {
   .pass-reset-confirm-panel, .pass-reset-complete-panel,
   .pass-reset-done, .post-new-panel {
     min-width: 70%; } }
+
+.checkout-panel {
+  display: flex;
+  justify-content: center; }
+  .checkout-panel a {
+    width: 10rem; }
+  @media screen and (max-width: 767px) {
+    .checkout-panel {
+      flex-direction: column;
+      align-items: center; } }
+
+.cart-flex-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch; }
+  .cart-flex-wrapper .card {
+    flex: 1 0 33%; }
+  @media screen and (max-width: 379px) {
+    .cart-flex-wrapper .card {
+      flex: 1 0 50%; } }
+  @media screen and (min-width: 380px) and (max-width: 760px) {
+    .cart-flex-wrapper .card {
+      flex: 1 0 50%; } }
+  @media screen and (min-width: 1200px) {
+    .cart-flex-wrapper .card {
+      flex: 0 0 29.33%; } }
 
 /*# sourceMappingURL=main.css.map */

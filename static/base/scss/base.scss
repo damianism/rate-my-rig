@@ -178,7 +178,7 @@ a.article-title:hover {
     font-family: 'Roboto Mono', monospace;
 }
 
-.btn-reset, .btn-submit, .btn-filter, .btn-comment {
+.btn-reset, .btn-submit, .btn-filter, .btn-comment, .btn-checkout {
     // width: 10rem;
 
     text-align: center;
@@ -208,7 +208,15 @@ a.article-title:hover {
     opacity: 0;
     top: 0;
     right: -20px;
+}
 
+.btn-checkout span:after {
+    content: '\00a3';
+    /* glyph for X cross*/
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
 }
 
 .btn-submit span:after, .btn-filter span:after, .btn-comment span:after {
@@ -318,7 +326,28 @@ footer a {
   
   
   // ################### DETAIL POST ########################
-  
+
+input.form-control.mr-1 {
+      height: 30px;
+      margin-left: 0px;
+      border-radius: 0px;
+}
+
+.cart-input {
+      height: 36px;
+      margin-left: 0px;
+      border-radius: 0px;
+}
+
+.add-to-cart-box {
+        padding: 0 6px;
+        height: 2rem;
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: baseline;
+    }
+    
+
 .card-header-user-info {
     display: flex;
     flex-direction: column;
@@ -332,20 +361,13 @@ footer a {
     justify-content: flex-end;
     align-items: baseline;
     
-  
-    input.form-control.mr-1 {
-      height: 30px;
-      margin-left: 0px;
-      border-radius: 0px;
-    }
-  
-    .add-to-cart-box {
-        padding: 0 6px;
-        height: 2rem;
-        display: flex;
-        flex-flow: row nowrap;
-        align-items: baseline;
-    }
+    // .add-to-cart-box {
+    //     padding: 0 6px;
+    //     height: 2rem;
+    //     display: flex;
+    //     flex-flow: row nowrap;
+    //     align-items: baseline;
+    // }
     
     // media query for small narrow screens eg iphonex,xs, galaxy s5
     @include mQ("maxW", 450px) {
@@ -427,4 +449,54 @@ footer a {
     @include mQ("maxW", 899px) {
       min-width: 70%;
     }
+}
+
+// ################### cart ######################
+
+.checkout-panel {
+    display: flex;
+    
+    a {
+      width: 10rem;
+    }
+    justify-content: center;
+    @include mQ("maxW", 767px) {
+      flex-direction: column;
+      align-items: center;
+    }
+}
+
+
+.cart-flex-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+    .card {
+      flex: 1 0 33%;
+      // margin: 5px;
+      // height: 500px;
+    }
+  
+  @include mQ("maxW", 379px) {
+  .card {
+      flex: 1 0 50%;
+    }
+    }
+      
+  @include mQ("w", 380px, 760px) {
+  .card {
+    flex: 1 0 50%;
+    // max-width: 18rem;
+    }
+  }
+     
+  @include mQ("minW", 1200px) {
+  .card {
+    flex: 0 0 29.33%;
+    }
+  }
+  
+  
+  
 }

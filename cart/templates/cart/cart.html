@@ -11,50 +11,67 @@
 
 {% block content %}
 
-<div class="row">
-    <div class="col-xm-10 col-xm-offset-1">
-{% for item in cart_items %}
+<div class="cart-flex-wrapper">
+  {% for item in cart_items %}
 
-    <div class="card" style="width: 20rem; max-width: 500px; min-width: 20rem;">
-      <!--<img class="card-img-top" src="{{ item.build.image.url }}" alt="Card image cap">-->
-      <div class="" style="background-image: url( {{ item.build.image.url }} ); height: 10rem; background-repeat: no-repeat; background-size: cover;">
-          
+    <div class="card m-2">
+
+      <!--CONFIGURATION IMAGE-->
+      <img class="card-img-top" src="{{ item.build.image.url }}" alt="Card image cap">
+
+      <!--CARD-HEADER-->
+      <div class="card-header">
+        <h4 class="card-title text-center">{{ item.build.title|title|slice:":50"  }}</h4>
       </div>
-      <div class="card-body">
-        <h5 class="card-title">{{ item.build.title }}</h5>
-        <p class="card-text">
-            {{ item.build.cpu }},   
-            {{ item.build.gpu }},
-            {{ item.build.ram }}<br>
-            {{ item.build.description }}
-        </p>
-        <form class="form-inline" method="post" action="{% url 'adjust-cart' item.pk %}">
+      
+      <!--CONTENT-->
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          CPU: {{ item.build.cpu }},  &nbsp;GPU: {{ item.build.gpu }},  &nbsp;RAM: {{ item.build.ram }}, 
+           &nbsp;PSU: {{ item.build.psu }},  &nbsp;Mainboard: {{ item.build.mainboard }}
+        </li>
+      </ul>
+
+      <!--CONFIGURATION TITLE-->
+      <div class="card-body d-flex flex-column justify-content-end align-items-end">
+        <form method="post" action="{% url 'adjust-cart' item.pk %}">
             {% csrf_token %}
-            <div class="form-group">
-                <label for="exampleInputAmount" class="sr-only">New Qty</label>
-                <div class="input-group">
-                    <!--<div class="input-group-addon"></div>-->
-                    <input name="quantity" type="number" min="0" max="5" class="form-control mx-1" value="{{item.quantity}}" style="width:4rem;">
-                </div>
+            <div class="add-to-cart-box">
+              <input name="quantity" type="number" min="0" max="5" class="form-control mx-1 cart-input" value="{{item.quantity}}" style="width:4rem;">
+              <button type="submit" class="btn btn-primary"><i class="fas fa-edit mx-1"></i>Amend</button>
             </div>
-            <button type="submit" class="btn btn-primary"><i class="fas fa-edit mx-1"></i>Amend</button>
         </form>
       </div>
+
     </div>
-    </div>
-    {% empty %}
-      <p class="alert alert-info text-center">You cart is empty</p>
     
-{% endfor %}
+    {% empty %}
+
+      <div class="card m-2" style="width: 100%;">
+        
+        <!--CARD-HEADER-->
+        <div class="card-header">
+          <h2 class="card-title text-center">Your cart is empty</h2>
+        </div>
+
+        <!--CONTENT-->
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item text-muted">
+            Please add more items to your cart
+          </li>
+        </ul>
+        
+      </div>
+      
+  {% endfor %}
+</div>
+
+<div class="card mx-2 mb-4 mt-2" >
+  <div class="card-body font-weight-bold">
+    <p>Total: <i class="fas fa-pound-sign"></i> {{ total }}</p>
+    <div class="checkout-panel">
+      <a href="{% url 'checkout' %}" class="btn btn-checkout" role="button"><span>Checkout</span></a>
     </div>
-
-
-<div class="card">
-  <div class="card-body">
-    <p>Total</p>
-    <p><span class="glyphicon glyphicon-euro" aria-hidden="true"></span>{{ total }}</p>
-    <!--{# <a href="{% url 'checkout' %}" class="btn btn-success" role="button"><i class="fas fa-pound-sign"></i>Checkout</a> #}-->
-    <a href="{% url 'checkout' %}" class="btn btn-success" role="button"><i class="fas fa-pound-sign mx-1"></i>Checkout</a>
   </div>
 </div>
 
