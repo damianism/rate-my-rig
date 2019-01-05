@@ -283,4 +283,11 @@ footer a:hover {
     font: caption;
     font-weight: bold; }
 
+@media screen and (min-width: 900px) {
+  .login-panel {
+    width: 600px; } }
+@media screen and (max-width: 899px) {
+  .login-panel {
+    min-width: 70%; } }
+
 /*# sourceMappingURL=main.css.map */
