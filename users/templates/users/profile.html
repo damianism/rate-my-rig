@@ -12,39 +12,61 @@
 {% block title %}{{ user.username }}'s Profile{% endblock %} 
 
 {% block content %}
-<div class="content-section">
-    <div class="media">
-        <img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
-        <div class="media-body">
-            <h2 class="account-heading">{{ user.username }}</h2>
-            <p class="text-secondary">
-                email: {{ user.email }}<br> 
-                name: {{ user.first_name|title }}{{ user.last_name|center:"15"|title }}
-            </p>
+
+<div class="card">
+        
+    <!--CARD-HEADER-->
+    <div class="card-header">
+      <h1 class="card-title text-center">{{ user.username }}</h1>
+      <div class="user-info d-flex justify-content-between">
+        <img class="rounded-circle article-img" src="{{ user.profile.image.url }}">
+        <div class="card-header-user-info">
+          <small class="text-muted">email: {{ user.email }}</small>
+          <small class="text-muted">name: {{ user.first_name|title }}{{ user.last_name|center:"15"|title }}</small>
         </div>
-    </div>    
-    <h3>Posts:</h3>
-    <ol>
+      </div>
+    </div>
+      
+    <!--CONTENT TITLE-->
+    <div class="card-body">
+        <h4 class="card-title text-left">Your builds</h4>
+        <p class="card-text"></p>
+    </div>
+      
+    <!--CONTENT-->
+    <ul class="list-group list-group-flush">
         {% for post in user.post_set.all %}
-           <li>
-               <a href="{% url 'post-detail' post.id %}">{{ post }}</a>
-           </li>
+            <li class="list-group-item"><a href="{% url 'post-detail' post.id %}">{{ forloop.counter }}) &nbsp;&nbsp;{{ post }}</a></li>
+        {% empty %}
+            <li class="list-group-item">{{ user.username }} hasn't posted anything yet.</li>
         {% endfor %}
-    </ol>
+    </ul>
+
 </div>
 
-<div class="content-section">
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        <fieldset class="from-group">
-            <legend class="border-bottom mb-4">Change username and email</legend>
-            {{ user_form|crispy }}
-            <legend class="border-bottom mb-4">Change your profile pic</legend>
-            {{ user_profile_form|crispy }}
-        </fieldset>
-        <fieldset class="from-group d-flex justify-content-end">
-            <button class="btn btn-outline-info" type="submit">Update</button>
-        </fieldset>
-    </form>
+<div class="card my-4">
+        
+    <!--CARD-HEADER-->
+    <div class="card-header">
+      <h3 class="card-title text-center">Change your details</h3>
+    </div>
+    
+    <!--CONTENT TITLE-->
+    <div class="card-body">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <fieldset class="from-group">
+                <legend class="border-bottom mb-4">Change username and email</legend>
+                {{ user_form|crispy }}
+                <legend class="border-bottom mb-4">Change your profile pic</legend>
+                {{ user_profile_form|crispy }}
+            </fieldset>
+            <fieldset class="from-group d-flex justify-content-end">
+                <button class="btn btn-outline-info" type="submit">Update</button>
+            </fieldset>
+        </form>
+    </div>
+
 </div>
+
 {% endblock content %}
