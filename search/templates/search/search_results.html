@@ -44,7 +44,13 @@
           </div>
         </div>
       </div>
-
+      
+      <!--CONFIGURATION IMAGE-->
+      {% if instance.image != "defaults/default_rig_pic.png" %}
+      <img class="card-img-top" src="{{ instance.image.url }}" alt="Card image cap">
+      {% endif %}
+      
+      
       <!--CONFIGURATION TITLE-->
       <div class="card-body">
         <div class="d-flex justify-content-between">

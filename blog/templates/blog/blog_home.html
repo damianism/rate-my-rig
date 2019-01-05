@@ -3,7 +3,53 @@
 {% block title %}Home Page{% endblock %}
 
 {% block home_content %}
-  <div class="d-flex justify-content-between">
+  <!--<div class="d-flex justify-content-between">-->
+  <!--  <div>-->
+  <!--    <a class="btn btn-sm btn-success" href="{% url 'post-create' %}">New Post</a>-->
+  <!--  </div>   -->
+  <!--  <div>-->
+  <!--    {% include "base/pagination_class_based.html" %}-->
+  <!--  </div>-->
+  <!--</div>-->
+     <!--{# {% for instance in filter.qs %} #}-->
+  <!--   {% for instance in object_list %}-->
+  <!--    <article class="media content-section">-->
+  <!--      <img class="rounded-circle article-img" src="{{ instance.author.profile.image.url }}">-->
+  <!--      <div class="media-body">-->
+  <!--        <div class="article-metadata d-flex justify-content-between">-->
+  <!--          <small class="text-muted">Posted on {{ instance.date_posted|date:"d F Y" }}</small>-->
+  <!--          {% if instance.author == user %}-->
+  <!--            <div>by <a class="mr-2" href="{% url 'user-profile' %}" target="_blank">{{ instance.author }}</a></div>-->
+  <!--          {% else %}-->
+  <!--            <div>by <a class="mr-2" href="{% url 'user-view' instance.author.username %}" target="_blank">{{ instance.author }}</a></div>-->
+  <!--          {% endif %}-->
+  <!--        </div>-->
+  <!--        <h2><a class="article-title" href="{% url 'post-detail' instance.id %}">{{ instance.title }}</a></h2>-->
+  <!--        <p class="article-content">-->
+  <!--                  {{ instance.cpu }}, {{ instance.gpu }}, {{ instance.ram }}-->
+  <!--                  {{ instance.description|slice:":120" }}-->
+  <!--        </p>-->
+          
+  <!--          <form method="POST" action="{% url 'add-to-cart' instance.id  %}">-->
+  <!--          {% csrf_token%}-->
+  <!--          <fieldset class="from-group d-flex justify-content-end">-->
+  <!--            <input name="quantity" class="form-control mx-1" type="number" min="1" max="5" value="1" style="width: 4rem;">-->
+  <!--            <button class="btn btn-sm btn-success btn-cart" type="submit">Add to cart</button>-->
+  <!--          </fieldset>-->
+  <!--        </form>-->
+          
+  <!--      </div>-->
+  <!--    </article>-->
+  <!--    {% empty %}-->
+  <!--      <p class="alert alert-info text-center">Sorry, no matches found</p>-->
+  <!--  {% endfor %}-->
+  <!--<div class="d-flex justify-content-end">-->
+  <!--  {% include "base/pagination_class_based.html" %}  -->
+  <!--</div>  -->
+
+
+ <!--###############################################################-->
+   <div class="d-flex justify-content-between">
     <div>
       <a class="btn btn-sm btn-success" href="{% url 'post-create' %}">New Post</a>
     </div>   
@@ -11,40 +57,83 @@
       {% include "base/pagination_class_based.html" %}
     </div>
   </div>
-     <!--{# {% for instance in filter.qs %} #}-->
-     {% for instance in object_list %}
-      <article class="media content-section">
-        <img class="rounded-circle article-img" src="{{ instance.author.profile.image.url }}">
-        <div class="media-body">
-          <div class="article-metadata d-flex justify-content-between">
-            <small class="text-muted">Posted on {{ instance.date_posted|date:"d F Y" }}</small>
+  
+  <!-- RESULTS-->
+  {% for instance in object_list %}  
+    <div class="card mb-3">
+    
+      <!--CARD-HEADER-->
+      <div class="card-header">
+        <h3 class="card-title text-center">
+          <a href="{% url 'post-detail' instance.id %}">{{ instance.title|title }}</a>
+        </h3>
+        <div class="user-info d-flex justify-content-between">
+          <img class="rounded-circle article-img" src="{{ instance.author.profile.image.url }}">
+          <div class="card-header-user-info">
             {% if instance.author == user %}
-              <div>by <a class="mr-2" href="{% url 'user-profile' %}" target="_blank">{{ instance.author }}</a></div>
+              <div>by <a class="" href="{% url 'user-profile' %}">you</a></div>
             {% else %}
-              <div>by <a class="mr-2" href="{% url 'user-view' instance.author.username %}" target="_blank">{{ instance.author }}</a></div>
+              <div>by <a class="" href="{% url 'user-view' instance.author.username %}">{{ instance.author }}</a></div>
             {% endif %}
+            <small class="text-muted">posted on {{ instance.date_posted|date:"d F Y" }}</small>
+            <small class="text-muted">at {{ instance.date_posted|date:"P" }}</small>
           </div>
-          <h2><a class="article-title" href="{% url 'post-detail' instance.id %}">{{ instance.title }}</a></h2>
-          <p class="article-content">
-                    {{ instance.cpu }}, {{ instance.gpu }}, {{ instance.ram }}
-                    {{ instance.description|slice:":120" }}
-          </p>
-          
-            <form method="POST" action="{% url 'add-to-cart' instance.id  %}">
-            {% csrf_token%}
-            <fieldset class="from-group d-flex justify-content-end">
-              <input name="quantity" class="form-control mx-1" type="number" min="1" max="5" value="1" style="width: 4rem;">
-              <button class="btn btn-sm btn-success btn-cart" type="submit">Add to cart</button>
-            </fieldset>
-          </form>
-          
         </div>
-      </article>
-      {% empty %}
-        <p class="alert alert-info text-center">Sorry, no matches found</p>
-    {% endfor %}
+      </div>
+      
+      <!--CONFIGURATION IMAGE-->
+      <!--{% if instance.image != "defaults/default_rig_pic.png" %}
+      <img class="card-img-top" src="{{ instance.image.url }}" alt="Card image cap">
+      {% endif %}
+      -->
+      <!--CONFIGURATION TITLE-->
+      <div class="card-body">
+        <div class="d-flex justify-content-between">
+          <h5 class="card-title text-center">Configuration</h5>
+          Views: &nbsp;&nbsp;&nbsp;{{ instance.views }}
+        </div>
+        <p class="card-text"></p>
+      </div>
+      
+      <!--CONFIGURATION-->
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          CPU: {{ instance.cpu }},  &nbsp;GPU: {{ instance.gpu }},  &nbsp;RAM: {{ instance.ram }}, 
+           &nbsp;PSU: {{ instance.psu }},  &nbsp;Mainboard: {{ instance.mainboard }}
+        </li>
+        {% if instance.description %}
+          <li class="list-group-item">
+            Description: <p class="card-text">{{ instance.description|slice:":120" }}</p>
+          </li>
+        {% endif %}
+      </ul>
+    
+    <!--USER-BUTTONS-->
+      <div class="card-body card-user-options">
+        {% if instance.author == user %}
+          <a href="{% url 'post-update' instance.id %}" class="btn btn-sm btn-secondary mt-1 mb-1">Update</a>
+          <a href="{% url 'post-delete' instance.id %}" class="btn btn-sm btn-danger  mt-1 mb-1">Delete</a>
+        {% endif %}
+        <form method="POST" action="{% url 'add-to-cart' instance.id %}" >
+          {% csrf_token%}
+          <div class="add-to-cart-box">
+            <input name="quantity" class="form-control mr-1" type="number" min="1" max="5" value="1" style="width: 4rem;">
+            <button class="btn btn-sm btn-success btn-cart ml-1 mb-1" type="submit">Add to cart</button>
+          </div>
+        </form>
+      </div>
+    
+    
+    
+    </div>
+
+  {% empty %}
+    <p class="alert alert-info text-center">Sorry, no matches found</p>
+  {% endfor %} 
+  
   <div class="d-flex justify-content-end">
     {% include "base/pagination_class_based.html" %}  
   </div>  
-    
+ <!--###############################################################-->
+
 {% endblock home_content %}

@@ -244,7 +244,7 @@ footer a:hover {
     height: 2rem;
     display: flex;
     flex-flow: row nowrap;
-    align-items: center; }
+    align-items: baseline; }
   @media screen and (max-width: 450px) {
     .card-user-options {
       flex-flow: column;
