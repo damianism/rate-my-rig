@@ -261,10 +261,12 @@ footer a:hover {
       .card-user-options input.form-control.mr-1 {
         margin-left: 0px; } }
 
-.card .card-header a:hover {
-  text-decoration: none;
-  color: yellow; }
-.card .card-title {
-  margin-bottom: 0px; }
+.card {
+  background-color: #800000; }
+  .card .card-header a:hover {
+    text-decoration: none;
+    color: yellow; }
+  .card .card-title {
+    margin-bottom: 0px; }
 
 /*# sourceMappingURL=main.css.map */

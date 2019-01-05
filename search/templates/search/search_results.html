@@ -23,35 +23,6 @@
   </div>
   
   <!-- RESULTS-->
-  <!--{% for instance in object_list %}-->
-  <!--<article class="media content-section">-->
-    
-  <!--  <img class="rounded-circle article-img" src="{{ instance.author.profile.image.url }}">-->
-    
-  <!--  <div class="media-body">-->
-  <!--    <div class="article-metadata d-flex justify-content-between">-->
-  <!--      <small class="text-muted">Posted on {{ instance.date_posted|date:"d F Y" }}</small>-->
-  <!--      {% if instance.author == user %}-->
-  <!--        <div>by <a class="mr-2" href="{% url 'user-profile' %}" target="_blank">{{ instance.author }}</a></div>-->
-  <!--      {% else %}-->
-  <!--        <div>by <a class="mr-2" href="{% url 'user-view' instance.author.username %}" target="_blank">{{ instance.author }}</a></div>-->
-  <!--      {% endif %}-->
-  <!--    </div>-->
-  <!--    <h2><a class="article-title" href="{% url 'post-detail' instance.id %}">{{ instance.title }}</a></h2>-->
-  <!--    <p class="article-content">-->
-  <!--      {{ instance.cpu }}, {{ instance.gpu }}, {{ instance.ram }}-->
-  <!--      {{ instance.description|slice:":120" }}-->
-  <!--    </p>-->
-  <!--  </div>-->
-    
-  <!--</article>-->
-  
-  <!--{% empty %}-->
-  <!--  <p class="alert alert-info text-center">Sorry, no matches found</p>-->
-  <!--{% endfor %}    -->
-
- <!--####################################################################    -->
- 
   {% for instance in object_list %}  
     <div class="card mb-3">
     
@@ -101,14 +72,5 @@
   {% empty %}
     <p class="alert alert-info text-center">Sorry, no matches found</p>
   {% endfor %} 
- 
- 
- 
- 
- 
- 
- 
- <!--####################################################################    -->
-    
-
+  
 {% endblock %}

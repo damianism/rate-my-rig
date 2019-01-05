@@ -378,7 +378,9 @@ footer a {
 
 
 .card {
-  
+      
+      background-color: map-get($color, maroon);
+      
       .card-header {
         a {
           
