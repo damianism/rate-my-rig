@@ -20,6 +20,8 @@
 <script type="text/javascript" src="{% static 'base/js/stripe.js' %}"></script>
 {% endblock %}
 
+{% block title %}Checkout{% endblock %}
+
 {% block content %}
 <div class="row row-flex">
     {% for item in cart_items %}
