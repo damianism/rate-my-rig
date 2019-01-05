@@ -24,43 +24,61 @@
 <div class="row row-flex">
     {% for item in cart_items %}
     
-    <div class="col-xs-10 col-xs-offset-1 col-sm-offset-0 col-sm-6 col-md-4 display panel panel-default">
-        <div class="panel-body">
+    <div class="col-xs-10 col-xs-offset-1 col-sm-offset-0 col-sm-6 col-md-4 ">
+        <div class="card my-2">
             <div class="" style="background-image: url( {{ item.build.image.url }} ); height: 10rem; background-repeat: no-repeat; background-size: cover;"></div>
-            
-            <div class="caption">
-                <h3>{{ item.build.title }}</h3>
-                <p class="product-description">{{ item.build.description }}</p>
-                <p>{{ item.quantity }}</p>
-                <p>{{ item.build.price }}</p>
+            <!--CARD-HEADER-->
+            <div class="card-header">
+              <h6 class="card-title text-center">{{ item.build.title|title|slice:":21"  }}</h6>
             </div>
+            
+            <!--CONTENT-->
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Quanity: {{ item.quantity }}</li>
+              <li class="list-group-item">Price: {{ item.build.price }}</li>
+            </ul>
         </div>
+        
     </div>
     {% endfor %}
 </div>
-<div class="row">
-    <p> Total</p>
-    <p><i class="fas fa-pound-sign mx-1"></i>{{ total }}</p>
+
+<div class="card mb-3 mt-2 ">
+  <div class="card-body font-weight-bold d-flex justify-content-center align-item-center">
+    <p style="font-size: 2rem;" class="my-0">Total: <i class="fas fa-pound-sign"></i> {{ total }}</p>
+  </div>
 </div>
 
-<form role="form" method="post" id="payment-form" action="{% url 'checkout' %}">
-    <legend>Payment Details</legend>
-    <div id="credit-card-errors" style="display:none">
-        <div class="alert-message block-message error" id="stripe-error-message"></div>
-    </div>
+<div class="card mb-4" >
     
-    <div class="form-group col-md-6">
-        {{ order_form|crispy }}
-    </div>
+    <!--CARD-HEADER-->
+    <div class="card-header">
+        <h3 class="card-title text-center">Payment Details</h3>
+    </div> 
     
-    <div class="form-group col-md-6">
-        {{ payment_form|crispy }}
+    <!--CARD-BODY-->
+    <div class="card-body">
+    <form role="form" method="post" id="payment-form" action="{% url 'checkout' %}">
+        <div id="credit-card-errors" style="display:none">
+            <div class="alert-message block-message error" id="stripe-error-message"></div>
+        </div>
+        
+        <div class="row">
+            <div class="form-group col-md-6">
+                {{ order_form|crispy }}
+            </div>
+            
+            <div class="form-group col-md-6">
+                {{ payment_form|crispy }}
+            </div>
+        </div>
+        
+        {% csrf_token %}
+        <div class="d-flex justify-content-center">
+            <input class="btn btn-primary" id="submit_payment_btn" name="commit" type="submit" value="Submit Payment">
+        </div>
+    </form>
     </div>
-    
-    {% csrf_token %}
-    <div class="form-group col-md-12">
-        <input class="btn btn-primary" id="submit_payment_btn" name="commit" type="submit" value="Submit Payment">
     </div>
-</form>
 
 {% endblock %}
