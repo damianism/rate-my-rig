@@ -417,7 +417,9 @@ footer a {
 
 // ################# login ########################
 
-.login-panel, .logout-panel, .pass-reset-confirm-panel, .pass-reset-complete-panel, .pass-reset-done {
+.login-panel, .logout-panel, 
+.pass-reset-confirm-panel, .pass-reset-complete-panel, 
+.pass-reset-done, .post-new-panel {
     // media query for small narrow screens eg iphonex,xs, galaxy s5
     @include mQ("minW", 900px) {
       width: 600px;

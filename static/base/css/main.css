@@ -284,10 +284,14 @@ footer a:hover {
     font-weight: bold; }
 
 @media screen and (min-width: 900px) {
-  .login-panel, .logout-panel, .pass-reset-confirm-panel, .pass-reset-complete-panel, .pass-reset-done {
+  .login-panel, .logout-panel,
+  .pass-reset-confirm-panel, .pass-reset-complete-panel,
+  .pass-reset-done, .post-new-panel {
     width: 600px; } }
 @media screen and (max-width: 899px) {
-  .login-panel, .logout-panel, .pass-reset-confirm-panel, .pass-reset-complete-panel, .pass-reset-done {
+  .login-panel, .logout-panel,
+  .pass-reset-confirm-panel, .pass-reset-complete-panel,
+  .pass-reset-done, .post-new-panel {
     min-width: 70%; } }
 
 /*# sourceMappingURL=main.css.map */

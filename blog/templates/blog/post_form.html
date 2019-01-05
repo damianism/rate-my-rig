@@ -1,20 +1,36 @@
 {% extends 'base/base.html' %}
 {% load crispy_forms_tags %}
-{% block title %}Register Page{% endblock %}
+
+{% block link %}
+<style>
+  #main-container {
+    align-items: center;
+  }
+</style>
+{% endblock %}
+
+{% block title %}Post a new build{% endblock %}
 
 {% block content %}
-    <div class="content-section">
-        
-        <form method="post", enctype="multipart/form-data">
-            {% csrf_token %}
-            <fieldset class="from-group">
-                <legend class="border-bottom mb-4">Blog post</legend>
-                {{ form|crispy }}
-            </fieldset>
-            <fieldset class="from-group">
-                <button class="btn btn-outline-info" type="submit">Post</button>
-            </fieldset>
-        </form>
 
+    <div class="card post-new-panel mb-4">    
+        
+        <!--CARD-HEADER-->
+        <div class="card-header">
+            <h3 class="card-title text-center">Post a new build</h3>
+        </div>     
+    
+        <!--CARD-BODY-->
+        <div class="card-body">
+            <form method="post", enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <div class="d-flex justify-content-end">
+                    <button class="btn btn-outline-info" type="submit">Post</button>
+                </fieldset>
+            </div>
+            
+        </div>
     </div>
+
 {% endblock content %}
