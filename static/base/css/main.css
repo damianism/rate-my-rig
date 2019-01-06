@@ -5,7 +5,7 @@ html {
   margin-top: 2.2rem; }
 
 body {
-  background: linear-gradient(to left top, #ff9e07, #ffa504, #ffab03, #ffb202, #ffb803, #ffb803, #ffb803, #ffb803, #ffb202, #ffab03, #ffa504, #ff9e07);
+  background-color: wheat;
   color: #333333;
   margin-top: 2.2rem;
   height: 100%;
@@ -113,6 +113,9 @@ a.article-title:hover {
   margin: 1.25rem auto;
   margin-bottom: 2rem;
   width: 90%; }
+
+.btn.btn-sm.btn-success.new_post {
+  margin-left: 0px; }
 
 .btn {
   border-radius: 0px;

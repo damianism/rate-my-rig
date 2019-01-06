@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'django_resized',
     'django_filters',
+    'storages',
 
 ]
 
@@ -196,3 +197,20 @@ EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS')
 
 STRIPE_PUBLISHABLE = os.environ.get("STRIPE_PUBLISHABLE")
 STRIPE_SECRET = os.environ.get("STRIPE_SECRET")
+
+# AWS
+AWS_S3_OBJECT_PARAMETERS = {
+    'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
+    'CacheControl': 'max-age=94608000',
+}
+
+AWS_STORAGE_BUCKET_NAME = 'build-me-a-rig'
+AWS_S3_REGION_NAME = 'eu-west-1'
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+
+STATICFILES_LOCATION = 'static'
+STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+MEDIAFILES_LOCATION = 'media'
+DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'

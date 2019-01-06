@@ -4,9 +4,9 @@ html {
 }
 
 body {
-  // background: #fafafa;
-  // background: map-get($color, mustard);
-  background: linear-gradient(to left top, #ff9e07, #ffa504, #ffab03, #ffb202, #ffb803, #ffb803, #ffb803, #ffb803, #ffb202, #ffab03, #ffa504, #ff9e07);
+
+  // background: linear-gradient(to left top, #ff9e07, #ffa504, #ffab03, #ffb202, #ffb803, #ffb803, #ffb803, #ffb803, #ffb202, #ffab03, #ffa504, #ff9e07);
+  background-color: wheat;
   color: #333333;
   margin-top: 2.2rem;
   height: 100%;
@@ -160,7 +160,9 @@ a.article-title:hover {
     width: 90%;
 }
 
-
+.btn.btn-sm.btn-success.new_post {
+  margin-left: 0px;
+}
 
 .btn {
     border-radius: 0px;
@@ -257,12 +259,6 @@ footer a {
 
 
 // ################################## search template ########################
-
-
-
-
-
-
 
 .search-container {
   display: flex;
@@ -496,7 +492,6 @@ input.form-control.mr-1 {
     flex: 0 0 29.33%;
     }
   }
-  
-  
-  
+
 }
+
