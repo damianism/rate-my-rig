@@ -21,7 +21,8 @@
     <div class="card-body">
         <h5 class="card-title text-center">You have successfully logged out!</h5>
         <div class="border-topics pt-3">
-            <small class="text-muted d-flex justify-content-end">
+            <small class="text-muted d-flex justify-content-between">
+                <a href="{% url 'blog-home' %}" class="ml-2">Back to Builds</a>
                 <a href="{% url 'user-login' %}" class="ml-2">Log in</a>
             </small>
         </div>
