@@ -17,9 +17,9 @@
                 <form method="post">
                     {% csrf_token %}
                     {{ form|crispy }}
-                    <div class="form-actions d-flex justify-content-center">
-                        <button type="reset" class="btn btn-reset"><span>reset</span></button>
-                        <button type="submit" class="btn btn-submit"><span>submit</span></button>
+                    <div class="form-actions d-flex justify-content-center flex-wrap">
+                        <button type="reset" class="btn btn-reset" style="width: 10rem;"><span>reset</span></button>
+                        <button type="submit" class="btn btn-submit" style="width: 10rem;"><span>submit</span></button>
                     </div>
                 </form>
             </div>

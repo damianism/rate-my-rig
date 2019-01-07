@@ -279,6 +279,10 @@ input.form-control.mr-1 {
       .card-user-options input.form-control.mr-1 {
         margin-left: 0px; } }
 
+@media screen and (min-width: 768px) {
+  .filter-panel {
+    margin-top: 39px; } }
+
 .card.mb-3 {
   border: 1px solid rgba(0, 0, 0, 0.125); }
 
@@ -304,12 +308,12 @@ input.form-control.mr-1 {
 @media screen and (min-width: 900px) {
   .login-panel, .logout-panel,
   .pass-reset-confirm-panel, .pass-reset-complete-panel,
-  .pass-reset-done, .post-new-panel {
+  .pass-reset-done, .post-new-panel, .delete-post-panel {
     width: 600px; } }
 @media screen and (max-width: 899px) {
   .login-panel, .logout-panel,
   .pass-reset-confirm-panel, .pass-reset-complete-panel,
-  .pass-reset-done, .post-new-panel {
+  .pass-reset-done, .post-new-panel, .delete-post-panel {
     min-width: 70%; } }
 
 .checkout-panel {

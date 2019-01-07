@@ -8,14 +8,14 @@
 </style>
 {% endblock %}
 
-{% block title %}Detail View{% endblock %}
+{% block title %} {{ object.title|title|slice:":20" }} {% endblock %}
 {% block content %}
 
-  <div class="card">
+  <div class="card mb-2">
     
       <!--CARD-HEADER-->
       <div class="card-header">
-        <h2 class="card-title text-center">{{ object.title|title }}</h2>
+        <h3 class="card-title text-center mb-3">{{ object.title|title }}</h3>
         <div class="user-info d-flex justify-content-between">
 
           {% if object.author == user %}

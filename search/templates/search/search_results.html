@@ -28,9 +28,9 @@
     
       <!--CARD-HEADER-->
       <div class="card-header">
-        <h3 class="card-title text-center">
+        <h4 class="card-title text-center mb-3">
           <a href="{% url 'post-detail' instance.id %}">{{ instance.title|title }}</a>
-        </h3>
+        </h4>
         <div class="user-info d-flex justify-content-between">
           
           {% if instance.author == user %}

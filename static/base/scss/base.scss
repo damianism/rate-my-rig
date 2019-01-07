@@ -395,6 +395,13 @@ input.form-control.mr-1 {
 
 // ###############################  SEARCH_RESULTS/BLOG ############################
 
+.filter-panel {
+    @include mQ("minW", 768px) {
+      margin-top: 39px;
+    }
+}
+
+
 .card.mb-3 {
   border: 1px solid rgba(0,0,0,.125);
 }
@@ -437,7 +444,7 @@ input.form-control.mr-1 {
 
 .login-panel, .logout-panel, 
 .pass-reset-confirm-panel, .pass-reset-complete-panel, 
-.pass-reset-done, .post-new-panel {
+.pass-reset-done, .post-new-panel, .delete-post-panel {
     // media query for small narrow screens eg iphonex,xs, galaxy s5
     @include mQ("minW", 900px) {
       width: 600px;

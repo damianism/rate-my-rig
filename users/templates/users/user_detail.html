@@ -7,13 +7,13 @@
   }
 </style>
 {% endblock %}
-
+{% block title %} {{ object.username|slice:":20" }} {% endblock %}
 {% block content %}
 <div class="card">
         
     <!--CARD-HEADER-->
     <div class="card-header">
-      <h1 class="card-title text-center">{{ object.username }}</h1>
+      <h3 class="card-title text-center mb-3">{{ object.username }}</h3>
       <div class="user-info d-flex justify-content-between">
         <img class="rounded-circle article-img" src="{{ object.profile.image.url }}">
         <div class="card-header-user-info">
