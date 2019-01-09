@@ -17,39 +17,6 @@ from django.views.generic import (
 )
 
 
-# # function based views!
-# def home(request):
-#     """ a view to render blog's home page """
-#     context = {
-#         'posts': Post.objects.all()
-#     }
-    
-#     return render(request, "blog/home.html", context)
-    
-
-# def about(request):
-#     """ view to render blog's about page  """
-#     context = {
-        
-#     }
-#     return render(request, "blog/about.html", context)
-    
-
-# CLASS BASED VIEWS
-
-# class PostListView(ListView):
-#     """ class base view to display all the posts """
-    
-#     # where it looks for the template and what template
-#     # <app>/<model>_<viewtype>.html     - e.g. blog/post_list.html
-    
-#     model = Post    # based on what class
-#     template_name = 'blog/home.html'    # to replace the default template (blog/posts_list.html) use "template_name"
-#     # context_object_name = 'posts'     # to replace the default context name (object_list) use "context_object_name"
-#     ordering = ['-date_posted']         # change the order  - ['-date_posted'] to reverse the order
-#     paginate_by = 10                    # paginate the posts by an integer
-    
-
 class FilterPostListView(ListView):
     """ class-base view to display all the posts based on what's being filtered
         via the installed third party library called "django_filters"
@@ -58,10 +25,7 @@ class FilterPostListView(ListView):
         Renders to the "blog/home.html" template.
         Pagination active by 10
     """
-    
-    # where it looks for the template and what template
-    # <app>/<model>_<viewtype>.html     - e.g. blog/post_list.html
-    
+
     model = Post    # based on what class
     template_name = 'blog/blog_home.html'    # to replace the default template (blog/posts_list.html) use "template_name"
     # context_object_name = 'posts'     # to replace the default context name (object_list) use "context_object_name"
@@ -130,7 +94,7 @@ class PostCreateView(LoginRequiredMixin, CreateView):
         # overwrite the parent class
         return super().form_valid(form)
         
-        
+
 # UserPassesTestMixin passed into the function to restrict user from updating/editting 
 # posts made by other users
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
@@ -151,8 +115,7 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         'description',
         'image'
     ]
-    #
-    
+
     # the form requires a user to be passed in 
     def form_valid(self, form):
         form.instance.author = self.request.user  # passing in an instance of the use 
@@ -183,24 +146,6 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         return (self.request.user == post.author)
         
 
-
-
-"""
-NOTE!
-    some of the classbased views have to be replaced due to the fact that modifying 
-    such views turned out to be alot more complex than initially assumed! there's not 
-    enough clear examples online and the documentations only do the bear minimum to 
-    explain everything
-    
-    so the following class-based views will be converted to function-based view in the 
-    order listed below!
-    
-        1) "PostDetailView" class-based view was replaced by 
-                            function-based view "post_detail_view" 
-        2) "PostCreateView" & "PostUpdateView" class-based views were replaced by 
-                            function-based view "create_or_edit_post" 
-
-"""
 
 def post_detail_view(request, pk):
     """ Function-based view to display a single post in detail 
