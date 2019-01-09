@@ -8,7 +8,7 @@ def view_cart(request):
     View to render contents of the cart
     """
     
-    # no context needs to be passed since it's stored in the session
+    # no context needs to be passed in since it's stored in the session
     return render(request, "cart/cart.html")
 
 
