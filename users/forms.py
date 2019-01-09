@@ -36,6 +36,7 @@ class UserRegisterForm(UserCreationForm):
             raise forms.ValidationError("A user with that email address already exists.")
         return email
             
+            
 class UserUpdateFrom(forms.ModelForm):
     """ Form to change username and email from user profile template """
     

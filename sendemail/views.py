@@ -7,7 +7,10 @@ from django.utils import timezone
 
 email_address = settings.EMAIL_HOST_USER
 
+
 def emailView(request):
+    """ view to render the contact form """
+    
     if request.method == 'GET':
         form = ContactForm()
     else:
@@ -28,7 +31,9 @@ def emailView(request):
             
     return render(request, "sendemail/email.html", {'form': form})
 
+
 def successView(request):
-    # return HttpResponse('Success! Thank you for your message.')
+    """ view to render contact success page """
+    
     return render(request, "sendemail/success.html")
 
