@@ -3,10 +3,10 @@ from blog.models import Post
 from django.core.paginator import Paginator
 
 def do_search(request):
+    """ view to render the minimal search template """
     
     type_session = request.session.get('type',None)
-    print("type_session = ", type_session)
-    
+
     selections = ["title", "gpu", "cpu", "ram", "psu", "mainboard" ]
     search_type = request.GET.get('type')
     if search_type is None:
@@ -37,12 +37,14 @@ def do_search(request):
     }
     
     request.session['type'] = search_type
+    
     return render(request, "search/search_results.html", context )
     
     
     
 def search_view(request):
-
+    """ view to render search results """
+    
     context = {
         "selections": ["title", "gpu", "cpu", "ram", "psu", "mainboard" ]
     }
