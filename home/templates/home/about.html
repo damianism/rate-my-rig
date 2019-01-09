@@ -1,12 +1,50 @@
 {% extends 'base/base.html' %}
 
+{% block link %}
+<style>
+  #main-container {
+    /*justify-content: flex-center;*/
+  }
+</style>
+{% endblock %}
 
 {% block title %}About Page{% endblock %}
 
 {% block content %}
-  <div class="container">
-    <h1>About Page</h1>
-    <p>About Page!</p>
+<div class="container my-3">
+  <h1 class="mb-5">About Us</h1>
+
+  <div class="text-justify">
+    On this website, you can share your desired builds or your current build with other computer hardware enthusiasts. whether you are a professional or an avid pc gamer, you will
+    have to put in hours of your time researching the right components, and even then there's no gaurantee that you will get the results that you were hoping for. <br>
+    Here you can reply on the experience of other users to get exactly the build that you want. you can ask questions and get ideass from the posted builds. Futhermore, you may even
+    order a specific build posted on the website. We will run our usual compatibility tests and have it shipped to you within a week.
   </div>
+  <h3 class="mt-4">Hire us to assemble it for you</h3>
+  <p class="text-justify">
+      For a flat fee of £100 (shipping included), we will assemble and ship your desired configuration to you within 7 business days of the order placement date.<br>
+      After placing your order, we will assess your selected configuration and contact you via phone or email within 24 hours to discuss your configuration. 
+      At this point if your selected configuration passes our compatibility tests, and you are happy with your selected configuration, you will then be charged 
+      for the full cost of the selected components (RAM, GPU, CPU etc). 
+      Upon completion of the order, we will ship your new and fully tested assembled unit to you within 7 days for a very fair fee.
+  </p>
+  
+  <h3 class="mt-4">Compatibility</h3>
+  <p class="text-justify">
+      We will run detailed combability tests on your selected configuration before assembly and will notify you in regards to 
+      any compatibility issues. We will then help you pick the right component that best suits your needs. Doing so will save 
+      you the time and the hassle of running diagnostics or returning incompatible components back to the retailer.
+  </p>
+    
+  <h3 class="mt-4">Why get a customised PC?</h3>
+  <p class="text-justify">
+      So why would it make more sense to build your own computer as opposed to picking up a pre-built one? With desktop computer sales at an all-time low and 
+      an endless range of laptop configurations available for consumers to choose from, the thought of assembling your own PC from scratch might seem like a rather 
+      dated concept relevant only to die-hard enthusiasts. However, contrary to popular belief, the desktop remains the preferred machine when it comes to power, 
+      productivity or even value for money. to read more the benefits of assembling your own pc please click 
+      <a href="https://damianism.github.io/custom_pc/benefits.html" target="_blank">here</a>.
+  </p>
+  
+</div>
     
 {% endblock content %}
