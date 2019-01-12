@@ -98,18 +98,115 @@ Features
 
 The list below shows all the added features that needed to be in place for the
 project to be fully functional. The features planned to be added in the future
-are listed in the “[Future Features](#future-features)” section of this
+are listed in the “[Future Features](#_Future_Features)” section of this
 documentation.
 
--   registration – allows users to register
-    ([register.html](https://github.com/damianism/vocab_journal/blob/master/templates/register.html)).
+##### User authentication
 
--   Login – registered users can log in
-    ([index.html](https://github.com/damianism/vocab_journal/blob/master/templates/index.html)).
+-   Register an account
+-   Login into an account
+-   Login using an email address
+    -   Existing email address detection
+-   Automatic user profile creation using Django signals
+    -   Default user profile image
+-   Change details of an account
+    -   First name
+    -   Last name
+    -   Username
+    -   Profile pic
+-   Password reset of an account
 
--   Cart - …
+##### Dynamic navbar links
 
-Just list the items no need to go in depth
+All users have access to the following navbar links
+-   Home
+-   Builds
+-   Contact
+-   Search
+-   About
+-   Cart
+
+ONLY the logged in user have access to the following navbar links
+-   New post
+-   Profile
+-   Logout
+
+Users not logged in will have access to
+-   Login
+-   Register
+
+##### Contact us
+-   Users can contact admin(superuser) via email
+
+##### Blog/Builds
+-   View all posted builds
+-   Post a new build
+    -   Default build image
+-   Change/update an existing build
+-   Delete an existing build
+-   View user details
+    -   Name
+    -   Username
+    -   Email
+    -   Posted builds
+-   Filter posted builds by
+    -   CPU
+    -   GPU
+    -   RAM
+    -   PSU
+-   Order posted builds
+    -   Ascending
+    -   Descending
+
+##### Search categorically
+-   Search by title
+-   Search by ram
+-   Search by cpu
+-   Search by gpu
+-   Search by psu
+-   Search by mainboard
+
+##### Pagination
+
+Pagination is available on the following pages:
+-   Search results view
+-   Builds/Blog view
+
+##### Comments
+-   Leave comments on posted builds
+
+##### E-commerce
+-   Cart
+    -   Add items to cart
+    -   Update number of items in cart
+    -   Calculate Total cost
+-   Checkout (forces login)
+    -   Ability to take payments through the [stripe](https://stripe.com/gb) API
+
+##### Compartmentalised base template
+
+Consists of 9 sections all together
+-   Base
+    -   Base template used for all views
+-   Comments
+    -   Comments section at the end of each posted build
+-   Filter
+    -   Filter section of the Builds view
+-   Footer
+-   Messages
+    -   Flash messages from Django
+-   Navigation
+-   Class based pagination
+    -   Pagination used with class-based views
+-   Function based pagination
+    -   Pagination used with function-based views
+-   Search_form
+
+##### Flat UI
+-   Attempted to mimic Google’s material design
+-   Collapsible build pictures in search results and builds views.
+-   Responsive design.
+
 
 Future Features
 ===============
