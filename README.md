@@ -98,10 +98,10 @@ Features
 
 The list below shows all the added features that needed to be in place for the
 project to be fully functional. The features planned to be added in the future
-are listed in the “[Future Features](#_Future_Features)” section of this
+are listed in the [Future Features](#future-features) section of this
 documentation.
 
-##### User authentication
+#####User authentication
 
 -   Register an account
 -   Login into an account
@@ -116,7 +116,7 @@ documentation.
     -   Profile pic
 -   Password reset of an account
 
-##### Dynamic navbar links
+#### Dynamic navbar links
 
 All users have access to the following navbar links
 -   Home
@@ -135,10 +135,10 @@ Users not logged in will have access to
 -   Login
 -   Register
 
-##### Contact us
+#### Contact us
 -   Users can contact admin(superuser) via email
 
-##### Blog/Builds
+#### Blog/Builds
 -   View all posted builds
 -   Post a new build
     -   Default build image
@@ -158,7 +158,7 @@ Users not logged in will have access to
     -   Ascending
     -   Descending
 
-##### Search categorically
+#### Search categorically
 -   Search by title
 -   Search by ram
 -   Search by cpu
@@ -166,16 +166,16 @@ Users not logged in will have access to
 -   Search by psu
 -   Search by mainboard
 
-##### Pagination
+#### Pagination
 
 Pagination is available on the following pages:
 -   Search results view
 -   Builds/Blog view
 
-##### Comments
+#### Comments
 -   Leave comments on posted builds
 
-##### E-commerce
+#### E-commerce
 -   Cart
     -   Add items to cart
     -   Update number of items in cart
@@ -183,7 +183,7 @@ Pagination is available on the following pages:
 -   Checkout (forces login)
     -   Ability to take payments through the [stripe](https://stripe.com/gb) API
 
-##### Compartmentalised base template
+#### Compartmentalised base template
 
 Consists of 9 sections all together
 -   Base
@@ -202,7 +202,7 @@ Consists of 9 sections all together
     -   Pagination used with function-based views
 -   Search_form
 
-##### Flat UI
+#### Flat UI
 -   Attempted to mimic Google’s material design
 -   Collapsible build pictures in search results and builds views.
 -   Responsive design.
