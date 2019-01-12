@@ -181,7 +181,7 @@ Pagination is available on the following pages:
     -   Update number of items in cart
     -   Calculate Total cost
 -   Checkout (forces login)
-    -   Ability to take payments through the [stripe](https://stripe.com/gb) API
+    -   Ability to take payments through the [STRIPE](https://stripe.com/gb) API
 
 #### Compartmentalised base template
 
@@ -347,51 +347,86 @@ The list of technologies used for this project in no specific order.
     [GitHub](https://en.wikipedia.org/wiki/GitHub)
 
 
-Testing and challenges
-======================
+Testing and defensive design
+============================
 
-Logic Debugging
----------------
+Here is the list of the tests carried out for this project in no particular
+order.
 
-STRIPE API testing
+#### STRIPE API
 
-Email sendmail
+The API was tested using the four sets of “4242” card number.
 
-Email reset
+#### Sendemail – dedicated email for 
 
-Travis
+Created a dedicated gmail to be used with this project only. Carried out tests
+on both [mobile and desktop platforms](#responsiveness-and-aesthetics).
 
-Responsiveness/Aesthetics/Functionality Testing
------------------------------------------------
+#### Email reset
+
+Carried out tests with both admin and normal accounts on [mobile and desktop
+platforms](#responsiveness-and-aesthetics).
+
+#### Travis
+
+Fully automatic testing set up after pushing to Github.
+
+#### Amazon S3 static and media files
+
+Both Media and static files were tested manually by checking the S3 panel and
+the links of the files uploaded via the network section of the Firefox and
+chrome browser’s developer tools. Checking the static files were especially easy
+since without them the website would have loaded without any styling.
+
+### Responsiveness and Aesthetics
 
 The responsiveness, functionality, fluidity of each page was extensively and
 virtually tested on all the Chrome/Firefox responsive tool’s available devices,
-ranging from Amazon fire tablets to iPhone x. Additionally, every page was
+ranging from Amazon fire tablets to iPhone XS. Additionally, every page was
 numerously loaded on the following devices by various users in order to identify
 possible malfunctions and misbehaving elements.
 
 -   Galaxy S5 (width less than 370px)
--   iPhone x
--   Google Pixel 2
+-   iPhone X
+-   Google Pixel 2 XL
 -   iPhone 7 Plus
 -   Nexus 6P
+-   Nexus 7 2013
+-   LG G4
+-   Huawei P9 Lite
 -   22inch Full HD 1080p monitor
--   25inch Quad HD 1440p screen
+-   24inch Full HD LCD 1080p monitor
+-   27inch Full HD 1080p monitor
+-   25inch Quad HD 1440p monitor
 -   13inch Full HD screen of a Dell XPS Ultrabook
--   15inch HD screen of a Dell Precision M4600
+-   15inch HD screen of a DELL Precision M4600
+-   15inch HD screen of a DELL Precision M4800
 
-Browsers
---------
+#### Browsers
 
-The following browsers were used to test the final version of the website with.
+The following browsers were used to test the deployed version of the website
+with.
 
--   Opera Version 56.0.3051.104
--   Firefox Version 63.0.3 (64-bit)
--   Version 70.0.3538.110 (Official Build) (64-bit)
+-   Opera Version 57.0.3098.116
+-   Firefox Version 64.0.2 (64-bit)
 -   Chrome Mobile on Android Pie
 -   Chrome Mobile on Android Oreo
+-   Chrome Mobile on Android Kitkat
 -   Firefox Mobile on Android Pie
 -   Safari Mobile iOS 12
+
+#### Operating systems
+
+The browsers listed above were used to test the deployed version of the website
+with the following mobile and desktop operating systems.
+
+-   Android Pie
+-   Android Oreo
+-   Android Kitkat
+-   Windows 10 pro
+-   Window 7 pro
+-   iOS 12
+
 
 Deployment
 ==========
