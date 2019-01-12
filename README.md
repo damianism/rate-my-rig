@@ -12,7 +12,7 @@ frustrating and nerve-wrecking.
 
 Here are a few problems associated with building your own computer.
 
-##### Research
+#### Research
 
 The amount of time spent on research to get the right build for yourself can be
 quite off putting, it’s definitely not for the impatient, as I personally spent
@@ -23,7 +23,7 @@ a component you’re interested in to be updated or waiting for new component to
 be released. I personally had to wait two weeks for the new Ryzen cpu line-up to
 be released.
 
-##### Put it together
+#### Putting it together
 
 Picking the right parts for your build is only half the battle. After receiving
 your parts, you still have to put it all together, and that’s where things
@@ -52,7 +52,7 @@ give you the performance you were hoping for, forcing you to make further
 tweaks by replacing some of the parts and ultimately spending even more time and 
 money on it.
 
-##### Aim
+#### Aim
 
 Wouldn’t it be great if somebody else had gone through **everything** stated above
 in order to get a specific build fully functional, so you wouldn’t have to? This
@@ -74,7 +74,7 @@ running diagnostics to get their ideal configurations since everything will be
 available to them from the start, even the actual performance of the system
 they’re trying to build.
 
-##### Purchasing builds:
+#### Purchasing builds:
 
 Users not wishing to assemble their own units may purchase a pre-existing or
 their own posted build on the website through us for a flat fee of £100. After
@@ -118,30 +118,29 @@ All the features listed within this section WILL be added upon completion of the
 course. The following features were shelved solely due to lack of time and my
 unfortunate current circumstances.
 
-1.  Discussion board
+#### Discussion board
+Users may open threads in regards to
+- Technical issues and troubleshooting.
+- Seeking further advice on a build.
 
-    1.  User can open threads in regards to
-        1.  Technical issues and troubleshooting
-        2.  Seeking further advice on a build
+#### Advanced comments
+User may
+- Delete their own comments
+- Like/Dislike comments left by other users
+- Reply to comments
 
-2.  Advanced comments
-    1.  Delete comments
-    2.  Like/Dislike comments
-    3.  Reply to comments
-
-3.  Add user address to the registration process
-
-4.  A more sophisticated modelling system
-    1.  Individual component models
-        1.  Example; (component: storage, type: SSD, interface: M.2,
+#### Add user address to the registration process
+- Could automatically fill in the user's address into the checkout form
+- Collect data about the user's location to be used with a graphical dashboard
+    
+#### A more sophisticated modelling system
+- Individual component models
+    - Example; (component: storage, type: SSD, interface: M.2,
             manufacturer: Samsung, capacity: 500Gb, price: £150)
-    2.  A complete build model consisting of all the added components
-        1.  Will be able to get the exact price of the build
-        2.  List the individual components in detail
-        3.  Link component purchasing links
-
-5.  Conduct a thorough manual testing
-
+- A complete build model consisting of all the added components
+    - Will be able to get the exact price of the build
+    - List the individual components in detail
+    - Link component purchasing links
 
 
 Technologies Used
