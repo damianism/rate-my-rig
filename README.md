@@ -50,9 +50,43 @@ fully supported by the mainboard, which is a huge blow to me personally since I
 paid extra for faster RAMs.
 
 Finally, having gone through all of that, there is no guarantee that system will
-give you the performance that you were hoping for, forcing you to make further
-tweaks by replacing some of the parts and ultimately ending up spending even
-more time and money on it.
+give you the performance you were hoping for, forcing you to make further
+tweaks by replacing some of the parts and ultimately spending even more time and 
+money on it.
+
+##### Aim
+
+Wouldn’t it be great if somebody else had gone through EVERYTHING stated above
+in order to get a specific build fully functional, so you wouldn’t have to? This
+is exactly what this web app aims to achieve by allowing its users to share
+their complete builds with other users wishing to build their own systems.
+
+As a user you may
+
+-   Use an existing build as a blueprint for your own build.
+-   Get ideas from an existing build for your own build.
+-   Gain assurance on components compatibility before system assembly.
+-   Contact the owner/author of a build to seek advice via comments.
+-   Gain assurance of the system performance before system assembly.
+-   Purchase the exact posted build.
+-   Purchase a build posted yourself.
+
+This web will ultimately save its users days if not months spent on research and
+running diagnostics to get their ideal configurations since everything will be
+available to them from the start, even the actual performance of the system
+they’re trying to build.
+
+###### Purchasing builds:
+
+Users not wishing to assemble their own units may purchase a pre-existing or
+their own posted build on the website through us for a flat fee of £100. After
+placing your order, we will assess your selected configuration and contact you
+via phone or email within 24 hours to discuss your configuration. At this point
+if your selected configuration passes our compatibility tests, and you are happy
+with your selected configuration, you will then be charged for the full cost of
+the selected components (RAM, GPU, CPU etc). Upon completion of the order, we
+will ship your new and fully tested assembled unit to you.
+
 
 
 Pre-registered testing accounts
