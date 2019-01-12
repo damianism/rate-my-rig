@@ -221,7 +221,7 @@ Users may open threads in regards to
 - Seeking further advice on a build.
 
 #### Advanced comments
-User may
+Users may
 - Delete their own comments
 - Like/Dislike comments left by other users
 - Reply to comments
@@ -231,7 +231,7 @@ User may
 - Collect data about the user's location to be used with a graphical dashboard
     
 #### A more sophisticated modelling system
-- Individual component models
+- Individual components model
     - Example; (component: storage, type: SSD, interface: M.2,
             manufacturer: Samsung, capacity: 500Gb, price: £150)
 - A complete build model consisting of all the added components
@@ -427,3 +427,39 @@ There are no differences between the deployed version of the project found
 [here](http://vocabulary-journal.herokuapp.com/) and its development version.
 Since the project was deployed at such an early stage, no major problems were
 encountered. The whole process was completely hassle free.
+
+Cedits
+=======
+
+#### Django-filters
+
+-   [Django filtering system with Django-filters](https://www.youtube.com/watch?v=nle3u6Ww6Xk)
+-   [stackoverflow](https://stackoverflow.com/questions/21840365/set-initial-value-with-django-filters)
+-   [stackoverflow](https://stackoverflow.com/questions/46491786/best-way-to-filter-listview-with-drop-down-form-in-django/46492378#46492378)
+
+#### Filter and paginations conflicting issues
+
+-   [Filtering and Pagination with Django](https://www.caktusgroup.com/blog/2018/10/18/filtering-and-pagination-django/)
+    by Dan Poirier
+-   [stackoverflow](https://stackoverflow.com/questions/22734695/next-and-before-links-for-a-django-paginated-query/22735278#22735278)
+-   [Creating custom template tags in Django](https://www.codementor.io/hiteshgarg14/creating-custom-template-tags-in-django-application-58wvmqm5f)
+    by Hitesh Garg
+-   [Djano-filter – Filterset Options](https://django-filter.readthedocs.io/en/master/ref/filterset.html)
+
+#### Sendmail
+
+-   [Django contact form tutorial](https://wsvincent.com/django-contact-form/)
+    by William S. Vincent
+
+#### Django tutorials
+
+-   [Python Django tutorial](https://www.youtube.com/watch?v=UmljXZIypDc) by
+    Corey Schafer
+
+Acknowledgements
+================
+
+-   Yoni Lavi
+-   Neil Mc Ewen
+-   Nakita McCool
+-   Robin Zigmond
