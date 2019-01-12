@@ -1,9 +1,7 @@
-# travis [![Build Status](https://travis-ci.org/damianism/rate-my-rig.svg?branch=master)](https://travis-ci.org/damianism/rate-my-rig)
 
-BUILD ME A RIG 
-==================
+BUILD ME A RIG [![Build Status](https://travis-ci.org/damianism/rate-my-rig.svg?branch=master)](https://travis-ci.org/damianism/rate-my-rig)
+==============
 
-\<\<\< gif \>\>\>
 
 Real world application
 ----------------------
@@ -56,7 +54,7 @@ money on it.
 
 ##### Aim
 
-Wouldn’t it be great if somebody else had gone through EVERYTHING stated above
+Wouldn’t it be great if somebody else had gone through **everything** stated above
 in order to get a specific build fully functional, so you wouldn’t have to? This
 is exactly what this web app aims to achieve by allowing its users to share
 their complete builds with other users wishing to build their own systems.
@@ -64,19 +62,19 @@ their complete builds with other users wishing to build their own systems.
 As a user you may
 
 -   Use an existing build as a blueprint for your own build.
--   Get ideas from an existing build for your own build.
 -   Gain assurance on components compatibility before system assembly.
 -   Contact the owner/author of a build to seek advice via comments.
 -   Gain assurance of the system performance before system assembly.
+-   Get ideas from an existing build for your own build.
 -   Purchase the exact posted build.
 -   Purchase a build posted yourself.
 
-This web will ultimately save its users days if not months spent on research and
+This web app will ultimately save its users days if not months spent on research and
 running diagnostics to get their ideal configurations since everything will be
 available to them from the start, even the actual performance of the system
 they’re trying to build.
 
-###### Purchasing builds:
+##### Purchasing builds:
 
 Users not wishing to assemble their own units may purchase a pre-existing or
 their own posted build on the website through us for a flat fee of £100. After
@@ -87,22 +85,6 @@ with your selected configuration, you will then be charged for the full cost of
 the selected components (RAM, GPU, CPU etc). Upon completion of the order, we
 will ship your new and fully tested assembled unit to you.
 
-
-
-Pre-registered testing accounts
--------------------------------
-
-Please feel free to use the following accounts for testing purposes. For more
-information about the differences between normal and admin accounts please refer
-to “[Admin privileges](#future-features)” of the features section.
-
--   Admin account:
-    -   skullphish
-    -   admin
-
--   Normal accounts:
-    -   beny1976
-    -   user
 
 Wireframes
 ==========
@@ -133,39 +115,34 @@ Future Features
 ===============
 
 All the features listed within this section WILL be added upon completion of the
-course in the exact order listed below. The following features were shelved only
-due to lack of time and my hectic work schedule but will be perused once the
-course is completed to be presented as a portfolio.
+course. The following features were shelved solely due to lack of time and my
+unfortunate current circumstances.
 
-1.  Paginations
+1.  Discussion board
 
-2.  User-specific lookup details
+    1.  User can open threads in regards to
+        1.  Technical issues and troubleshooting
+        2.  Seeking further advice on a build
 
-3.  Enhanced administration tools
-    1.  delete users
-    2.  edit user info
+2.  Advanced comments
+    1.  Delete comments
+    2.  Like/Dislike comments
+    3.  Reply to comments
 
-4.  Global search box to search keywords in
-    1.  vocabs
-    2.  tags
-    3.  reference text
-    4.  miscellaneous text
-    5.  context text
+3.  Add user address to the registration process
 
-5.  Adding vocab pronunciations (audio)
+4.  A more sophisticated modelling system
+    1.  Individual component models
+        1.  Example; (component: storage, type: SSD, interface: M.2,
+            manufacturer: Samsung, capacity: 500Gb, price: £150)
+    2.  A complete build model consisting of all the added components
+        1.  Will be able to get the exact price of the build
+        2.  List the individual components in detail
+        3.  Link component purchasing links
 
-6.  More languages – API supports multiple languages
+5.  Conduct a thorough manual testing
 
-7.  Users to be able to download all their entered data (all user vocabs and
-    their stats)
 
-8.  Vocab of the day
-
-9.  Vocab memory test game
-
-    1.  One of the vocabs entered by the user will be presented to the user to
-        define with a very basic scoring system e.g. “you managed to get 7/10
-        definitions right”
 
 Technologies Used
 =================
