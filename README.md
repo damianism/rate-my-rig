@@ -12,7 +12,7 @@ frustrating and nerve-wrecking.
 
 Here are a few problems associated with building your own computer.
 
-#### Research
+#### Time spent on research
 
 The amount of time spent on research to get the right build for yourself can be
 quite off putting, it’s definitely not for the impatient, as I personally spent
@@ -245,66 +245,95 @@ Technologies Used
 
 The list of technologies used for this project in no specific order.
 
-1.  [Python](https://www.python.org/downloads/) v3.4.3
+#### Core Technologies
 
-    -   Unittest module for Test Driven Development.
+-   [Could9](https://aws.amazon.com/cloud9/?origin=c9io) – used as main editor
+-   [Python](https://www.python.org/downloads/) v3.4.3
+-   Pip3 - used to install various libraries within Cloud9
+-   [Django](https://docs.djangoproject.com/en/2.1/releases/2.0/) v2.0
+    -   [Jinja2](http://jinja.pocoo.org/docs/2.10/) - used to apply logic to
+        Django templates
+    -   Django specific libraries installed via pip3
+        -   [crispy_forms](https://django-crispy-forms.readthedocs.io/en/latest/install.html)
+            – module for styling forms
+        -   [django-resized](https://github.com/un1t/django-resized) – used to
+            resize the uploaded images
+        -   [django-filters](https://django-filter.readthedocs.io/en/latest/guide/install.html)
+            – to filter posted builds
+        -   [Pillow](https://pypi.org/project/Pillow/) – required for uploading
+            photos
+-   JavaScript
+-   [jQuery](https://jquery.com/) v3.3.1
+-   HTML5
 
-2.  [FLASK](http://flask.pocoo.org/) v1.0.2
+#### Styling technologies
 
-3.  [Jinja2](http://jinja.pocoo.org/docs/2.10/)
-
-    -   Used to apply logic to flask templates
-
-4.  Markdown
-
-5.  Pip3
-    -   Used to install various python modules.
-
-6.  Django
-
-7.  [PostgresSQL](https://www.postgresql.org/)
-
-8.  [Bootstrap v4](https://getbootstrap.com/docs/4.0/getting-started/introduction/)
+-   [SASS](https://sass-lang.com/) - Main method of styling. Used with a variety
+    of SASS variables, colors, mixins and functions.
+-   CSS
+-   [Bootstrap](https://getbootstrap.com/docs/4.0/getting-started/introduction/)
+    v4.0
     -   Responsive design
     -   Styling
         -   Cards, Buttons, accordions, animations.
         -   Text alignment.
         -   Colouring.
-
-9.  JavaScript and [jQuery](https://jquery.com/) v3.3.1
-    -   Debugging
-    -   Stripe
-
-
-10. [SASS](https://sass-lang.com/)
-    -   Adopted main method of styling. Used with combination of SASS variables,
-        mixins and functions in total of 8 scss files.
-
-11. HTML5
-
-12. CSS
-    -   Used with SASS.
-
-13. Flexbox
+-   Flexbox – used for centring items
     -   Primary tool for centring item.
-    -   Primary layout tool.
-
-14. [Google fonts](https://fonts.google.com/)
+    -   Primary layout tool for cart and checkout templates.
+-   [Google fonts](https://fonts.google.com/)
     -   [Roboto Mono](https://fonts.google.com/specimen/Roboto+Mono) – applied
         to the buttons (small and large)
     -   [Roboto](https://fonts.google.com/specimen/Roboto) – used as the main
         font for the project
+-   [FontAwesome](https://fontawesome.com/)
+-   [MycolorSpace](https://mycolor.space/) – used to apply gradient to the
+    background
+-   [Favicongenerator](http://www.favicongenerator.co.uk/) – used to generate a
+    custom favicon
+-   [Cssmatic.com](https://www.cssmatic.com/box-shadow) – used to create shadows
+    for the cards
+-   [Gimp](https://www.gimp.org/) – used for image format conversions, rescaling
+    and touch ups.
 
-15. [Gimp](https://www.gimp.org/)
-    -   Applied a filter to the selected background to better suit the theme of
-        the project.
-    -   Image format conversion, rescaling and touch ups.
+#### Database technologies
 
-16. Microsoft Word
-    -   To write up the content of the README.md file before deployment.
+-   [SqLite3](https://docs.python.org/2/library/sqlite3.html) – Default database
+    initially used with Django v2 in development mode
+-   [Heroku Postgres](https://www.heroku.com/postgres) – replaced sqlite3 after
+    the very first deployment to Heroku for both development and deployment.
+-   [Psycopg2](https://pypi.org/project/psycopg2/) – pip3 installed library
+    required to establish connection to Postgres databases.
+-   [dj-database-url](https://pypi.org/project/dj-database-url/) – pip3
+    installed library which establishes connection to the Heroku Postgres
+    database URL.
 
-17. Chrome and Firefox developer tools
-    - Used extensively for live-testing and running numerous different tasks.
+#### Deployment Technologies
+
+-   [Heroku](https://www.heroku.com/) – Used to as the primary deployment
+    platform.
+-   [Gunicorn](https://gunicorn.org/) – pip3 installed library used for running
+    the deployed Django project on Heroku.
+
+#### Cloud Storage
+
+-   [Amazon web services](https://aws.amazon.com/cloud9/?origin=c9io)
+    -   S3 – used to store static and media files
+-   Boto3 – pip3 installed library to connect to AWS S3
+-   [Django-Storage](https://django-storages.readthedocs.io/en/latest/backends/amazon-S3.html)
+    – pip3 installed library to control Django storage
+
+#### Version control
+
+-   [Git/Github](https://github.com/damianism)
+    -   Kept track of the project’s evolution with frequent commits and
+        informative messages.
+    -   GitHub was also used to access bootstrap’s source code.
+
+#### Testing
+
+-   Chrome and Firefox developer tools
+    -   Used extensively for live-testing and running numerous different tasks.
         To name a few:
         -   Testing JavaScript functions.
         -   Individual elements loading times.
@@ -313,18 +342,10 @@ The list of technologies used for this project in no specific order.
         -   Aligning and centring.
         -   Attribute value search.
         -   Fluidity and core functionality of the website.
+-   [Travis](https://travis-ci.org/) – continuous integration service used to
+    build and test software projects hosted at
+    [GitHub](https://en.wikipedia.org/wiki/GitHub)
 
-18. [Git/Github](https://github.com/damianism)
-    -   Kept track of the project’s evolution with frequent commits and
-        informative messages.
-    -   Secondary platform for deployment.
-    -   GitHub was also used to access bootstrap’s source code.
-
-19. [Heroku](https://www.heroku.com/)
-    -   Used to as the primary deployment platform.
-
-20. Cloud9
-    -   Used as the main editor.
 
 Testing and challenges
 ======================
