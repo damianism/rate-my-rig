@@ -101,7 +101,7 @@ project to be fully functional. The features planned to be added in the future
 are listed in the [Future Features](#future-features) section of this
 documentation.
 
-#####User authentication
+#### User authentication
 
 -   Register an account
 -   Login into an account
