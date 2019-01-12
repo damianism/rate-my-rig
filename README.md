@@ -5,10 +5,55 @@ BUILD ME A RIG
 
 \<\<\< gif \>\>\>
 
-Aim
----
+Real world application
+----------------------
 
-Short paragraph
+There are many <a href="https://damianism.github.io/custom_pc/benefits.html" target="_blank">benefits</a>
+of building your own computer. However, the whole process can be cumbersome,
+frustrating and nerve-wrecking.
+
+Here are a few problems associated with building your own computer.
+
+##### Research
+
+The amount of time spent on research to get the right build for yourself can be
+quite off putting, it’s definitely not for the impatient, as I personally spent
+over two months researching different configurations and component in the hopes
+of getting the exact performance that I wanted. You may even find yourself
+having to wait even longer in some circumstances such as waiting for a driver of
+a component you’re interested in to be updated or waiting for new component to
+be released. I personally had to wait two weeks for the new Ryzen cpu line-up to
+be released.
+
+##### Put it together
+
+Picking the right parts for your build is only half the battle. After receiving
+your parts, you still have to put it all together, and that’s where things
+usually go wrong. Often, after spending an hour or so (depending on how fast you
+are) putting your system together, you will find that the system doesn’t boot
+up, which simply means that one of the parts was dead on arrival or not
+compatible at all, so you have to spend hours if not days running diagnostics to
+identify the part that needs replacing, but doing so is not that easy, for
+example you many need another mainboard just to be able to test your CPU or RAM,
+so not everyone is capable of running these diagnostics. Furthermore, even if
+you do manage to identify the culprit, more time will be wasted on taking out
+the part again, repackaging, and sending it back to the retailer. The retailer
+will waste even more time processing your return, issuing the replacement and
+you still have to wait for it to be delivered.
+
+Even if your system boots up successfully on the first attempt, like my latest
+system did, it doesn’t mean that everything is running as they should. In my
+case, I realised that my RAM wasn’t fully compatible with my motherboard, even
+though it was listed as “fully compatible” on the mainboard manufacturer’s
+website. So I’m not able get the most out of those RAM units until they are
+fully supported by the mainboard, which is a huge blow to me personally since I
+paid extra for faster RAMs.
+
+Finally, having gone through all of that, there is no guarantee that system will
+give you the performance that you were hoping for, forcing you to make further
+tweaks by replacing some of the parts and ultimately ending up spending even
+more time and money on it.
+
 
 Pre-registered testing accounts
 -------------------------------
