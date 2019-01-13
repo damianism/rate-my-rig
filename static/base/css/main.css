@@ -137,6 +137,9 @@ a.article-title:hover {
   font-size: 1.0rem;
   padding: 10px; }
 
+.btn.btn-outline-info.btn-comment.ml-auto {
+  width: 11rem; }
+
 .btn span {
   cursor: pointer;
   display: inline-block;

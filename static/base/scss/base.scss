@@ -146,6 +146,7 @@ a.article-title:hover {
   margin-left: 0px;
 }
 
+
 .btn {
     border-radius: 0px;
     background-color: map-get($color, maroon);
@@ -168,6 +169,9 @@ a.article-title:hover {
     padding: 10px;
 }
 
+.btn.btn-outline-info.btn-comment.ml-auto {
+    width: 11rem;
+}
 
 .btn span {
     cursor: pointer;
