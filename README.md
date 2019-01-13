@@ -362,7 +362,7 @@ The API was tested using the four sets of “4242” card number.
 Created a dedicated gmail to be used with this project only. Carried out tests
 on both [mobile and desktop platforms](#responsiveness-and-aesthetics).
 
-#### Email reset
+#### Account password reset
 
 Carried out tests with both admin and normal accounts on [mobile and desktop
 platforms](#responsiveness-and-aesthetics).
@@ -426,6 +426,102 @@ with the following mobile and desktop operating systems.
 -   Windows 10 pro
 -   Window 7 pro
 -   iOS 12
+
+Known Issues
+============
+
+#### Search
+
+Searching in RAM category for “8” will bring up posts with both “128GB” and
+“8GB” ram posts. Furthermore, searching for empty spaces (“ “) in the TITLE
+category will return the posts with empty spaces in them such as “Pink Hornet”.
+I’m not entirely sure if that’s going to cause any problems, I certainly
+couldn’t get it go wrong after testing it. But, technically speaking, it is
+returning exactly what the user has searched for.
+
+#### Stripe API failing
+
+Stripe payment was repeatedly failing without issuing any errors. After seeking
+help from “Neil Mc Ewen” we realised that the jQuery was listed after the stripe
+script on the base template and without jQuery, stripe couldn’t have functioned.
+
+#### Calc() function wasn’t working in SASS
+
+```
+
+min-height: calc(100% - 70.4px);
+
+```
+Calc() function was added to expand the pages with no or only a few elements on
+there. However, the function was being ignored by all of the browsers I tested.
+I could hard code a value for min-height but that didn’t resolve the issue as it
+broke the responsiveness of the website. Upon further research I figured out
+that the html tag also has to have its height set to 100% and not just the body
+tag.
+
+
+#### Responsive design of blog_home -filter
+
+One of the choices for the CPU select box (Ryzen Threadripper gen-1) within the
+filter panel of the Builds/Blog view turned out to be quite long since I could
+not find a way to abbreviate or shorten it, doing so would have caused
+confusion in regards to the CPU model and its brand. The select box is still
+fully responsive as long as it’s not open. Consequently, if the select box has
+been triggered open, the choices will expand out of the frames of the select
+box. This could not be properly tested since it only happens on Ipad resolution,
+and as I don’t currently own an Ipad, naturally I resorted to using
+chrome/Firefox responsive design tools, which didn’t really help since both
+tools render the choices of the select box as if it is being loaded on a desktop
+platform while the select box is open.
+
+#### Name change
+
+I initially intended to create a rating system, which would have been the core
+feature of this project, all the other features would have been built around 
+this particular feature. But unfortunately, due to lack of time and my sudden
+change of circumstances, the rating system was axed, forcing me to change the
+name of the project from “ratemyrig” to “buildmearig”.
+
+Since changing the name of the git repository was not possible. Only the name of
+the deployed Heroku app was changed via Heroku’s settings. I had to change the
+hostname within the Django’s settings.py and Heroku’s Config Vars accordingly.
+
+#### Unit testing with Heroku Postgres
+
+Unfortunately, due to my sudden change of circumstance, I couldn’t carry out
+unit testing on any of my apps with the exception of the blog app. However, when
+I did make the time to finally go through with it, I immediately started having
+issues with Django being denied access to the Heroku Postgres database. Upon
+doing some research I realised that Django’s unit testing relies entirely on its
+default local database (Sqlite3). I then temporarily switched back to SQLite3
+for the sole purpose of unit testing my project’s apps. However, it only made
+things worse but causing Travis continuous testing to fail. I eventually managed
+to rectify the issue with Travis which turned out to be a data migration issue
+and inability of Travis to switch between the two databases. Evidently to avoid
+any further issues with Travis, I decided not add any more unit testing to this
+project.
+
+Note: even though I haven’t included any unit testing with this project, I can
+confirm that no corners have been cut when it comes to testing this project. All
+the apps and logic within this project have been manually tested numerous times
+on various platforms and devices.
+
+#### Deployed version getting 
+
+Every now and then when I try to load the deployed version of the website on
+Firefox, I’m greeted by the following error message and then it locks me out of
+the website.
+
+```
+Not Found
+The requested URL / was not found on this server.
+```
+
+I haven’t been able to replicate this particular issue on any the browsers I’m
+currently using. However, I believe it is caused by inactivity and the way the
+session is managed by Firefox, since logging out manually using the url
+(/user/logout/) would resolve the issue.
+
 
 
 Deployment
