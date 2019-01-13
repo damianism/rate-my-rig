@@ -349,8 +349,8 @@ The list of technologies used for this project in no specific order.
     [GitHub](https://en.wikipedia.org/wiki/GitHub)
 
 
-Testing and defensive design
-============================
+Testing
+=======
 
 Here is the list of the tests carried out for this project in no particular
 order.
@@ -506,7 +506,7 @@ confirm that no corners have been cut when it comes to testing this project. All
 the apps and logic within this project have been manually tested numerous times
 on various platforms and devices.
 
-#### Deployed version getting 
+#### Firefox 
 
 Every now and then when I try to load the deployed version of the website on
 Firefox, I’m greeted by the following error message and then it locks me out of
@@ -566,7 +566,7 @@ os.environ.get('C9_HOSTNAME')   # set automatically by cloud9
 os.environ.get('SECRET_KEY')    # flask secret key
 ```
 
-#### Setting up environment variables
+#### Setting up local database
 
 Initially when the project was first started and deployed locally using Django’s
 very own default SQLite3 database.
@@ -580,12 +580,12 @@ DATABASES = {
 }
 ```
 
-#### Static and media files
+#### Setting up static and media files
 
-Installed libraries:
--   Pillow – caters for the “ImageFields” allowing images to be uploaded via the
+Required libraries installed:
+-   [Pillow](https://pypi.org/project/Pillow/) – caters for the “ImageFields” allowing images to be uploaded via the
     admin page
--   Whitenoise - Allows us to host our staticfiles such as css and javascript
+-   [Whitenoise](http://whitenoise.evans.io/en/stable/) - Allows us to host our staticfiles such as css and javascript
 
 **settings.py**:
 ```
@@ -599,7 +599,49 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 ## Development version with PostgreSQL database
 
-qq
+After familiarising myself with the local SQLite3 database, I decided to make
+the jump to the PstgresSQL database.
+
+Required libraries:
+-   [Psycopg2](https://pypi.org/project/psycopg2/)
+-   [dj-database-url](https://pypi.org/project/dj-database-url/)
+
+#### Setting up Heroku's PostgreSQL database
+
+-   Create Heroku app on EU region
+    ```
+    heroku create "unique-app-name" --region eu
+    ```
+    
+-   Setup [Heroku Postgres](https://www.heroku.com/postgres) database addon for Heroku
+    ```
+    heroku addons:create heroku-postgresql:hobby-dev --app "unique-app-name"
+    ```
+
+-   **DATABASE_URL** added to Heroku’s Config Vars
+    ```
+    heroku config:set DATABASE_URL ="postgres://dummy-postgres-url"
+    ```
+
+4.  **DATABASE_URL** set as an environment variable in **env.py** and make changes to 
+    **settings.py** file accordingly
+
+
+
+```
+import dj_database_url     # installed library
+
+if 'DATABASE_URL' in os.environ:
+    DATABASES = {'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))}
+else:
+    print("Postgres URL not found, using sqlite3 instead")
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
+```
 
 ## Production version on Heroku
 
