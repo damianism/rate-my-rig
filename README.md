@@ -8,7 +8,7 @@ module. The live version of this project is available on
 [https://build-me-a-rig.herokuapp.com/]( https://build-me-a-rig.herokuapp.com/)
 
 
-REAL WORLD APPLICATIONS
+REAL WORLD APPLICATION
 ----------------------
 
 There are many <a href="https://damianism.github.io/custom_pc/benefits.html" target="_blank">benefits</a>
