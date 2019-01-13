@@ -1,6 +1,11 @@
 
 BUILD ME A RIG [![Build Status](https://travis-ci.org/damianism/rate-my-rig.svg?branch=master)](https://travis-ci.org/damianism/rate-my-rig)
 ==============
+<p align="center"><img src="static/img/extras/homepage.png"/></p>
+
+This is a fictitious Django e-commerce project for Code Institute’s Full Stack
+module. The live version of this project is available on
+[https://build-me-a-rig.herokuapp.com/]( https://build-me-a-rig.herokuapp.com/)
 
 
 REAL WORLD APPLICATIONS
