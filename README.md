@@ -661,7 +661,7 @@ with Heroku’s PostgresSQL database.
 
 #### Changes
 
-Here are the list of new variables added to **env.py** and **settings.py**
+Here is the list of new variables added to **env.py** and **settings.py**
 ```
 ALLOWED_HOSTS = [os.environ.get('C9_HOSTNAME'), os.environ.get('HOSTNAME')]
 EMAIL_HOST_USER = os.environ.get('EMAIL_USER')
@@ -703,43 +703,68 @@ git push
 ```
 4.  Connect Github to Heroku via the “Deploy” tab in Heroku’s dashboard and select 
     project repository name
-5.  Deploy branch manually
+5.  Manually deploy Github branch via Heroku
 6.  "Restart all dynos" if experiencing any problems. 
+
 
 ## Production version on Heroku with AWS
 
-qq
+At this stage the project was complete and the only thing left to do was to move
+static and media files to Amazon’s S3.
 
-<!--Throughout the project, git was used to seamlessly-->
-<!--and safely back up the code locally and pushed to Github frequently.-->
+**Required libraries installed**
+-   Boto3
+-   [Django-Storage](https://django-storages.readthedocs.io/en/latest/backends/amazon-S3.html)
 
-<!--For testing purposes, the project was first deployed locally on the Cloud9-->
-<!--environment and most of the testing was done through Cloud9. However, later on I-->
-<!--realised that it is not fully reliable and it can’t be trusted as the actual-->
-<!--deployment platform might not behave the same way as mentioned above in the-->
-<!--“Heroku Deployment issue” section of the “[Testing and-->
-<!--challenges](#_Defensive_design_and)”.-->
+#### Changes
 
-<!--The project was pushed to Heroku at its early stages and was repeatedly done so-->
-<!--with the addition or alteration of any feature, incremental or major. However,-->
-<!--on the previous project, the Heroku app was created using bash within the cloud9-->
-<!--environment, unfortunately doing so would create the app on the American serves,-->
-<!--since causing the website to take a lot longer than it needs to once deployed.-->
-<!--This time I took the precaution of creating the app within the Heroku’s very own-->
-<!--control panel and made sure that the app is indeed sitting on the European-->
-<!--servers for faster response time.-->
+Here is the list of new variables added to env.py and settings.py
+```
+STATICFILES_LOCATION = 'static'
+STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+MEDIAFILES_LOCATION = 'media'
+DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+```
+```
+AWS_STORAGE_BUCKET_NAME = ‘SECRET-BUCKET-NAME’
+AWS_S3_REGION_NAME = 'eu-west-1'
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+```
 
-<!--\<p align="center"\>\<img src="static/img/extras/heroku.png"/\>\</p\>-->
+All the environment variables listed above were also defined as **Config
+Vars** within Heroku.
 
-<!--In addition to the usual IP, PORT and FLASK environment variables, I also had to-->
-<!--include other credentials for the Oxford dictionary API into the config vars.-->
+**NOTE:** an additional Heroku Config var **DISABLE_COLLECTSTATIC** was added with its value set to "**1**" 
+which disables static files from being deployed to Heroku.
 
-<!--\<p align="center"\>\<img src="static/img/extras/heroku2.png"/\>\</p\>-->
+-   AWS_ACCESS_KEY_ID
+-   AWS_SECRET_ACCESS_KEY
+-   DISABLE_COLLECTSTATIC (set to 1)
 
-<!--There are no differences between the deployed version of the project found-->
-<!--[here](http://vocabulary-journal.herokuapp.com/) and its development version.-->
-<!--Since the project was deployed at such an early stage, no major problems were-->
-<!--encountered. The whole process was completely hassle free.-->
+#### Push static files to AWS S3
+
+```
+Python3 manage.py collectstatic
+```
+
+#### Deploying to Heroku
+
+
+1.  Update requirements.txt
+```
+pip3 freeze > requirements.txt
+```
+2.  Update git repository and push to Github
+```
+git add .
+git commit -m "xxxx"
+git push
+```
+3.  Manually deploy Github branch via Heroku
+4.  "Restart all dynos" if experiencing any problems.
+
 
 CREDITS
 =======
