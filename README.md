@@ -213,7 +213,7 @@ Future Features
 
 All the features listed within this section WILL be added upon completion of the
 course. The following features were shelved solely due to lack of time and my
-unfortunate current circumstances.
+unfortunate sudden change of circumstances.
 
 #### Discussion board
 Users may open threads in regards to
@@ -262,6 +262,8 @@ The list of technologies used for this project in no specific order.
             – to filter posted builds
         -   [Pillow](https://pypi.org/project/Pillow/) – required for uploading
             photos
+    -   [django-secret-key-generator](https://www.miniwebtool.com/django-secret-key-generator/) – used to 
+        generate a more secure secret key
 -   JavaScript
 -   [jQuery](https://jquery.com/) v3.3.1
 -   HTML5
@@ -400,7 +402,7 @@ possible malfunctions and misbehaving elements.
 -   25inch Quad HD 1440p monitor
 -   13inch Full HD screen of a Dell XPS Ultrabook
 -   15inch HD screen of a DELL Precision M4600
--   15inch HD screen of a DELL Precision M4800
+-   15inch Full HD screen of a DELL Precision M4800
 
 #### Browsers
 
@@ -448,9 +450,7 @@ script on the base template and without jQuery, stripe couldn’t have functione
 #### Calc() function wasn’t working in SASS
 
 ```
-
 min-height: calc(100% - 70.4px);
-
 ```
 Calc() function was added to expand the pages with no or only a few elements on
 there. However, the function was being ignored by all of the browsers I tested.
@@ -519,7 +519,7 @@ The requested URL / was not found on this server.
 
 I haven’t been able to replicate this particular issue on any the browsers I’m
 currently using. However, I believe it is caused by inactivity and the way the
-session is managed by Firefox, since logging out manually using the url
+session is managed in Firefox, since logging out manually using the url
 (/user/logout/) would resolve the issue.
 
 
@@ -528,7 +528,88 @@ Deployment
 ==========
 
 [Heroku](https://id.heroku.com/login) was used as the PRIMARY deployment
-platform for this project. Throughout the project, git was used to seamlessly
+platform for this project. 
+
+
+The following aliases were defined in the **.base_aliases** file for ease of use. 
+```
+alias run = "python3 manage.py runserver $IP:$C9_PORT"
+alias makemigrations = "python3 manage.py makemigrations"
+alias migrate = "python3 manage.py migrate"
+```
+
+## Development version with SQlite3 database
+
+**env.py** file was created for the sole purpose of setting up environment variables 
+for this project’s sensitive information. The file was then added to .gitignore.
+
+#### Setting up environment variables
+
+The condition below was then added to **settings.py**, which imports the
+**env.py** and automates Django’s **DEBUG** value.
+
+```
+if os.path.exists("env.py"):
+    development = True
+    import env
+else:
+    development = False
+    
+DEBUG = development
+```
+
+At this level the following environment variables were set in **env.py**
+and used in **settings.py**.
+
+```
+os.environ.get('C9_HOSTNAME')   # set automatically by cloud9
+os.environ.get('SECRET_KEY')    # flask secret key
+```
+
+#### Setting up environment variables
+
+Initially when the project was first started and deployed locally using Django’s
+very own default SQLite3 database.
+
+```
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
+```
+
+#### Static and media files
+
+Installed libraries:
+-   Pillow – caters for the “ImageFields” allowing images to be uploaded via the
+    admin page
+-   Whitenoise - Allows us to host our staticfiles such as css and javascript
+
+**settings.py**:
+```
+STATIC_URL = '/static/'
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'), )
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+```
+
+
+## Development version with PostgreSQL database
+
+qq
+
+## Production version on Heroku
+
+qq
+
+## Production version on Heroku with AWS
+
+qq
+
+Throughout the project, git was used to seamlessly
 and safely back up the code locally and pushed to Github frequently.
 
 For testing purposes, the project was first deployed locally on the Cloud9
