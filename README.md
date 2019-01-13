@@ -96,7 +96,7 @@ WIREFRAMES
 
 Wireframes created using [mockingbird](https://gomockingbird.com/home).
 
-Only list links to wireframes
+<p align="center"><img src="static/base/img/markdown/wireframes.png"/></p>
 
 FEATURES
 ========
