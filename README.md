@@ -3,7 +3,7 @@ BUILD ME A RIG [![Build Status](https://travis-ci.org/damianism/rate-my-rig.svg?
 ==============
 
 
-Real world application
+REAL WORLD APPLICATIONS
 ----------------------
 
 There are many <a href="https://damianism.github.io/custom_pc/benefits.html" target="_blank">benefits</a>
@@ -86,14 +86,14 @@ the selected components (RAM, GPU, CPU etc). Upon completion of the order, we
 will ship your new and fully tested assembled unit to you.
 
 
-Wireframes
+WIREFRAMES
 ==========
 
 Wireframes created using [mockingbird](https://gomockingbird.com/home).
 
 Only list links to wireframes
 
-Features
+FEATURES
 ========
 
 The list below shows all the added features that needed to be in place for the
@@ -208,7 +208,7 @@ Consists of 9 sections all together
 -   Responsive design.
 
 
-Future Features
+FUTURE FEATURES
 ===============
 
 All the features listed within this section WILL be added upon completion of the
@@ -240,7 +240,7 @@ Users may
     - Link component purchasing links
 
 
-Technologies Used
+TECHNOLOGIES USED
 =================
 
 The list of technologies used for this project in no specific order.
@@ -348,14 +348,23 @@ The list of technologies used for this project in no specific order.
     build and test software projects hosted at
     [GitHub](https://en.wikipedia.org/wiki/GitHub)
 
+#### Miscellaneous
 
-Testing
+The following aliases were defined in the **.base_aliases** file for ease of use. 
+```
+alias run = "python3 manage.py runserver $IP:$C9_PORT"
+alias makemigrations = "python3 manage.py makemigrations"
+alias migrate = "python3 manage.py migrate"
+```
+
+
+TESTING
 =======
 
 Here is the list of the tests carried out for this project in no particular
 order.
 
-#### STRIPE API
+#### Stripe API
 
 The API was tested using the four sets of “4242” card number.
 
@@ -429,7 +438,7 @@ with the following mobile and desktop operating systems.
 -   Window 7 pro
 -   iOS 12
 
-Known Issues
+KNOWN ISSUES
 ============
 
 #### Search
@@ -460,7 +469,7 @@ that the html tag also has to have its height set to 100% and not just the body
 tag.
 
 
-#### Responsive design of blog_home -filter
+#### Filter panel responsiveness
 
 One of the choices for the CPU select box (Ryzen Threadripper gen-1) within the
 filter panel of the Builds/Blog view turned out to be quite long since I could
@@ -474,7 +483,7 @@ chrome/Firefox responsive design tools, which didn’t really help since both
 tools render the choices of the select box as if it is being loaded on a desktop
 platform while the select box is open.
 
-#### Name change
+#### Project name change
 
 I initially intended to create a rating system, which would have been the core
 feature of this project, all the other features would have been built around 
@@ -506,7 +515,7 @@ confirm that no corners have been cut when it comes to testing this project. All
 the apps and logic within this project have been manually tested numerous times
 on various platforms and devices.
 
-#### Firefox 
+#### Firefox session management
 
 Every now and then when I try to load the deployed version of the website on
 Firefox, I’m greeted by the following error message and then it locks me out of
@@ -524,19 +533,16 @@ session is managed in Firefox, since logging out manually using the url
 
 
 
-Deployment
+DEPLOYMENT
 ==========
 
 [Heroku](https://id.heroku.com/login) was used as the PRIMARY deployment
-platform for this project. 
+platform for this project. The deployment evolution of the project is listed below.
 
-
-The following aliases were defined in the **.base_aliases** file for ease of use. 
-```
-alias run = "python3 manage.py runserver $IP:$C9_PORT"
-alias makemigrations = "python3 manage.py makemigrations"
-alias migrate = "python3 manage.py migrate"
-```
+1.  [Development version with SQlite3 database](#development-version-with-sqlite3-database)
+2.  [Development version with PostgreSQL database](#development-version-with-postgresql-database)
+3.  [Production version on Heroku](#production-version-on-heroku)
+4.  [Production version on Heroku with AWS](#production-version-on-heroku-with-aws)
 
 ## Development version with SQlite3 database
 
@@ -582,7 +588,7 @@ DATABASES = {
 
 #### Setting up static and media files
 
-Required libraries installed:
+**Required libraries installed**
 -   [Pillow](https://pypi.org/project/Pillow/) – caters for the “ImageFields” allowing images to be uploaded via the
     admin page
 -   [Whitenoise](http://whitenoise.evans.io/en/stable/) - Allows us to host our staticfiles such as css and javascript
@@ -602,31 +608,29 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 After familiarising myself with the local SQLite3 database, I decided to make
 the jump to the PstgresSQL database.
 
-Required libraries:
+**Required libraries installed**
 -   [Psycopg2](https://pypi.org/project/psycopg2/)
 -   [dj-database-url](https://pypi.org/project/dj-database-url/)
 
 #### Setting up Heroku's PostgreSQL database
 
--   Create Heroku app on EU region
+1.  Create Heroku app on EU region
     ```
     heroku create "unique-app-name" --region eu
     ```
     
--   Setup [Heroku Postgres](https://www.heroku.com/postgres) database addon for Heroku
+2.  Setup [Heroku Postgres](https://www.heroku.com/postgres) database addon for Heroku
     ```
     heroku addons:create heroku-postgresql:hobby-dev --app "unique-app-name"
     ```
 
--   **DATABASE_URL** added to Heroku’s Config Vars
+3.  **DATABASE_URL** added to Heroku’s Config Vars
     ```
     heroku config:set DATABASE_URL ="postgres://dummy-postgres-url"
     ```
 
 4.  **DATABASE_URL** set as an environment variable in **env.py** and make changes to 
     **settings.py** file accordingly
-
-
 
 ```
 import dj_database_url     # installed library
@@ -643,46 +647,101 @@ else:
     }
 ```
 
+5.  Migrate all data to new the PostgresSQL database.
+  
+```
+python3 manage.py makemigrations
+python3 manage.py migrate
+```
+
 ## Production version on Heroku
 
-qq
+At this stage, the project was more or less **complete** and running locally on cloud9
+with Heroku’s PostgresSQL database.
+
+#### Changes
+
+Here are the list of new variables added to **env.py** and **settings.py**
+```
+ALLOWED_HOSTS = [os.environ.get('C9_HOSTNAME'), os.environ.get('HOSTNAME')]
+EMAIL_HOST_USER = os.environ.get('EMAIL_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS')
+STRIPE_PUBLISHABLE = os.environ.get("STRIPE_PUBLISHABLE")
+STRIPE_SECRET = os.environ.get("STRIPE_SECRET")
+```
+
+All the environment variables listed above were also defined as **Config
+Vars** within Heroku
+
+-   DATABASE_URL
+-   EMAIL_PASS
+-   EMAIL_USER
+-   HOSTNAME
+-   SECRET_KEY
+-   STRIPE_PUBLISHABLE
+-   STRIPE_SECRET
+
+
+**Required libraries installed**
+-   [Gunicorn](https://gunicorn.org/)
+
+#### Deploying to Heroku
+
+1.  Create/update requirements.txt
+```
+pip3 freeze > requirements.txt
+```
+2.  Create a Procfile
+```
+echo web: gunicorn django_todo.wsgi:application > Procfile
+```
+3.  Update git repository and push to Github
+```
+git add .
+git commit -m "xxxx"
+git push
+```
+4.  Connect Github to Heroku via the “Deploy” tab in Heroku’s dashboard and select 
+    project repository name
+5.  Deploy branch manually
+6.  "Restart all dynos" if experiencing any problems. 
 
 ## Production version on Heroku with AWS
 
 qq
 
-Throughout the project, git was used to seamlessly
-and safely back up the code locally and pushed to Github frequently.
+<!--Throughout the project, git was used to seamlessly-->
+<!--and safely back up the code locally and pushed to Github frequently.-->
 
-For testing purposes, the project was first deployed locally on the Cloud9
-environment and most of the testing was done through Cloud9. However, later on I
-realised that it is not fully reliable and it can’t be trusted as the actual
-deployment platform might not behave the same way as mentioned above in the
-“Heroku Deployment issue” section of the “[Testing and
-challenges](#_Defensive_design_and)”.
+<!--For testing purposes, the project was first deployed locally on the Cloud9-->
+<!--environment and most of the testing was done through Cloud9. However, later on I-->
+<!--realised that it is not fully reliable and it can’t be trusted as the actual-->
+<!--deployment platform might not behave the same way as mentioned above in the-->
+<!--“Heroku Deployment issue” section of the “[Testing and-->
+<!--challenges](#_Defensive_design_and)”.-->
 
-The project was pushed to Heroku at its early stages and was repeatedly done so
-with the addition or alteration of any feature, incremental or major. However,
-on the previous project, the Heroku app was created using bash within the cloud9
-environment, unfortunately doing so would create the app on the American serves,
-since causing the website to take a lot longer than it needs to once deployed.
-This time I took the precaution of creating the app within the Heroku’s very own
-control panel and made sure that the app is indeed sitting on the European
-servers for faster response time.
+<!--The project was pushed to Heroku at its early stages and was repeatedly done so-->
+<!--with the addition or alteration of any feature, incremental or major. However,-->
+<!--on the previous project, the Heroku app was created using bash within the cloud9-->
+<!--environment, unfortunately doing so would create the app on the American serves,-->
+<!--since causing the website to take a lot longer than it needs to once deployed.-->
+<!--This time I took the precaution of creating the app within the Heroku’s very own-->
+<!--control panel and made sure that the app is indeed sitting on the European-->
+<!--servers for faster response time.-->
 
-\<p align="center"\>\<img src="static/img/extras/heroku.png"/\>\</p\>
+<!--\<p align="center"\>\<img src="static/img/extras/heroku.png"/\>\</p\>-->
 
-In addition to the usual IP, PORT and FLASK environment variables, I also had to
-include other credentials for the Oxford dictionary API into the config vars.
+<!--In addition to the usual IP, PORT and FLASK environment variables, I also had to-->
+<!--include other credentials for the Oxford dictionary API into the config vars.-->
 
-\<p align="center"\>\<img src="static/img/extras/heroku2.png"/\>\</p\>
+<!--\<p align="center"\>\<img src="static/img/extras/heroku2.png"/\>\</p\>-->
 
-There are no differences between the deployed version of the project found
-[here](http://vocabulary-journal.herokuapp.com/) and its development version.
-Since the project was deployed at such an early stage, no major problems were
-encountered. The whole process was completely hassle free.
+<!--There are no differences between the deployed version of the project found-->
+<!--[here](http://vocabulary-journal.herokuapp.com/) and its development version.-->
+<!--Since the project was deployed at such an early stage, no major problems were-->
+<!--encountered. The whole process was completely hassle free.-->
 
-Cedits
+CREDITS
 =======
 
 #### Django-filters
@@ -710,7 +769,7 @@ Cedits
 -   [Python Django tutorial](https://www.youtube.com/watch?v=UmljXZIypDc) by
     Corey Schafer
 
-Acknowledgements
+ACKNOWLEDGEMENTS
 ================
 
 -   Yoni Lavi
