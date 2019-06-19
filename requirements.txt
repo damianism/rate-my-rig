@@ -16,7 +16,7 @@ html5lib==0.999
 idna==2.8
 jmespath==0.9.3
 psycopg2==2.7.6.1
-pycurl==7.19.3
+# pycurl==7.19.3
 python-dateutil==2.7.5
 pytz==2018.7
 requests==2.21.0
