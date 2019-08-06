@@ -4,6 +4,7 @@
 __pycache__/
 env.py
 media/
-.vscode/
+*.vscode/
 env/
+*.code-workspace
 hidden_info.py
